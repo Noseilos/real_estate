@@ -146,6 +146,11 @@ License: For each use you must have a valid license purchased only from above li
 		<script src="{{ asset('backend/assets/js/tags-input.js') }}"></script>
 		{{-- End Select 2 --}}
 
+		{{-- Tinymice --}}
+		<script src="{{ asset('backend/assets/vendors/tinymce/tinymce.min.js') }}"></script>
+     	<script src="{{ asset('backend/assets/js/tinymce.js') }}"></script>
+		{{-- End Tinymice --}}
+
 		{{-- Custom Validation  --}}
 		<script src="{{ asset('backend/assets/js/code/validate.min.js')}}"></script>
 		{{-- End Custom Validation  --}}
