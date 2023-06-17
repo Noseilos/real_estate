@@ -187,19 +187,37 @@
                                 <div class="col-sm-4">
                                     <div class="mb-3">
                                         <label class="form-label">Property Type</label>
-                                        <input type="text" class="form-control" name="property_size">
+                                        <select name="ptype_id" class="form-select" id="exampleFormControlSelect1">
+											<option selected="" disabled="">Select Type</option>
+
+                                            @foreach($propertyType as $pType)
+											    <option value="{{ $pType->id }}">{{ $pType->type_name }}</option>
+                                            @endforeach
+										</select>
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-4">
                                     <div class="mb-3">
                                         <label class="form-label">Property Amenities</label>
-                                        <input type="text" class="form-control" name="property_video">
+                                        <select name="amenities_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
+
+                                            @foreach($amenities as $ameni)
+                                           <option value="{{ $ameni->id }}">{{ $ameni->amenities_name }}</option>
+                                          @endforeach
+                           
+                                       </select>
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-4">
                                     <div class="mb-3">
                                         <label class="form-label">Agent</label>
-                                        <input type="text" class="form-control" name="neighborhood">
+                                        <select name="agent_id" class="form-select" id="exampleFormControlSelect1">
+											<option selected="" disabled="">Select Agent</option>
+
+                                            @foreach ($activeAgent as $agent)
+											    <option value="{{ $agent->id }}">{{ $agent->name }}</option>
+                                            @endforeach
+										</select>
                                     </div>
                                 </div><!-- Col -->
                             </div><!-- Row -->
