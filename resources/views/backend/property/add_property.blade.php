@@ -17,7 +17,11 @@
                 <div class="card-body">
                     <h6 class="card-title">Add Property</h6>
 
+<<<<<<< HEAD
                         <form method="POST" action="" id="myForm" enctype="multipart/form-data">
+=======
+                        <form method="POST" action="{{ route('store.property') }}" id="myForm" enctype="multipart/form-data">
+>>>>>>> origin/master
                             @csrf
 
                             <div class="row">

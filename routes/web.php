@@ -97,6 +97,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
         
         Route::get('/all/property', 'AllProperty')->name('all.property');
         Route::get('/add/property', 'AddProperty')->name('add.property');
+<<<<<<< HEAD
+=======
+        Route::post('/store/property', 'StoreProperty')->name('store.property');
+>>>>>>> origin/master
     });
 }); // END ADMIN MIDDLEWARE
 
