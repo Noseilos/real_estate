@@ -12,6 +12,7 @@ use App\Models\PropertyType;
 use App\Models\User;
 use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Carbon\Carbon;
 
 class PropertyController extends Controller
 {
@@ -42,6 +43,8 @@ class PropertyController extends Controller
         $amen = $request->amenities_id;
         $amenites = implode(",", $amen);
 
+        $pcode = IdGenerator::generate(['table' => 'properties','field' => 'property_code','length' => 5, 'prefix' => 'PC' ]);
+
         $image = $request->file('property_thumbnail');
         $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(370,250)->save('upload/property/thumbnail/'.$name_generate);
@@ -65,14 +68,15 @@ class PropertyController extends Controller
             'garage' => $request->garage,
             'garage_size' => $request->garage_size,
 
-            'property_size' => $request->property_size,
-            'property_video' => $request->property_video,
             'address' => $request->address,
             'city' => $request->city,
             'state' => $request->state,
             'postal_code' => $request->postal_code,
-
+            
+            'property_size' => $request->property_size,
+            'property_video' => $request->property_video,
             'neighborhood' => $request->neighborhood,
+
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             'featured' => $request->featured,
@@ -81,6 +85,7 @@ class PropertyController extends Controller
             'status' => 1,
             'property_thambnail' => $save_url,
             'created_at' => Carbon::now(),
+            //Carbon means present date
 
         ]);
 
