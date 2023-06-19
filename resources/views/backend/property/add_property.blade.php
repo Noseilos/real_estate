@@ -208,10 +208,10 @@
                                         <select name="amenities_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
 
                                             @foreach($amenities as $ameni)
-                                           <option value="{{ $ameni->id }}">{{ $ameni->amenities_name }}</option>
-                                          @endforeach
-                           
-                                       </select>
+                                                <option value="{{ $ameni->id }}">{{ $ameni->amenities_name }}</option>
+                                            @endforeach
+                                            
+                                        </select>
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-4">
@@ -230,14 +230,14 @@
                                 <div class="col-sm-12">
                                     <div class="mb-3">
                                         <label class="form-label">Short Description</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea name="short_descp" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                 </div><!-- Col -->
 
                                 <div class="col-sm-12">
                                     <div class="mb-3">
                                         <label class="form-label">Long Description</label>
-                                        <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
+                                        <textarea name="long_descp" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
                                     </div>
                                 </div><!-- Col -->
 
@@ -265,32 +265,32 @@
 
                             <div class="row add_item">
                                 <div class="col-md-4">
-                                      <div class="mb-3">
-                                            <label for="facility_name" class="form-label">Facilities </label>
-                                            <select name="facility_name[]" id="facility_name" class="form-control">
-                                                  <option value="">Select Facility</option>
-                                                  <option value="Hospital">Hospital</option>
-                                                  <option value="SuperMarket">Super Market</option>
-                                                  <option value="School">School</option>
-                                                  <option value="Entertainment">Entertainment</option>
-                                                  <option value="Pharmacy">Pharmacy</option>
-                                                  <option value="Airport">Airport</option>
-                                                  <option value="Railways">Railways</option>
-                                                  <option value="Bus Stop">Bus Stop</option>
-                                                  <option value="Beach">Beach</option>
-                                                  <option value="Mall">Mall</option>
-                                                  <option value="Bank">Bank</option>
-                                            </select>
-                                      </div>
+                                        <div class="mb-3">
+                                                <label for="facility_name" class="form-label">Facilities </label>
+                                                <select name="facility_name[]" id="facility_name" class="form-control">
+                                                    <option value="">Select Facility</option>
+                                                    <option value="Hospital">Hospital</option>
+                                                    <option value="SuperMarket">Super Market</option>
+                                                    <option value="School">School</option>
+                                                    <option value="Entertainment">Entertainment</option>
+                                                    <option value="Pharmacy">Pharmacy</option>
+                                                    <option value="Airport">Airport</option>
+                                                    <option value="Railways">Railways</option>
+                                                    <option value="Bus Stop">Bus Stop</option>
+                                                    <option value="Beach">Beach</option>
+                                                    <option value="Mall">Mall</option>
+                                                    <option value="Bank">Bank</option>
+                                                </select>
+                                        </div>
                                 </div>
                                 <div class="col-md-4">
-                                      <div class="mb-3">
-                                            <label for="distance" class="form-label"> Distance </label>
-                                            <input type="text" name="distance[]" id="distance" class="form-control" placeholder="Distance (Km)">
-                                      </div>
+                                        <div class="mb-3">
+                                                <label for="distance" class="form-label"> Distance </label>
+                                                <input type="text" name="distance[]" id="distance" class="form-control" placeholder="Distance (Km)">
+                                        </div>
                                 </div>
                                 <div class="form-group col-md-4" style="padding-top: 30px;">
-                                      <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> Add More..</a>
+                                        <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> Add More..</a>
                                 </div>
                             </div> <!---end row-->
 
