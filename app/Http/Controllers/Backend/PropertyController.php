@@ -48,7 +48,7 @@ class PropertyController extends Controller
         $image = $request->file('property_thumbnail');
         $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(370,250)->save('upload/property/thumbnail/'.$name_generate);
-        $save_url = 'upload/property/thumbnail'.$name_generate;
+        $save_url = 'upload/property/thumbnail/'.$name_generate;
 
         $property_id = Property::insertGetId([
 
@@ -61,8 +61,8 @@ class PropertyController extends Controller
 
             'lowest_price' => $request->lowest_price,
             'max_price' => $request->max_price,
-            'short_descp' => $request->short_descp,
-            'long_descp' => $request->long_descp,
+            'short_desc' => $request->short_desc,
+            'long_desc' => $request->long_desc,
             'bedrooms' => $request->bedrooms,
             'bathrooms' => $request->bathrooms,
             'garage' => $request->garage,
@@ -83,7 +83,7 @@ class PropertyController extends Controller
             'hot' => $request->hot,
             'agent_id' => $request->agent_id,
             'status' => 1,
-            'property_thambnail' => $save_url,
+            'property_thumbnail' => $save_url,
             'created_at' => Carbon::now(),
             //Carbon means present date
 
@@ -91,23 +91,49 @@ class PropertyController extends Controller
 
         /// Multiple Image Upload From Here ////
 
-        $images = $request->file('multi_img');
+        $images = $request->file('multi_images');
         foreach($images as $img){
 
-        $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
-        Image::make($img)->resize(770,520)->save('upload/property/multi-image/'.$make_name);
-        $uploadPath = 'upload/property/multi-image/'.$make_name;
+            $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+            Image::make($img)->resize(770,520)->save('upload/property/multi-image/'.$make_name);
+            $uploadPath = 'upload/property/multi-image/'.$make_name;
 
-        MultiImage::insert([
+            MultiImage::insert([
 
-            'property_id' => $property_id,
-            'photo_name' => $uploadPath,
-            'created_at' => Carbon::now(), 
+                'property_id' => $property_id,
+                'photo_name' => $uploadPath,
+                'created_at' => Carbon::now(), 
 
-        ]); 
+            ]); 
         } // End Foreach
 
          /// End Multiple Image Upload From Here ////
+
+
+        //  START Facilities
+
+        $facilities = Count($request->facility_name);
+
+        if ($facilities != NULL) {
+            
+            for ($i=0; $i < $facilities; $i++) { 
+                
+                $fcount = new Facility();
+                $fcount->property_id = $property_id;
+                $fcount->facility_name = $request->facility_name[$i];
+                $fcount->distance = $request->distance[$i];
+                $fcount->save();
+            }
+        }
+
+        $notif = array(
+            'message' => 'Property Inserted Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('all.property')->with($notif);
+
+        // END Facilities
 
     }// End StoreProperty
 }

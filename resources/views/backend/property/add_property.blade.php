@@ -17,11 +17,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Add Property</h6>
 
-<<<<<<< HEAD
-                        <form method="POST" action="" id="myForm" enctype="multipart/form-data">
-=======
                         <form method="POST" action="{{ route('store.property') }}" id="myForm" enctype="multipart/form-data">
->>>>>>> origin/master
                             @csrf
 
                             <div class="row">
@@ -230,14 +226,14 @@
                                 <div class="col-sm-12">
                                     <div class="mb-3">
                                         <label class="form-label">Short Description</label>
-                                        <textarea name="short_descp" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea name="short_desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                 </div><!-- Col -->
 
                                 <div class="col-sm-12">
                                     <div class="mb-3">
                                         <label class="form-label">Long Description</label>
-                                        <textarea name="long_descp" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
+                                        <textarea name="long_desc" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
                                     </div>
                                 </div><!-- Col -->
 

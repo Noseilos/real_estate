@@ -34,7 +34,7 @@
                 
             <tr>
                 <td>{{ $key+1 }}</td>
-                <td><img src="{{ asset($item->property_thumbnail) }}" alt="property thumbnail" style="width: 70px; height: 40px;"></td>
+                <td><img src="{{ asset($item->property_thumbnail) }}" alt="property thumbnail" style="width:70px; height:40px;"></td>
                 <td>{{ $item->property_name }}</td>
                 <td>{{ $item->ptype_id }}</td>
                 <td>{{ $item->property_status }}</td>
@@ -47,7 +47,7 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ route('edit.property', $item->id)}}" class="btn btn-outline-warning">Edit</a>
+                    <a href="{{ route('all.property', $item->id)}}" class="btn btn-outline-warning">Edit</a>
                     <a href="{{ route('delete.amenities', $item->id)}}" id="delete" class="btn btn-outline-danger">Delete</a>
                 </td>
             </tr>
