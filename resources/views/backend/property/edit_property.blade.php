@@ -6,10 +6,6 @@
 <div class="page-content">
 
     <div class="row profile-body">
-      <!-- left wrapper start -->
-      
-      <!-- left wrapper end -->
-      <!-- middle wrapper start -->
       <div class="col-md-12 col-xl-12 middle-wrapper">
         <div class="row">
             
@@ -252,6 +248,60 @@
     </div>
 
 </div>
+
+
+
+{{-- Main thumbnail edit --}}
+
+
+<div class="page-content" style="margin-top: -35px;">
+
+    <div class="row profile-body">
+        <div class="col-md-12 col-xl-12 middle-wrapper">
+            <div class="row">
+                
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Edit Property Thumbnail and Images</h6>
+
+                            <form method="POST" action="{{ route('update.property') }}" id="myForm" enctype="multipart/form-data">
+                                @csrf
+
+                                
+                                <input type="hidden" name="id" value="{{ $property->id }}">
+                                <input type="hidden" name="old_image" value="{{ $property->property_thumbnail }}">
+
+                                <div class="row mb-3">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label">Main Thumbnail</label>
+                                        <input type="file" name="property_thumbnail" class="form-control" onchange="mainThumUrl(this)">
+                                        <img src="" id="mainThumbnail">
+                                    </div>
+
+                                    
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label"></label>
+                                        <img src="{{ asset($property->property_thumbnail) }}" alt="thumbnail" style="width: 100px; height: 100px;">
+                                    </div>
+                                </div><!-- Col -->
+
+                            </form>
+                            <button type="submit" class="btn btn-primary">Save</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{{-- End Main thumbnail edit --}}
+
+
+
+
 
 <script type="text/javascript">
     $(document).ready(function (){
