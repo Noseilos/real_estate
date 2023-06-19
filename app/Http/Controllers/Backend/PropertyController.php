@@ -11,6 +11,7 @@ use App\Models\Amenities;
 use App\Models\PropertyType;
 use App\Models\User;
 use Intervention\Image\Facades\Image;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class PropertyController extends Controller
 {
