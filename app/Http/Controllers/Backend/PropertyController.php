@@ -136,4 +136,21 @@ class PropertyController extends Controller
         // END Facilities
 
     }// End StoreProperty
+
+
+
+
+    public function EditProperty($id){
+
+        $property = Property::findOrFail($id);
+        $propertyType = PropertyType::latest()->get();
+        $amenities = Amenities::latest()->get();
+        $activeAgent = User::where('status','active')->where('role','agent')->latest()->get();
+
+        $amen = $property->amenities_id;
+        $property_amenities = explode(',', $amen);
+
+        return view('backend.property.edit_property', compact('property', 'propertyType', 'amenities', 'activeAgent', 'property_amenities'));
+
+    }// End EditProperty
 }
