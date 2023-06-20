@@ -237,4 +237,33 @@ class PropertyController extends Controller
         return redirect()->back()->with($notif); 
 
     }// End Method 
+
+    public function UpdatePropertyMultiImage(Request $request){
+
+        $images = $request->multi_image;
+
+        foreach($images as $id => $img){
+            $imgDelete = MultiImage::findOrFail($id);
+            unlink($imgDelete->photo_name);
+
+        $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+        Image::make($img)->resize(770,520)->save('upload/property/multi-image/'.$make_name);
+        $uploadPath = 'upload/property/multi-image/'.$make_name;
+
+        MultiImage::where('id',$id)->update([
+
+            'photo_name' => $uploadPath,
+            'updated_at' => Carbon::now(),
+
+        ]);
+
+        } // End Foreach 
+
+        $notif = array(
+            'message' => 'Property Multi Image Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notif); 
+    }// End Method 
 }

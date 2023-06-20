@@ -101,6 +101,7 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
         Route::get('/edit/property/{id}', 'EditProperty')->name('edit.property');
         Route::post('/update/property', 'UpdateProperty')->name('update.property');
         Route::post('/update/property/thumbnail', 'UpdatePropertyThumbnail')->name('update.property.thumbnail');
+        Route::post('/update/property/multiImage', 'UpdatePropertyMultiImage')->name('update.property.multiImage');
     });
 }); // END ADMIN MIDDLEWARE
 
