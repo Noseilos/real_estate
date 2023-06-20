@@ -320,7 +320,7 @@
                     <th>Serial Number</th>
                     <th>Image</th>
                     <th>Change Image </th>
-                    <th>Delete </th> 
+                    <th>Action</th> 
                 </tr>
             </thead>
             <tbody>
@@ -337,7 +337,7 @@
 
                         <td>
                         <input type="submit" class="btn btn-primary px-4" value="Update Image" >
-                        <a href="" class="btn btn-danger" id="delete">Delete </a>
+                        <a href="{{ route('delete.property.multiImage',$img->id) }}" class="btn btn-danger" id="delete">Delete</a>
                         </td>
                     </tr>
                 @endforeach

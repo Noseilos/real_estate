@@ -260,10 +260,26 @@ class PropertyController extends Controller
         } // End Foreach 
 
         $notif = array(
-            'message' => 'Property Multi Image Updated Successfully',
+            'message' => 'Property Multiple Image Updated Successfully',
             'alert-type' => 'success'
         );
 
         return redirect()->back()->with($notif); 
+    }// End Method 
+
+    public function DeletePropertyMultiImage($id){
+
+        $old_image = MultiImage::findOrFail($id);
+        unlink($old_image->photo_name);
+
+        MultiImage::findOrFail($id)->delete();
+
+        $notif = array(
+            'message' => 'Property Multiple Image Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notif); 
+
     }// End Method 
 }
