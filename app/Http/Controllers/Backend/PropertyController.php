@@ -41,7 +41,7 @@ class PropertyController extends Controller
     public function StoreProperty(Request $request){
 
         $amen = $request->amenities_id;
-        $amenites = implode(",", $amen);
+        $amenities = implode(",", $amen);
 
         $pcode = IdGenerator::generate(['table' => 'properties','field' => 'property_code','length' => 5, 'prefix' => 'PC' ]);
 
@@ -53,7 +53,7 @@ class PropertyController extends Controller
         $property_id = Property::insertGetId([
 
             'ptype_id' => $request->ptype_id,
-            'amenities_id' => $amenites,
+            'amenities_id' => $amenities,
             'property_name' => $request->property_name,
             'property_slug' => strtolower(str_replace(' ', '-', $request->property_name)),
             'property_code' => $pcode,
@@ -161,12 +161,12 @@ class PropertyController extends Controller
 
         $property_id = $request->id;
         $amen = $request->amenities_id;
-        $amenites = implode(",", $amen);
+        $amenities = implode(",", $amen);
 
         Property::findOrFail($property_id)->update([
 
             'ptype_id' => $request->ptype_id,
-            'amenities_id' => $amenites,
+            'amenities_id' => $amenities,
             'property_name' => $request->property_name,
             'property_slug' => strtolower(str_replace(' ', '-', $request->property_name)),
             'property_status' => $request->property_status,
@@ -206,4 +206,33 @@ class PropertyController extends Controller
         return redirect()->route('all.property')->with($notif);
 
     }// End UpdateProperty
+
+    public function UpdatePropertyThumbnail(Request $request){
+
+        $property_id = $request->id;
+        $oldImage = $request->old_image;
+
+        $image = $request->file('property_thumbnail');
+        $name_generate = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(370,250)->save('upload/property/thumbnail/'.$name_generate);
+        $save_url = 'upload/property/thumbnail/'.$name_generate;
+
+        if (file_exists($oldImage)) {
+            unlink($oldImage);
+        }
+
+        Property::findOrFail($property_id)->update([
+
+            'property_thumbnail' => $save_url,
+            'updated_at' => Carbon::now(), 
+        ]);
+
+        $notif = array(
+            'message' => 'Property Image Thumbnail Updated Successfully!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notif); 
+
+    }// End Method 
 }
