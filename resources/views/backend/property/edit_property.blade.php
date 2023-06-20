@@ -345,6 +345,32 @@
         </table>
     </div>
     </form> 
+
+
+
+
+    <form method="POST" action="{{ route('store.new.multiImage') }}" id="myForm" enctype="multipart/form-data">
+        @csrf
+
+        <input type="hidden" name="imageId" value="{{ $property->id }}">
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="file" class="form-control" name="multi_image">
+                    </td>
+
+                    <td>
+                        <input type="submit" class="btn btn-info px-4" value="Add Image">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </form>
+
         </div>
         </div>
 

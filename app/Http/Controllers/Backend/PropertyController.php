@@ -282,4 +282,33 @@ class PropertyController extends Controller
         return redirect()->back()->with($notif); 
 
     }// End Method 
+
+
+
+
+    public function StoreNewMultiImage(Request $request){
+
+        $new_multi = $request->imageId;
+        $image = $request->file('multi_image');
+
+        $make_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(770,520)->save('upload/property/multi-image/'.$make_name);
+        $uploadPath = 'upload/property/multi-image/'.$make_name;
+
+        MultiImage::insert([
+
+            'property_id' => $new_multi,
+            'photo_name' => $uploadPath,
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        $notif = array(
+            'message' => 'Property Multiple Image Added Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notif); 
+        
+    }// End StoreNewMultiImage
 }
