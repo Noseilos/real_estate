@@ -312,4 +312,42 @@ class PropertyController extends Controller
         return redirect()->back()->with($notif); 
         
     }// End StoreNewMultiImage
+
+
+
+
+    public function UpdatePropertyFacilities(Request $request){
+
+        $propertyId = $request->id;
+
+        if ($request->facility_name == NULL) {
+            return redirect()->back();
+
+        }else {
+
+            Facility::where('property_id', $propertyId)->delete();
+
+            $facilities = Count($request->facility_name);
+
+            if ($facilities != NULL) {
+                
+                for ($i=0; $i < $facilities; $i++) { 
+                    
+                    $fcount = new Facility();
+                    $fcount->property_id = $propertyId;
+                    $fcount->facility_name = $request->facility_name[$i];
+                    $fcount->distance = $request->distance[$i];
+                    $fcount->save();
+                }
+            }
+        }
+
+        $notif = array(
+            'message' => 'Property Facilities Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notif); 
+        
+    }// End UpdatePropertyFacilities
 }
