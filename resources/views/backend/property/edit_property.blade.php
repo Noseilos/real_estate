@@ -265,7 +265,7 @@
                         <h6 class="card-title">Edit Property Thumbnail and Images</h6>
 
                             <form method="POST" action="{{ route('update.property.thumbnail') }}" id="myForm" enctype="multipart/form-data">
-                                @csrf
+                            @csrf
 
                                 
                                 <input type="hidden" name="id" value="{{ $property->id }}">
@@ -285,9 +285,8 @@
                                     </div>
                                 </div><!-- Col -->
 
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </form>
-                            <button type="submit" class="btn btn-primary">Save</button>
-
                     </div>
                 </div>
             </div>
