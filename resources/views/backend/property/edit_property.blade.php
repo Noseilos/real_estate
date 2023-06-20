@@ -298,6 +298,66 @@
 
 {{-- End Main thumbnail edit --}}
 
+<!--  /// Multi Image Update //// -->
+
+<div class="page-content" style="margin-top: -35px;" > 
+
+    <div class="row profile-body"> 
+        <div class="col-md-12 col-xl-12 middle-wrapper">
+            <div class="row">
+
+    <div class="card">
+    <div class="card-body">
+        <h6 class="card-title"> Edit Multi Images  </h6>
+
+    <form method="post" action="{{ route('update.property.thumbnail') }}" id="myForm" enctype="multipart/form-data">
+    @csrf
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Image</th>
+                    <th>Change Image </th>
+                    <th>Delete </th> 
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($multiImage as $key => $img)
+                    <tr>
+                        <td>{{ $key+1 }}</td>
+                        <td class="py-1">
+                            <img src="{{ asset($img->photo_name) }}" alt="image"  style="width:60px; height:60px;">
+                        </td> 
+
+                        <td> 
+                        <input type="file" class="form-group" name="multi_image">
+                        </td>
+
+                        <td>
+                        <input type="submit" class="btn btn-primary px-4" value="Update Image" >
+                        <a href="" class="btn btn-danger" id="delete">Delete </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    <br><br>
+    <button type="submit" class="btn btn-primary">Save</button>
+
+    </form> 
+        </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+</div> 
+
+<!--  /// End Multi Image Update //// -->
 
 
 
