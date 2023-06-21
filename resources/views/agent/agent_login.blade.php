@@ -31,14 +31,14 @@
                 <div class="tabs-box">
                     <div class="tab-btn-box">
                         <ul class="tab-btns tab-buttons centred clearfix">
-                            <li class="tab-btn active-btn" data-tab="#tab-1">Login</li>
-                            <li class="tab-btn" data-tab="#tab-2">Register</li>
+                            <li class="tab-btn active-btn" data-tab="#tab-1">Agent Login</li>
+                            <li class="tab-btn" data-tab="#tab-2">Agent Register</li>
                         </ul>
                     </div>
                     <div class="tabs-content">
                         <div class="tab active-tab" id="tab-1">
                             <div class="inner-box">
-                                <h4>Sign in</h4>
+                                <h4>Agent Sign in</h4>
 
                                 <form method="POST" action="{{ route('login') }}" class="default-form">
                                     @csrf
@@ -67,7 +67,7 @@
 
                         <div class="tab" id="tab-2">
                             <div class="inner-box">
-                                <h4>Register</h4>
+                                <h4>Agent Register</h4>
 
                                 <form method="POST" action="{{ route('register') }}" class="default-form">
                                     @csrf

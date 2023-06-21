@@ -124,5 +124,6 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
 
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
+Route::get('/agent/login', [AgentController::class, 'AgentLogin'])->name('agent.login')->middleware(RedirectIfAuthenticated::class);
 
 require __DIR__.'/auth.php';

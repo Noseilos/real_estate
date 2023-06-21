@@ -9,5 +9,15 @@ class AgentController extends Controller
     public function AgentDashboard(){
         
         return view('agent.agent_dashboard');
-    } // END AdminDashboard
+
+    } // END AgentDashboard
+
+
+
+
+
+    public function AgentLogin(){
+
+        return view('agent.agent_login');
+    }// END AgentLogin
 }
