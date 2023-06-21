@@ -147,6 +147,10 @@
 		<script src="{{ asset('backend/assets/js/code/validate.min.js')}}"></script>
 		{{-- End Custom Validation  --}}
 
+		{{-- Start Toggle --}}
+		<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+		{{-- End Toggle --}}
+
 	<!-- End custom js for this page -->
 	
 
