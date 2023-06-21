@@ -111,7 +111,54 @@ class AgentController extends Controller
             'alert-type' => 'success',
         );
 
-        return redirect()->route('agent.profile')->with($notif);
+        return redirect()->back()->with($notif);
 
     }// END AgentProfileStore
+
+
+
+
+
+    public function AgentChangePassword(){
+
+        $agentID = Auth::user()->id;
+        $profileData = User::find($agentID);
+        return view('agent.agent_change_password', compact('profileData'));
+
+    }// END AgentChangePassword
+
+
+
+
+
+    public function AgentUpdatePassword(Request $request){
+
+        $request->validate([
+
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+        if(!Hash::check($request->old_password, auth::user()->password)){
+
+            $notif = array(
+                'message' => 'Old Password Does Not Match',
+                'alert-type' => 'error',
+            );
+            
+            return back()->with($notif);
+        }
+
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        $notif = array(
+            'message' => 'Password Updated Successfully',
+            'alert-type' => 'success',
+        );
+        
+        return back()->with($notif);
+
+    }// END AgentUpdatePassword
 }
