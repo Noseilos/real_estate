@@ -129,4 +129,21 @@ class AdminController extends Controller
         
         return back()->with($notif);
     }// END AdminUpdatePassword
+
+
+
+
+    // -------------------- AGENT MANAGEMENT -------------------- //
+
+
+
+
+    public function AllAgent(){
+
+        $allAgent = User::where('role', 'agent')->get();
+        return view('backend.agents.all_agent', compact('allAgent'));
+
+    }// END AllAgent
+
+
 }

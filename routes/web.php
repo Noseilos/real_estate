@@ -94,7 +94,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
         Route::get('/edit/type/{id}', 'EditPropertyType')->name('edit.type');
         Route::post('/update/type', 'UpdatePropertyType')->name('update.type');
         Route::get('/delete/type/{id}', 'DeletePropertyType')->name('delete.type');
-    });
+
+    }); // END PropertyTypeController
+
+
 
     // START Amenities
     Route::controller(PropertyTypeController::class)->group(function(){
@@ -105,7 +108,10 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
         Route::get('/edit/amenities/{id}', 'EditAmenities')->name('edit.amenities');
         Route::post('/update/amenities', 'UpdateAmenities')->name('update.amenities');
         Route::get('/delete/amenities/{id}', 'DeleteAmenities')->name('delete.amenities');
-    });
+
+    }); // END Amenities
+
+
 
     // START PropertyController
     Route::controller(PropertyController::class)->group(function(){
@@ -124,7 +130,20 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
         Route::get('/details/property/{id}', 'DetailsProperty')->name('details.property');
         Route::post('/inactive/property', 'InactiveProperty')->name('inactive.property');
         Route::post('/active/property', 'ActiveProperty')->name('active.property');
-    });
+
+    }); // END PropertyController
+
+
+
+    // START Agent Management
+    Route::controller(AdminController::class)->group(function(){
+        
+        Route::get('/all/agent', 'AllAgent')->name('all.agent');
+
+    }); // END Agent Management
+
+
+
 }); // END ADMIN MIDDLEWARE
 
 
