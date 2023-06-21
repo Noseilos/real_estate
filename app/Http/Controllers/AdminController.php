@@ -183,4 +183,58 @@ class AdminController extends Controller
     }// END StoreAgent
 
 
+
+
+
+    public function EditAgent($id){
+
+        $allAgent = User::findOrFail($id);
+        return view('backend.agents.edit_agent', compact('allAgent'));
+
+    }// END EditAgent
+
+
+
+
+
+    public function UpdateAgent(Request $request){
+
+        $agent_id = $request->id;
+
+        User::findOrFail($agent_id)->update([
+
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+
+        ]);
+
+        $notif = array(
+            'message' => 'Agent Updated Successfully',
+            'alert-type' => 'success',
+        );
+        
+        return redirect()->route('all.agent')->with($notif);
+
+    }// END StoreAgent
+
+
+
+
+
+    public function DeleteAgent($id){
+
+        User::findOrFail($id)->delete();
+
+        $notif = array(
+            'message' => 'Agent Deleted Successfully',
+            'alert-type' => 'success',
+        );
+        
+        return redirect()->route('all.agent')->with($notif);
+
+    }// END DeleteAgent
+
+
 }

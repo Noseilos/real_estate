@@ -45,8 +45,8 @@
                 </td>
                 <td>Change</td>
                 <td>
-                    <a href="{{ route('edit.property', $item->id)}}" class="btn btn-outline-warning" title="Edit"><i data-feather="edit"></i></a>
-                    <a href="{{ route('delete.property', $item->id)}}" id="delete" class="btn btn-outline-danger" title="Delete"><i data-feather="trash"></i></a>
+                    <a href="{{ route('edit.agent', $item->id)}}" class="btn btn-outline-warning" title="Edit"><i data-feather="edit"></i></a>
+                    <a href="{{ route('delete.agent', $item->id)}}" id="delete" class="btn btn-outline-danger" title="Delete"><i data-feather="trash"></i></a>
                 </td>
             </tr>
 
