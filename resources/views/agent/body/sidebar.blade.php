@@ -39,7 +39,7 @@
             <div class="collapse" id="property">
             <ul class="nav sub-menu">
                 <li class="nav-item">
-                    <a href="{{ route('all.property')}}" class="nav-link">All Property</a>
+                    <a href="{{ route('agent.all.property')}}" class="nav-link">All Property</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('add.property')}}" class="nav-link">Add Property</a>
@@ -93,7 +93,7 @@
         @else
 
         @endif
-        
+
         <li class="nav-item nav-category">Docs</li>
         <li class="nav-item">
             <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
