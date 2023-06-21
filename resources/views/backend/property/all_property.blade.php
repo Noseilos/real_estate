@@ -50,7 +50,7 @@
                 </td>
                 <td>
                     <a href="{{ route('edit.property', $item->id)}}" class="btn btn-outline-warning">Edit</a>
-                    <a href="{{ route('delete.amenities', $item->id)}}" id="delete" class="btn btn-outline-danger">Delete</a>
+                    <a href="{{ route('delete.property', $item->id)}}" id="delete" class="btn btn-outline-danger">Delete</a>
                 </td>
             </tr>
 
