@@ -104,9 +104,11 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
         Route::post('/update/property/multi-image', 'UpdatePropertyMultiImage')->name('update.property.multiImage');
         Route::get('/delete/property/multi-image/{id}', 'DeletePropertyMultiImage')->name('delete.property.multiImage');
         Route::post('/store/new/multi-image', 'StoreNewMultiImage')->name('store.new.multiImage');
-        Route::post('/update/property/facilities-image', 'UpdatePropertyFacilities')->name('update.property.facilities');
+        Route::post('/update/property/facilities', 'UpdatePropertyFacilities')->name('update.property.facilities');
         Route::get('/delete/property/{id}', 'DeleteProperty')->name('delete.property');
         Route::get('/details/property/{id}', 'DetailsProperty')->name('details.property');
+        Route::post('/inactive/property', 'InactiveProperty')->name('inactive.property');
+        Route::post('/active/property', 'ActiveProperty')->name('active.property');
     });
 }); // END ADMIN MIDDLEWARE
 
