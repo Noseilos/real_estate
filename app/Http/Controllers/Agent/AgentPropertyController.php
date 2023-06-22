@@ -40,7 +40,7 @@ class AgentPropertyController extends Controller
         $pcount = $property->credit;
         // dd($pcount);
 
-        if ($pcount == 1 || $pcount == 7) {
+        if ($pcount == 1 || $pcount == 7 || $pcount == 27) {
             return redirect()->route('buy.package');
         } else {
             return view('agent.property.add_property', compact('propertyType','amenities'));
@@ -484,7 +484,7 @@ class AgentPropertyController extends Controller
             'package_name' => 'Business',
             'package_credits' => '3',
             'invoice' => 'ERS'.mt_rand(10000000,99999999),
-            'package_amount' => '20',
+            'package_amount' => '70',
             'created_at' => Carbon::now(),
 
         ]);
@@ -503,5 +503,53 @@ class AgentPropertyController extends Controller
         return redirect()->route('agent.all.property')->with($notif); 
 
     }// END StoreBusinessPlan
+
+
+
+
+
+    public function BuyProfessionalPlan(){
+
+        $id = Auth::user()->id;
+        $data = User::find($id);
+        return view('agent.package.professional_plan', compact('data'));
+
+    }// END BuyProfessionalPlan
+
+
+
+
+
+    public function StoreProfessionalPlan(Request $request){
+
+        $id = Auth::user()->id;
+        $uid = User::findOrFail($id);
+        $nid = $uid->credit;
+
+        PackagePlan::insert([
+
+            'user_id' => $id,
+            'package_name' => 'Professional',
+            'package_credits' => '10',
+            'invoice' => 'ERS'.mt_rand(10000000,99999999),
+            'package_amount' => '250',
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        User::where('id', $id)->update([
+
+            'credit' => DB::raw('10 +'.$nid),
+
+        ]);
+
+        $notif = array(
+            'message' => 'Subscribed to Professional Plan',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('agent.all.property')->with($notif); 
+
+    }// END StoreProfessionalPlan
 
 }

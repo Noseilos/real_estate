@@ -86,7 +86,7 @@
                 </tr>
               </table>
               <div class="d-grid">
-                <a href="" class="btn btn-primary mt-4">Subscribe</a>
+                <a href="{{ route('buy.professional.plan') }}" class="btn btn-primary mt-4">Subscribe</a>
               </div>
             </div>
           </div>
