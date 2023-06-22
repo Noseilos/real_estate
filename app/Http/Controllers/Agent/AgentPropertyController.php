@@ -15,6 +15,7 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use App\Models\PackagePlan;
 
 class AgentPropertyController extends Controller
 {
@@ -39,7 +40,7 @@ class AgentPropertyController extends Controller
         $pcount = $property->credit;
         // dd($pcount);
 
-        if ($pcount == 1) {
+        if ($pcount == 1 || $pcount == 7) {
             return redirect()->route('buy.package');
         } else {
             return view('agent.property.add_property', compact('propertyType','amenities'));
@@ -462,8 +463,45 @@ class AgentPropertyController extends Controller
     public function BuyBusinessPlan(){
 
         $id = Auth::user()->id;
-        return view('agent.package.business_plan', compact('id'));
+        $data = User::find($id);
+        return view('agent.package.business_plan', compact('data'));
 
     }// END BuyBusinessPlan
+
+
+
+
+
+    public function StoreBusinessPlan(Request $request){
+
+        $id = Auth::user()->id;
+        $uid = User::findOrFail($id);
+        $nid = $uid->credit;
+
+        PackagePlan::insert([
+
+            'user_id' => $id,
+            'package_name' => 'Business',
+            'package_credits' => '3',
+            'invoice' => 'ERS'.mt_rand(10000000,99999999),
+            'package_amount' => '20',
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        User::where('id', $id)->update([
+
+            'credit' => DB::raw('3 +'.$nid),
+
+        ]);
+
+        $notif = array(
+            'message' => 'Subscribed to Basic Plan',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('agent.all.property')->with($notif); 
+
+    }// END StoreBusinessPlan
 
 }
