@@ -365,4 +365,59 @@ class AgentPropertyController extends Controller
         return redirect()->back()->with($notif); 
         
     }// End AgentUpdatePropertyFacilities
+
+
+
+
+
+    public function AgentDetailsProperty($id){
+
+        $facilities = Facility::where('property_id', $id)->get();
+        $property = Property::findOrFail($id);
+        $propertyType = PropertyType::latest()->get();
+        $amenities = Amenities::latest()->get();
+
+        $multiImage = MultiImage::where('property_id',$id)->get();
+
+        $amen = $property->amenities_id;
+        $property_amenities = explode(',', $amen);
+
+        return view('agent.property.details_property', compact('property', 'propertyType', 'amenities','property_amenities', 'multiImage', 'facilities'));
+        
+    }// End AgentDetailsProperty
+
+
+
+
+    public function AgentDeleteProperty($id){
+
+        $property = Property::findOrFail($id);
+        unlink($property->property_thumbnail);
+
+        Property::findOrFail($id)->delete();
+
+        $multi_image = MultiImage::where('property_id', $id)->get();
+
+        foreach ($multi_image as $image) {
+            
+            unlink($image->photo_name);
+            MultiImage::where('property_id', $id)->delete();
+        }
+
+        $facilities = Facility::where('property_id', $id)->get();
+
+        foreach ($facilities as $landmark) {
+            $landmark->facility_name;
+            Facility::where('property_id', $id)->delete();
+
+        }
+
+        $notif = array(
+            'message' => 'Property Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notif); 
+
+    }// End AgentDeleteProperty
 }

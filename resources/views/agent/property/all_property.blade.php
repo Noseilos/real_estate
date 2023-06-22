@@ -49,9 +49,9 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ route('details.property', $item->id)}}" class="btn btn-outline-info" title="Details"><i data-feather="eye"></i></a>
+                    <a href="{{ route('agent.details.property', $item->id)}}" class="btn btn-outline-info" title="Details"><i data-feather="eye"></i></a>
                     <a href="{{ route('agent.edit.property', $item->id)}}" class="btn btn-outline-warning" title="Edit"><i data-feather="edit"></i></a>
-                    <a href="{{ route('delete.property', $item->id)}}" id="delete" class="btn btn-outline-danger" title="Delete"><i data-feather="trash"></i></a>
+                    <a href="{{ route('agent.delete.property', $item->id)}}" id="delete" class="btn btn-outline-danger" title="Delete"><i data-feather="trash"></i></a>
                 </td>
             </tr>
 
