@@ -210,6 +210,11 @@ class PropertyController extends Controller
 
     }// End UpdateProperty
 
+
+
+
+
+
     public function UpdatePropertyThumbnail(Request $request){
 
         $property_id = $request->id;
@@ -238,6 +243,11 @@ class PropertyController extends Controller
         return redirect()->back()->with($notif); 
 
     }// End Method 
+
+
+
+
+    
 
     public function UpdatePropertyMultiImage(Request $request){
 
