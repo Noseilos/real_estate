@@ -420,4 +420,17 @@ class AgentPropertyController extends Controller
         return redirect()->back()->with($notif); 
 
     }// End AgentDeleteProperty
+
+
+
+
+
+
+    public function BuyPackage(){
+
+
+        return view('agent.package.buy_package');
+
+    }// END AgentPropertyController
+
 }

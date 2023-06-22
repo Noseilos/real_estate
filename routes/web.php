@@ -177,6 +177,15 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
 
     }); // END Agent Property
 
+
+
+    // START Agent Package
+    Route::controller(AgentPropertyController::class)->group(function(){
+        
+        Route::get('/buy/package', 'BuyPackage')->name('buy.package');
+
+    }); // END Agent Package
+
 }); // END AGENT MIDDLEWARE
 
 
