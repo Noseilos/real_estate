@@ -337,7 +337,7 @@
 
 
 
-    <form method="POST" action="{{ route('store.new.multiImage') }}" id="myForm" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('agent.store.new.multiImage') }}" id="myForm" enctype="multipart/form-data">
         @csrf
 
         <input type="hidden" name="imageId" value="{{ $property->id }}">
@@ -384,7 +384,7 @@
                     <div class="card-body">
                         <h6 class="card-title">Edit Property Facility</h6>
 
-                            <form method="POST" action="{{ route('update.property.facilities') }}" id="myForm" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('agent.update.property.facilities') }}" id="myForm" enctype="multipart/form-data">
                             @csrf
 
                             <input type="hidden" name="id" value="{{ $property->id }}">
