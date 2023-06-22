@@ -14,6 +14,7 @@ use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class AgentPropertyController extends Controller
 {
@@ -40,6 +41,10 @@ class AgentPropertyController extends Controller
 
 
     public function StoreAgentProperty(Request $request){
+
+        $id = Auth::user()->id;
+        $uid = User::findOrFail($id);
+        $nid = $uid->credit;
 
         $amen = $request->amenities_id;
         $amenities = implode(",", $amen);
@@ -127,6 +132,14 @@ class AgentPropertyController extends Controller
             }
         }
 
+        // END Facilities
+
+        User::where('id', $id)->update([
+
+            'credit' => DB::raw('1 +'.$nid),
+
+        ]);
+
         $notif = array(
             'message' => 'Property Inserted Successfully',
             'alert-type' => 'success',
@@ -134,7 +147,6 @@ class AgentPropertyController extends Controller
 
         return redirect()->route('agent.all.property')->with($notif);
 
-        // END Facilities
 
     }// End StoreProperty
 
