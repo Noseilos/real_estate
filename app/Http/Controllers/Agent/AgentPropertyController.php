@@ -552,4 +552,11 @@ class AgentPropertyController extends Controller
 
     }// END StoreProfessionalPlan
 
+    public function PackageHistory(){
+
+        $id = Auth::user()->id;
+        $packageHistory = PackagePlan::where('user_id',$id)->get();
+        return view('agent.package.package_history',compact('packageHistory'));
+
+    }// End PackageHistory
 }
