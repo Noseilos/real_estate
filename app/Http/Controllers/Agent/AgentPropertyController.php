@@ -10,12 +10,15 @@ use App\Models\Facility;
 use App\Models\Amenities;
 use App\Models\PropertyType;
 use App\Models\User;
+use App\Models\PackagePlan;
+
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 use DB;
-use App\Models\PackagePlan;
+
 
 class AgentPropertyController extends Controller
 {
@@ -559,4 +562,16 @@ class AgentPropertyController extends Controller
         return view('agent.package.package_history',compact('packageHistory'));
 
     }// End PackageHistory
+
+    public function AgentPackageInvoice($id){
+
+        $packageHistory = PackagePlan::where('id',$id)->first();
+
+        $pdf = Pdf::loadView('agent.package.package_history_invoice', compact('packageHistory'))->setPaper('a4')->setOption([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+        return $pdf->download('invoice.pdf');
+
+    }// End AgentPackageInvoice
 }

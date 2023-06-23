@@ -188,6 +188,7 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
         Route::get('/buy/professional/plan', 'BuyProfessionalPlan')->name('buy.professional.plan');
         Route::post('/store/professional/plan', 'StoreProfessionalPlan')->name('store.professional.plan');
         Route::get('/package/history', 'PackageHistory')->name('package.history');
+        Route::get('/agent/package/invocie/{id}', 'AgentPackageInvoice')->name('agent.package.invoice');
 
     }); // END Agent Package
 
