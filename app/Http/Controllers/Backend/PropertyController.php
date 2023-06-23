@@ -10,9 +10,12 @@ use App\Models\Facility;
 use App\Models\Amenities;
 use App\Models\PropertyType;
 use App\Models\User;
+use App\Models\PackagePlan;
+
 use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PropertyController extends Controller
 {
@@ -462,4 +465,12 @@ class PropertyController extends Controller
         return redirect()->route('all.property')->with($notif);
         
     }// End InactiveProperty
+
+    public function AdminPackageHistory(){
+
+        $packageHistory = PackagePlan::latest()->get();
+        return view('backend.package.package_history',compact('packageHistory'));
+        
+        
+    }// End AdminPackageHistory
 }
