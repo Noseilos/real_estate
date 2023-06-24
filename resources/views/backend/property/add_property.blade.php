@@ -217,7 +217,7 @@
 											<option selected="" disabled="">Select Agent</option>
 
                                             @foreach ($activeAgent as $agent)
-											    <option value="{{ $agent->amenities_name }}">{{ $agent->name }}</option>
+											    <option value="{{ $agent->id }}">{{ $agent->name }}</option>
                                             @endforeach
 										</select>
                                     </div>

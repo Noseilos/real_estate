@@ -183,7 +183,7 @@
                                         <select name="amenities_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
 
                                             @foreach($amenities as $ameni)
-                                                <option value="{{ $ameni->amenities_name }}" {{ (in_array($ameni->amenities_name, $property_amenities)) ? 'selected' : '' }}>{{ $ameni->amenities_name }}</option>
+                                                <option value="{{ $ameni->id }}" {{ (in_array($ameni->id, $property_amenities)) ? 'selected' : '' }}>{{ $ameni->amenities_name }}</option>
                                             @endforeach
                                             
                                         </select>

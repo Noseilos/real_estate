@@ -200,7 +200,7 @@
                                         <select name="amenities_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
 
                                             @foreach($amenities as $ameni)
-                                                <option value="{{ $ameni->amenities_name }}">{{ $ameni->amenities_name }}</option>
+                                                <option value="{{ $ameni->id }}">{{ $ameni->amenities_name }}</option>
                                             @endforeach
                                             
                                         </select>
