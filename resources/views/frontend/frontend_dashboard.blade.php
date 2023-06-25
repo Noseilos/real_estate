@@ -88,6 +88,11 @@
     <script src="{{ asset('frontend/assets/js/jquery-ui.js')}}"></script>
     <script src="{{ asset('frontend/assets/js/nav-tool.js')}}"></script>
 
+    <!-- map script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
+    <script src="{{ asset('frontend/assets/js/gmaps.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/map-helper.js')}}"></script>
+
     <!-- main-js -->
     <script src="{{ asset('frontend/assets/js/script.js')}}"></script>
 

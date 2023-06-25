@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Agent\AgentPropertyController;
+use App\Http\Controllers\Frontend\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -200,5 +201,21 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
 Route::get('/agent/login', [AgentController::class, 'AgentLogin'])->name('agent.login')->middleware(RedirectIfAuthenticated::class);
 Route::post('/agent/register', [AgentController::class, 'AgentRegister'])->name('agent.register');
+
+
+
+
+
+
+// ------------ FRONTEND PROPERTY DETAILS ROUTE ------------ //
+
+
+
+
+
+
+Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDetails']);
+
+
 
 require __DIR__.'/auth.php';
