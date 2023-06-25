@@ -22,8 +22,10 @@ class IndexController extends Controller
         $amenity_ids = explode(',', $property->amenities_id);
         $property_amenities = $amenities->whereIn('id', $amenity_ids);
 
+        $facility = Facility::where('property_id', $id)->get();
+
         $multiImage = MultiImage::where('property_id', $id)->get();
-        return view('frontend.property.property_details', compact('property', 'multiImage', 'property_amenities'));
+        return view('frontend.property.property_details', compact('property', 'multiImage', 'property_amenities', 'facility'));
 
     }// END PropertyDetails
 
