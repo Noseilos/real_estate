@@ -57,7 +57,7 @@
                                 <li><i class="icon-15"></i>{{ $item->bathrooms }} Baths</li>
                                 <li><i class="icon-16"></i>{{ $item->property_size }} Sq Ft</li>
                             </ul>
-                            <div class="btn-box"><a href="property-details.html" class="theme-btn btn-two">See Details</a></div>
+                            <div class="btn-box"><a href="{{ url('/property/details/'.$item->id.'/'.$item->property_slug) }}" class="theme-btn btn-two">See Details</a></div>
                         </div>
                     </div>
                 </div>
