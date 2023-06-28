@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Agent\AgentPropertyController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -215,6 +216,9 @@ Route::post('/agent/register', [AgentController::class, 'AgentRegister'])->name(
 
 
 Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDetails']);
+
+// ADD TO WISHLIST
+Route::post('/add-to-wishlist/{property_id}', [WishlistController::class, 'AddToWishlist']);
 
 
 
