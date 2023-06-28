@@ -5,6 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <title>Nosea Real Estate Listing</title>
 
 <!-- Fav Icon -->
@@ -122,6 +124,63 @@
             @endif 
         </script>
     {{-- End Toaster --}}
+
+    {{-- Add to Wishlist --}}
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            }
+        })
+
+        function addToWishlist(property_id){
+
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "/add-to-wishlist/"+property_id,
+
+                success:function(data){
+
+                    // Start Message 
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        
+                        showConfirmButton: false,
+                        timer: 3000 
+                    })
+
+                    if ($.isEmptyObject(data.error)) {
+                            
+                            Toast.fire({
+                                type: 'success',
+                                icon: 'success', 
+                                title: data.success, 
+                            })
+
+                    }else{
+                    
+                            Toast.fire({
+                                type: 'error',
+                                icon: 'error', 
+                                title: data.error, 
+                            })
+                    }
+
+                    // End Message  
+
+                }
+            })
+        }
+
+    </script>
+    {{-- End Add to Wishlist --}}
 
 </body><!-- End of .page_wrapper -->
 </html>
