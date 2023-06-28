@@ -55,4 +55,17 @@ class WishlistController extends Controller
 
     }// End UserWishlist
 
+
+
+
+
+    public function GetWishlistProperty(){
+
+        $wishlist = Wishlist::with('property')->where('user_id', Auth::id())->latest()->get();
+        $wishQuantity = wishlist::count();
+
+        return response()->json(['json' => $wishlist, 'wishQuantity' => $wishQuantity]);
+
+    }
+
 }

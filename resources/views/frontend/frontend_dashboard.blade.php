@@ -182,5 +182,25 @@
     </script>
     {{-- End Add to Wishlist --}}
 
+    {{-- Load wishlist data --}}
+    <script>
+
+        function wishlist(){
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/get-wishlist-property",
+
+                success:function(response){
+
+                    $('#wishQuantity').text(response.wishQuantity);
+
+                }
+            })
+        }
+
+    </script>
+    {{-- End Load wishlist data --}}
+
 </body><!-- End of .page_wrapper -->
 </html>
