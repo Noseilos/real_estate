@@ -64,7 +64,7 @@ class WishlistController extends Controller
         $wishlist = Wishlist::with('property')->where('user_id', Auth::id())->latest()->get();
         $wishQuantity = wishlist::count();
 
-        return response()->json(['json' => $wishlist, 'wishQuantity' => $wishQuantity]);
+        return response()->json(['wishlist' => $wishlist, 'wishQuantity' => $wishQuantity]);
 
     }
 
