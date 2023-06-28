@@ -46,5 +46,13 @@ class WishlistController extends Controller
 
 
 
+    public function UserWishlist(){
+
+        $id = Auth::user()->id;
+        $userData = User::find($id);
+
+        return view('frontend.dashboard.wishlist', compact('userData'));
+
+    }// End UserWishlist
 
 }
