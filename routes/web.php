@@ -64,14 +64,14 @@ Route::middleware('auth')->group(function () {
     }); // END WishlistController
 
     
-    // // START WishlistController
-    // Route::controller(WishlistController::class)->group(function(){
+    // START CompareController
+    Route::controller(CompareController::class)->group(function(){
         
-    //     Route::get('/user/wishlist', 'UserWishlist')->name('user.wishlist');
-    //     Route::get('/get-wishlist-property', 'GetWishlistProperty');
-    //     Route::get('/wishlist-remove/{id}', 'WishlistRemove');
+        Route::get('/user/compare', 'UserCompare')->name('user.compare');
+        // Route::get('/get-wishlist-property', 'GetWishlistProperty');
+        // Route::get('/wishlist-remove/{id}', 'WishlistRemove');
 
-    // }); // END WishlistController
+    }); // END CompareController
 
 });// END USER
 

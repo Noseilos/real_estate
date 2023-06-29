@@ -36,4 +36,17 @@ class CompareController extends Controller
         }
 
     }// End AddToWishlist
+
+
+
+
+
+    public function UserCompare(){
+
+        $id = Auth::user()->id;
+        $userData = User::find($id);
+
+        return view('frontend.dashboard.compare', compact('userData'));
+
+    }// End UserCompare
 }
