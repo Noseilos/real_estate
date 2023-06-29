@@ -403,6 +403,15 @@
                                 <p>${value.property.bathrooms}</p>
                             </td>
                             <td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Action</p>
+                            </td>
+                            <td>
+                                <a type="submit" class="text-body" id="${value.id}" onclick="compareRemove(this.id)" ><i class="fa fa-trash"></i></a>
+                            </td>
+                            <td>
                         </tr>`
 
                     });
@@ -418,7 +427,50 @@
 
         // Compare Remove
 
-        
+        function compareRemove(id){
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/compare-remove/"+id,
+
+                success:function(data){
+
+                        compare();
+
+                        // Start Message 
+
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            
+                            showConfirmButton: false,
+                            timer: 3000 
+                        })
+
+                        if ($.isEmptyObject(data.error)) {
+                                
+                                Toast.fire({
+                                    type: 'success',
+                                    icon: 'success', 
+                                    title: data.success, 
+                                })
+
+                        }else{
+                        
+                                Toast.fire({
+                                    type: 'error',
+                                    icon: 'error', 
+                                    title: data.error, 
+                                })
+                        }
+
+                        // End Message  
+
+                    }
+                })
+
+            }
 
         // End Compare Remove
 

@@ -69,7 +69,7 @@ Route::middleware('auth')->group(function () {
         
         Route::get('/user/compare', 'UserCompare')->name('user.compare');
         Route::get('/get-compare-property', 'GetCompareProperty');
-        // Route::get('/wishlist-remove/{id}', 'WishlistRemove');
+        Route::get('/compare-remove/{id}', 'CompareRemove');
 
     }); // END CompareController
 
