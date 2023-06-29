@@ -66,7 +66,7 @@ class WishlistController extends Controller
 
         return response()->json(['wishlist' => $wishlist, 'wishQuantity' => $wishQuantity]);
 
-    }
+    }// End GetWishlistProperty
 
 
 

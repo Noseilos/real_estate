@@ -347,5 +347,83 @@
     </script>
     {{-- End Add to Compare --}}
 
+    {{-- Load compare data --}}
+    <script>
+
+        function compare(){
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/get-compare-property",
+
+                success:function(response){
+
+                    var rows = ""
+                    $.each(response, function(key,value){
+
+                        rows += `<tr>
+                            <th>Property Info</th>
+                            <th>
+                                <figure class="image-box"><img src="/${value.property.property_thumbnail}" alt=""></figure>
+                                <div class="title">${value.property.property_name}</div>
+                                <div class="price">$${value.property.lowest_price}</div>
+                            </th>
+                            
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <p>City</p>
+                            </td>
+                            <td>
+                                <p>${value.property.city}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Area</p>
+                            </td>
+                            <td>
+                                <p>${value.property.property_size} Sq Ft</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Rooms</p>
+                            </td>
+                            <td>
+                                <p>${value.property.bedrooms}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Bathrooms</p>
+                            </td>
+                            <td>
+                                <p>${value.property.bathrooms}</p>
+                            </td>
+                            <td>
+                        </tr>`
+
+                    });
+
+                    $('#compare').html(rows);
+
+                }
+            })
+        }
+
+        compare();
+
+
+        // Compare Remove
+
+        
+
+        // End Compare Remove
+
+    </script>
+    {{-- End Load compare data --}}
+
 </body><!-- End of .page_wrapper -->
 </html>

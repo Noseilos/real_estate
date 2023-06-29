@@ -49,4 +49,16 @@ class CompareController extends Controller
         return view('frontend.dashboard.compare', compact('userData'));
 
     }// End UserCompare
+
+
+
+
+
+    public function GetCompareProperty(){
+
+        $compare = Compare::with('property')->where('user_id', Auth::id())->latest()->get();
+
+        return response()->json($compare);
+
+    }// End GetCompareProperty
 }
