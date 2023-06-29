@@ -11,6 +11,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Agent\AgentPropertyController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\Frontend\CompareController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,27 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
     Route::get('/user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
     Route::post('/user/password/update', [UserController::class, 'UserPasswordUpdate'])->name('user.password.update');
+
+    
+    // START WishlistController
+    Route::controller(WishlistController::class)->group(function(){
+        
+        Route::get('/user/wishlist', 'UserWishlist')->name('user.wishlist');
+        Route::get('/get-wishlist-property', 'GetWishlistProperty');
+        Route::get('/wishlist-remove/{id}', 'WishlistRemove');
+
+    }); // END WishlistController
+
+    
+    // // START WishlistController
+    // Route::controller(WishlistController::class)->group(function(){
+        
+    //     Route::get('/user/wishlist', 'UserWishlist')->name('user.wishlist');
+    //     Route::get('/get-wishlist-property', 'GetWishlistProperty');
+    //     Route::get('/wishlist-remove/{id}', 'WishlistRemove');
+
+    // }); // END WishlistController
+
 });// END USER
 
 
@@ -219,6 +241,9 @@ Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDe
 
 // ADD TO WISHLIST
 Route::post('/add-to-wishlist/{property_id}', [WishlistController::class, 'AddToWishlist']);
+
+// ADD TO COMPARE
+Route::post('/add-to-compare/{property_id}', [CompareController::class, 'AddToCompare']);
 
 
 
