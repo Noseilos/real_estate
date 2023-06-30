@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\MultiImage;
@@ -11,6 +12,8 @@ use App\Models\Amenities;
 use App\Models\PropertyType;
 use App\Models\User;
 use App\Models\PackagePlan;
+use Illuminate\Support\Facades\Auth;
+use App\Models\PropertyMessage;
 
 class IndexController extends Controller
 {
@@ -37,7 +40,40 @@ class IndexController extends Controller
 
     public function PropertyMessage(Request $request){
 
+        $property_id = $request->property_id;
+        $agent_id = $request->agent_id;
 
+        if (Auth::check()) {
+            
+            PropertyMessage::insert([
+
+                'user_id' => Auth::user()->id,
+                'agent_id' => $agent_id,
+                'property_id' => $property_id,
+                'msg_name' => $request->msg_name,
+                'msg_email' => $request->msg_email,
+                'msg_phone' => $request->msg_phone,
+                'message' => $request->message,
+                'created_at' => Carbon::now(),
+
+            ]);
+
+            $notif = array(
+                'message' => 'Message Sent Successfully',
+                'alert-type' => 'success',
+            );
+
+            return redirect()->back()->with($notif);
+
+        } else {
+            
+            $notif = array(
+                'message' => 'Login To Your Account First',
+                'alert-type' => 'error',
+            );
+
+            return redirect()->back()->with($notif);
+        }
 
     }// END PropertyMessage
 }
