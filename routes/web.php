@@ -157,6 +157,7 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
         Route::post('/active/property', 'ActiveProperty')->name('active.property');
         Route::get('/admin/package/history', 'AdminPackageHistory')->name('admin.package.history');
         Route::get('/package/invoice/{id}', 'PackageInvoice')->name('package.invoice');
+        Route::get('/admin/property/message/', 'AdminPropertyMessage')->name('admin.property.message');
 
     }); // END PropertyController
 
