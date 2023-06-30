@@ -245,6 +245,9 @@ Route::post('/add-to-wishlist/{property_id}', [WishlistController::class, 'AddTo
 // ADD TO COMPARE
 Route::post('/add-to-compare/{property_id}', [CompareController::class, 'AddToCompare']);
 
+// SEND PROPERTY MESSAGE
+Route::post('/property/message', [IndexController::class, 'PropertyMessage'])->name('property.message');
+
 
 
 require __DIR__.'/auth.php';
