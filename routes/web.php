@@ -263,6 +263,9 @@ Route::get('/rent/property', [IndexController::class, 'RentProperty'])->name('re
 // ALL PROPERTY FOR BUY
 Route::get('/buy/property', [IndexController::class, 'BuyProperty'])->name('buy.property');
 
+// ALL PROPERTY CATEGORIES
+Route::get('/property/type/{id}', [IndexController::class, 'PropertyType'])->name('property.type');
+
 
 
 require __DIR__.'/auth.php';

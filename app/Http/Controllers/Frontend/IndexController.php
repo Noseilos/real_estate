@@ -161,4 +161,20 @@ class IndexController extends Controller
         return view('frontend.property.buy_property', compact('property', 'rentProperty', 'buyProperty'));
 
     }// END RentProperty
+
+
+
+
+
+    public function PropertyType($id){
+
+        $property = Property::where('status', '1')->where('ptype_id', $id)->get();
+        $rentProperty = Property::where('property_status', 'rent')->get();
+        $buyProperty = Property::where('property_status', 'buy')->get();
+
+        $property_read = PropertyType::where('id', $id)->first();
+
+        return view('frontend.property.property_type', compact('property', 'rentProperty', 'buyProperty', 'property_read'));
+
+    }// END PropertyType
 }

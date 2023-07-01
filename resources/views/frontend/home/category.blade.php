@@ -18,7 +18,7 @@
                     <div class="category-block-one">
                         <div class="inner-box">
                             <div class="icon-box"><i class="{{ $category->type_icon }}"></i></div>
-                            <h5><a href="property-details.html">{{ $category->type_name }}</a></h5>
+                            <h5><a href="{{ route('property.type', $category->id) }}">{{ $category->type_name }}</a></h5>
                             <span>{{ count($property) }}</span>
                         </div>
                     </div>
