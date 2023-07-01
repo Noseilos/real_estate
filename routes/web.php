@@ -260,6 +260,9 @@ Route::post('/agent/details/message', [IndexController::class, 'AgentDetailsMess
 // ALL PROPERTY FOR RENT
 Route::get('/rent/property', [IndexController::class, 'RentProperty'])->name('rent.property');
 
+// ALL PROPERTY FOR BUY
+Route::get('/buy/property', [IndexController::class, 'BuyProperty'])->name('buy.property');
+
 
 
 require __DIR__.'/auth.php';

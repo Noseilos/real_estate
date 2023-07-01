@@ -141,8 +141,24 @@ class IndexController extends Controller
     public function RentProperty(){
 
         $property = Property::where('status', '1')->where('property_status', 'rent')->get();
+        $rentProperty = Property::where('property_status', 'rent')->get();
+        $buyProperty = Property::where('property_status', 'buy')->get();
 
-        return view('frontend.property.rent_property', compact('property'));
+        return view('frontend.property.rent_property', compact('property', 'rentProperty', 'buyProperty'));
+
+    }// END RentProperty
+
+
+
+
+
+    public function BuyProperty(){
+
+        $property = Property::where('status', '1')->where('property_status', 'buy')->get();
+        $rentProperty = Property::where('property_status', 'rent')->get();
+        $buyProperty = Property::where('property_status', 'buy')->get();
+
+        return view('frontend.property.buy_property', compact('property', 'rentProperty', 'buyProperty'));
 
     }// END RentProperty
 }
