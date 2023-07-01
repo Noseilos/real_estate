@@ -204,8 +204,8 @@
                                 <h5>Status Of Property</h5>
                             </div>
                             <ul class="category-list clearfix">
-                                <li><a href="agency-details.html">For Rent <span>(200)</span></a></li>
-                                <li><a href="agency-details.html">For Sale <span>(700)</span></a></li>
+                                <li><a href="{{ route('rent.property') }}">For Rent <span>({{ count($rentProperty) }})</span></a></li>
+                                <li><a href="agency-details.html">For Buy <span>({{ count($buyProperty) }})</span></a></li>
                             </ul>
                         </div>
                         <div class="featured-widget sidebar-widget">

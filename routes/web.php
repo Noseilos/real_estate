@@ -257,6 +257,9 @@ Route::get('/agent/details/{id}', [IndexController::class, 'AgentDetails'])->nam
 // SEND AGENT DETAILS MESSAGE
 Route::post('/agent/details/message', [IndexController::class, 'AgentDetailsMessage'])->name('agent.details.message');
 
+// ALL PROPERTY FOR RENT
+Route::get('/rent/property', [IndexController::class, 'RentProperty'])->name('rent.property');
+
 
 
 require __DIR__.'/auth.php';
