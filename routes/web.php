@@ -202,7 +202,7 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
         Route::get('/agent/details/property/{id}', 'AgentDetailsProperty')->name('agent.details.property');
         Route::get('/agent/delete/property/{id}', 'AgentDeleteProperty')->name('agent.delete.property');
         Route::get('/agent/property/message', 'AgentPropertyMessage')->name('agent.property.message');
-        Route::get('/agent/messagw/details/{id}', 'AgentMessageDetails')->name('agent.message.details');
+        Route::get('/agent/message/details/{id}', 'AgentMessageDetails')->name('agent.message.details');
 
     }); // END Agent Property
 
