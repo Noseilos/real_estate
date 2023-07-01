@@ -9,10 +9,10 @@
         </div>
         <div class="auto-container">
             <div class="content-box clearfix">
-                <h1>Property For Rent</h1>
+                <h1>Property For Buy</h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="index.html">Home</a></li>
-                    <li>Rent Property List</li>
+                    <li>Buy Property List</li>
                 </ul>
             </div>
         </div>
@@ -189,12 +189,7 @@
                             
                         </div>
                         <div class="pagination-wrapper">
-                            <ul class="pagination clearfix">
-                                <li><a href="property-list.html" class="current">1</a></li>
-                                <li><a href="property-list.html">2</a></li>
-                                <li><a href="property-list.html">3</a></li>
-                                <li><a href="property-list.html"><i class="fas fa-angle-right"></i></a></li>
-                            </ul>
+                            {{ $property->links('vendor.pagination.custom') }}
                         </div>
                     </div>
                 </div>

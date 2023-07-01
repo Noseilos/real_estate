@@ -86,8 +86,8 @@ class IndexController extends Controller
         $agent = User::findOrFail($id);
         $property = Property::where('agent_id', $id)->get();
         $featured = Property::where('featured', '1')->limit(3)->get();
-        $rentProperty = Property::where('property_status', 'rent')->get();
-        $buyProperty = Property::where('property_status', 'buy')->get();
+        $rentProperty = Property::where('status', '1')->where('property_status', 'rent')->get();
+        $buyProperty = Property::where('status', '1')->where('property_status', 'buy')->get();
 
         return view('frontend.agent.agent_details', compact('agent', 'property', 'featured', 'rentProperty', 'buyProperty'));
 
@@ -141,8 +141,8 @@ class IndexController extends Controller
     public function RentProperty(){
 
         $property = Property::where('status', '1')->where('property_status', 'rent')->paginate(3);
-        $rentProperty = Property::where('property_status', 'rent')->get();
-        $buyProperty = Property::where('property_status', 'buy')->get();
+        $rentProperty = Property::where('status', '1')->where('property_status', 'rent')->get();
+        $buyProperty = Property::where('status', '1')->where('property_status', 'buy')->get();
 
         return view('frontend.property.rent_property', compact('property', 'rentProperty', 'buyProperty'));
 
@@ -154,9 +154,9 @@ class IndexController extends Controller
 
     public function BuyProperty(){
 
-        $property = Property::where('status', '1')->where('property_status', 'buy')->get();
-        $rentProperty = Property::where('property_status', 'rent')->get();
-        $buyProperty = Property::where('property_status', 'buy')->get();
+        $property = Property::where('status', '1')->where('property_status', 'buy')->paginate(3);
+        $rentProperty = Property::where('status', '1')->where('property_status', 'rent')->get();
+        $buyProperty = Property::where('status', '1')->where('property_status', 'buy')->get();
 
         return view('frontend.property.buy_property', compact('property', 'rentProperty', 'buyProperty'));
 
