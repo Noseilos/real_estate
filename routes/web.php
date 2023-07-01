@@ -251,6 +251,9 @@ Route::post('/add-to-compare/{property_id}', [CompareController::class, 'AddToCo
 // SEND PROPERTY MESSAGE
 Route::post('/property/message', [IndexController::class, 'PropertyMessage'])->name('property.message');
 
+// FRONTEND: AGENT DETAILS
+Route::get('/agent/details/{id}', [IndexController::class, 'AgentDetails'])->name('agent.details');
+
 
 
 require __DIR__.'/auth.php';
