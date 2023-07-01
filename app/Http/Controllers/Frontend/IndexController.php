@@ -85,8 +85,50 @@ class IndexController extends Controller
 
         $agent = User::findOrFail($id);
         $property = Property::where('agent_id', $id)->get();
+        $featured = Property::where('featured', '1')->limit(3)->get();
 
-        return view('frontend.agent.agent_details', compact('agent', 'property'));
+        return view('frontend.agent.agent_details', compact('agent', 'property', 'featured'));
 
     }// END AgentDetails
+
+
+
+
+
+    public function AgentDetailsMessage(Request $request){
+
+        $agent_id = $request->agent_id;
+
+        if (Auth::check()) {
+            
+            PropertyMessage::insert([
+
+                'user_id' => Auth::user()->id,
+                'agent_id' => $agent_id,
+                'msg_name' => $request->msg_name,
+                'msg_email' => $request->msg_email,
+                'msg_phone' => $request->msg_phone,
+                'message' => $request->message,
+                'created_at' => Carbon::now(),
+
+            ]);
+
+            $notif = array(
+                'message' => 'Message Sent Successfully',
+                'alert-type' => 'success',
+            );
+
+            return redirect()->back()->with($notif);
+
+        } else {
+            
+            $notif = array(
+                'message' => 'Login To Your Account First',
+                'alert-type' => 'error',
+            );
+
+            return redirect()->back()->with($notif);
+        }
+
+    }// END AgentDetailsMessage
 }

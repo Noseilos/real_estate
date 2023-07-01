@@ -254,6 +254,9 @@ Route::post('/property/message', [IndexController::class, 'PropertyMessage'])->n
 // FRONTEND: AGENT DETAILS
 Route::get('/agent/details/{id}', [IndexController::class, 'AgentDetails'])->name('agent.details');
 
+// SEND AGENT DETAILS MESSAGE
+Route::post('/agent/details/message', [IndexController::class, 'AgentDetailsMessage'])->name('agent.details.message');
+
 
 
 require __DIR__.'/auth.php';
