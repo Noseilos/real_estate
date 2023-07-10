@@ -4,7 +4,7 @@
 
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
-                <a href="{{ route('add.type') }}" class="btn btn-inverse-info"> Add State </a>
+                <a href="{{ route('add.state') }}" class="btn btn-inverse-info"> Add State </a>
             </ol>
         </nav>
 
@@ -32,10 +32,8 @@
                                             <td><img src="{{ asset($item->state_image) }}" style="width:70px;height: 40px;">
                                             </td>
                                             <td>
-                                                <a href="{{ route('edit.type', $item->id) }}"
-                                                    class="btn btn-inverse-warning"> Edit </a>
-                                                <a href="{{ route('delete.type', $item->id) }}"
-                                                    class="btn btn-inverse-danger" id="delete"> Delete </a>
+                                                <a href="{{ route('edit.state',$item->id) }}" class="btn btn-inverse-warning"> Edit </a>
+                                                <a href="{{ route('delete.state',$item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete  </a>
                                             </td>
                                         </tr>
                                     @endforeach

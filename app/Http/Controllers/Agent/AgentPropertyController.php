@@ -12,6 +12,7 @@ use App\Models\PropertyType;
 use App\Models\User;
 use App\Models\PackagePlan;
 use App\Models\PropertyMessage;
+use App\Models\State;
 
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -38,6 +39,7 @@ class AgentPropertyController extends Controller
 
         $propertyType = PropertyType::latest()->get();
         $amenities = Amenities::latest()->get();
+        $pstate = State::latest()->get();
 
         $id = Auth::user()->id;
         $property = User::where('role', 'agent')->where('id', $id)->first();
@@ -47,7 +49,7 @@ class AgentPropertyController extends Controller
         if ($pcount == 1 || $pcount == 7 || $pcount == 27) {
             return redirect()->route('buy.package');
         } else {
-            return view('agent.property.add_property', compact('propertyType','amenities'));
+            return view('agent.property.add_property',compact('propertyType','amenities','pstate'));
         }
         
     }// End AddProperty
@@ -151,7 +153,7 @@ class AgentPropertyController extends Controller
 
         User::where('id', $id)->update([
 
-            'credit' => DB::raw('1 +'.$nid),
+            'credit' => DB::raw('1 +'.$id),
 
         ]);
 
@@ -177,10 +179,11 @@ class AgentPropertyController extends Controller
 
         $multiImage = MultiImage::where('property_id',$id)->get();
 
+        $pstate = State::latest()->get();
         $amen = $property->amenities_id;
         $property_amenities = explode(',', $amen);
 
-        return view('agent.property.edit_property', compact('property', 'propertyType', 'amenities', 'property_amenities', 'multiImage', 'facilities'));
+        return view('agent.property.edit_property',compact('property','propertyType','amenities','property_ami','multiImage','facilities','pstate'));
 
     }// End EditProperty
 
