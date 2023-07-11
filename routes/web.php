@@ -11,10 +11,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\StateController;
+use App\Http\Controllers\Backend\TestimonialController;
+use App\Http\Controllers\Backend\BlogController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\CompareController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -190,6 +194,29 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
      Route::get('/delete/state/{id}', 'DeleteState')->name('delete.state');  
     });
 
+    // Testimonials  All Route 
+Route::controller(TestimonialController::class)->group(function(){
+
+    Route::get('/all/testimonials', 'AllTestimonials')->name('all.testimonials'); 
+    Route::get('/add/testimonials', 'AddTestimonials')->name('add.testimonials');
+    Route::post('/store/testimonials', 'StoreTestimonials')->name('store.testimonials'); 
+    Route::get('/edit/testimonials/{id}', 'EditTestimonials')->name('edit.testimonials');
+    Route::post('/update/testimonials', 'UpdateTestimonials')->name('update.testimonials');
+    Route::get('/delete/testimonials/{id}', 'DeleteTestimonials')->name('delete.testimonials');   
+
+});
+
+// Blog Cateory All Route 
+Route::controller(BlogController::class)->group(function(){
+
+    Route::get('/all/blog/category', 'AllBlogCategory')->name('all.blog.category');  
+    Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category'); 
+    Route::get('/blog/category/{id}', 'EditBlogCategory');
+    Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
+    Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');  
+
+});
+
 
 
 }); // END ADMIN MIDDLEWARE
@@ -279,6 +306,18 @@ Route::get('/buy/property', [IndexController::class, 'BuyProperty'])->name('buy.
 
 // ALL PROPERTY CATEGORIES
 Route::get('/property/type/{id}', [IndexController::class, 'PropertyType'])->name('property.type');
+
+// Get State Details Data 
+Route::get('/state/details/{id}', [IndexController::class, 'StateDetails'])->name('state.details');
+
+// Home Page Buy Seach Option
+Route::post('/buy/property/search', [IndexController::class, 'BuyPropertySeach'])->name('buy.property.search');
+
+// Home Page Rent Seach Option
+Route::post('/rent/property/search', [IndexController::class, 'RentPropertySeach'])->name('rent.property.search');
+
+ // All Property Seach Option
+Route::post('/all/property/search', [IndexController::class, 'AllPropertySeach'])->name('all.property.search');
 
 
 

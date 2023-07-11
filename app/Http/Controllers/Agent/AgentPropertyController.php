@@ -153,7 +153,7 @@ class AgentPropertyController extends Controller
 
         User::where('id', $id)->update([
 
-            'credit' => DB::raw('1 +'.$id),
+            'credit' => DB::raw('1 +'.$nid),
 
         ]);
 
