@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\PackagePlan;
 use App\Models\PropertyMessage;
 use App\Models\State;
+use App\Models\Schedule;
 
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -596,4 +597,12 @@ class AgentPropertyController extends Controller
         return view('agent.message.message_details',compact('user_message','message_details'));
 
     }// End AgentMessageDetails 
+
+    public function AgentScheduleRequest(){
+
+        $id = Auth::user()->id;
+        $usermsg = Schedule::where('agent_id',$id)->get();
+        return view('agent.schedule.schedule_request',compact('usermsg'));
+
+    }// End Method  
 }
