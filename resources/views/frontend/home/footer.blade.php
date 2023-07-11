@@ -1,5 +1,5 @@
 @php
-   $setting = App\Models\SiteSetting::find(1);
+//    $setting = App\Models\SiteSetting::find(1);
    $blog = App\Models\BlogPost::latest()->limit(2)->get();
    @endphp
 
@@ -56,13 +56,13 @@
                         <div class="widget-title">
                             <h3>Contacts</h3>
                         </div>
-                        <div class="widget-content">
+                        {{-- <div class="widget-content">
                             <ul class="info-list clearfix">
                                 <li><i class="fas fa-map-marker-alt"></i>{{ $setting->company_address }}</li>
                                 <li><i class="fas fa-microphone"></i><a href="tel:23055873407">+{{ $setting->support_phone }}</a></li>
                                 <li><i class="fas fa-envelope"></i><a href="mailto:info@example.com">{{ $setting->email }}</a></li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -72,9 +72,9 @@
         <div class="auto-container">
             <div class="inner-box clearfix">
                 <figure class="footer-logo"><a href="index.html"><img src="{{ asset('frontend/assets/images/footer-logo.png')}}" alt=""></a></figure>
-                <div class="copyright pull-left">
+                {{-- <div class="copyright pull-left">
                     <p><a href="index.html">{{ $setting->copyright }}</p>
-                </div>
+                </div> --}}
                 <ul class="footer-nav pull-right clearfix">
                     <li><a href="index.html">Terms of Service</a></li>
                     <li><a href="index.html">Privacy Policy</a></li>
