@@ -14,6 +14,8 @@ use App\Models\PackagePlan;
 use App\Models\PropertyMessage;
 use App\Models\State;
 use App\Models\Schedule;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ScheduleMail;
 
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -604,5 +606,45 @@ class AgentPropertyController extends Controller
         $usermsg = Schedule::where('agent_id',$id)->get();
         return view('agent.schedule.schedule_request',compact('usermsg'));
 
-    }// End Method  
+    }// End Method
+    
+    public function AgentDetailsSchedule($id){
+
+        $schedule = Schedule::findOrFail($id);
+        return view('agent.schedule.schedule_details',compact('schedule'));
+
+    } // End Method 
+
+    public function AgentUpdateSchedule(Request $request){
+
+        $sid = $request->id;
+
+        Schedule::findOrFail($sid)->update([
+            'status' => '1',
+
+        ]);
+
+         //// Start Send Email 
+
+       $sendmail = Schedule::findOrFail($sid);
+
+       $data = [
+            'tour_date' => $sendmail->tour_date,
+            'tour_time' => $sendmail->tour_time,
+       ];
+
+       Mail::to($request->email)->send(new ScheduleMail($data));
+
+
+        /// End Send Email 
+
+         $notification = array(
+            'message' => 'You have Confirm Schedule Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('agent.schedule.request')->with($notification);
+
+
+    }// End Method 
 }

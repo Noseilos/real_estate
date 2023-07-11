@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\StateController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\SettingController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
@@ -229,6 +230,14 @@ Route::controller(BlogController::class)->group(function(){
 
 });
 
+ // SMTP Setting  All Route 
+ Route::controller(SettingController::class)->group(function(){
+
+    Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting'); 
+
+
+});
+
 
 
 }); // END ADMIN MIDDLEWARE
@@ -259,6 +268,8 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
 
    // Schedule Request Route 
     Route::get('/agent/schedule/request/', 'AgentScheduleRequest')->name('agent.schedule.request'); 
+    Route::get('/agent/details/schedule/{id}', 'AgentDetailsSchedule')->name('agent.details.schedule'); 
+    Route::post('/agent/update/schedule/', 'AgentUpdateSchedule')->name('agent.update.schedule'); 
 
     }); // END Agent Property
 
