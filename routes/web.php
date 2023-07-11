@@ -217,6 +217,18 @@ Route::controller(BlogController::class)->group(function(){
 
 });
 
+ // Testimonials  All Route 
+ Route::controller(BlogController::class)->group(function(){
+
+    Route::get('/all/post', 'AllPost')->name('all.post'); 
+    Route::get('/add/post', 'AddPost')->name('add.post');
+    Route::post('/store/post', 'StorePost')->name('store.post');  
+    Route::get('/edit/post/{id}', 'EditPost')->name('edit.post');
+    Route::post('/update/post', 'UpdatePost')->name('update.post');
+    Route::get('/delete/post/{id}', 'DeletePost')->name('delete.post');  
+
+});
+
 
 
 }); // END ADMIN MIDDLEWARE
@@ -318,6 +330,13 @@ Route::post('/rent/property/search', [IndexController::class, 'RentPropertySeach
 
  // All Property Seach Option
 Route::post('/all/property/search', [IndexController::class, 'AllPropertySeach'])->name('all.property.search');
+
+// Blog Details Route 
+Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
+Route::get('/blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
+Route::get('/blog', [BlogController::class, 'BlogList'])->name('blog.list');
+Route::post('/store/comment', [BlogController::class, 'StoreComment'])->name('store.comment');
+Route::get('/admin/blog/comment', [BlogController::class, 'AdminBlogComment'])->name('admin.blog.comment');
 
 
 
