@@ -54,43 +54,43 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware('auth')->group(function () {
-    
+
     Route::get('/user/profile', [UserController::class, 'UserProfile'])->name('user.profile');
     Route::post('/user/profile/store', [UserController::class, 'UserProfileStore'])->name('user.profile.store');
     Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
     Route::get('/user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
     Route::post('/user/password/update', [UserController::class, 'UserPasswordUpdate'])->name('user.password.update');
 
-    Route::get('/user/schedule/request', [UserController::class, 'UserScheduleRequest'])->name('user.schedule.request'); 
+    Route::get('/user/schedule/request', [UserController::class, 'UserScheduleRequest'])->name('user.schedule.request');
 
-    
+
     // START WishlistController
-    Route::controller(WishlistController::class)->group(function(){
-        
+    Route::controller(WishlistController::class)->group(function () {
+
         Route::get('/user/wishlist', 'UserWishlist')->name('user.wishlist');
         Route::get('/get-wishlist-property', 'GetWishlistProperty');
         Route::get('/wishlist-remove/{id}', 'WishlistRemove');
 
     }); // END WishlistController
 
-    
+
     // START CompareController
-    Route::controller(CompareController::class)->group(function(){
-        
+    Route::controller(CompareController::class)->group(function () {
+
         Route::get('/user/compare', 'UserCompare')->name('user.compare');
         Route::get('/get-compare-property', 'GetCompareProperty');
         Route::get('/compare-remove/{id}', 'CompareRemove');
 
     }); // END CompareController
 
-});// END USER
+}); // END USER
 
 
 
 
 
 
-Route::middleware(['auth', 'role:admin'])->group(function() {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
     Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
@@ -105,7 +105,7 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
 
 
-Route::middleware(['auth', 'role:agent'])->group(function() {
+Route::middleware(['auth', 'role:agent'])->group(function () {
     Route::get('/agent/dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
     Route::get('/agent/logout', [AgentController::class, 'AgentLogout'])->name('agent.logout');
     Route::get('/agent/profile', [AgentController::class, 'AgentProfile'])->name('agent.profile');
@@ -119,11 +119,11 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
 
 
 
-Route::middleware(['auth', 'role:admin'])->group(function() {
+Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // START PropertyTypeController
-    Route::controller(PropertyTypeController::class)->group(function(){
-        
+    Route::controller(PropertyTypeController::class)->group(function () {
+
         Route::get('/all/type', 'AllPropertyType')->name('all.type');
         Route::get('/add/type', 'AddPropertyType')->name('add.type');
         Route::post('/store/type', 'StorePropertyType')->name('store.type');
@@ -136,8 +136,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
 
     // START Amenities
-    Route::controller(PropertyTypeController::class)->group(function(){
-        
+    Route::controller(PropertyTypeController::class)->group(function () {
+
         Route::get('/all/amenities', 'AllAmenities')->name('all.amenities');
         Route::get('/add/amenities', 'AddAmenities')->name('add.amenities');
         Route::post('/store/amenities', 'StoreAmenities')->name('store.amenities');
@@ -150,8 +150,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
 
     // START PropertyController
-    Route::controller(PropertyController::class)->group(function(){
-        
+    Route::controller(PropertyController::class)->group(function () {
+
         Route::get('/all/property', 'AllProperty')->name('all.property');
         Route::get('/add/property', 'AddProperty')->name('add.property');
         Route::post('/store/property', 'StoreProperty')->name('store.property');
@@ -175,8 +175,8 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
 
 
     // START Agent Management
-    Route::controller(AdminController::class)->group(function(){
-        
+    Route::controller(AdminController::class)->group(function () {
+
         Route::get('/all/agent', 'AllAgent')->name('all.agent');
         Route::get('/add/agent', 'AddAgent')->name('add.agent');
         Route::post('/store/agent', 'StoreAgent')->name('store.agent');
@@ -188,66 +188,56 @@ Route::middleware(['auth', 'role:admin'])->group(function() {
     }); // END Agent Management
 
     // ALL STATE ROUTES
-    Route::controller(StateController::class)->group(function(){
-        Route::get('/all/state', 'AllState')->name('all.state'); 
+    Route::controller(StateController::class)->group(function () {
+        Route::get('/all/state', 'AllState')->name('all.state');
         Route::get('/add/state', 'AddState')->name('add.state');
-        Route::post('/store/state', 'StoreState')->name('store.state');  
+        Route::post('/store/state', 'StoreState')->name('store.state');
         Route::get('/edit/state/{id}', 'EditState')->name('edit.state');
-     Route::post('/update/state', 'UpdateState')->name('update.state');
-     Route::get('/delete/state/{id}', 'DeleteState')->name('delete.state');  
-    });
+        Route::post('/update/state', 'UpdateState')->name('update.state');
+        Route::get('/delete/state/{id}', 'DeleteState')->name('delete.state');
+    }); // END State Controller
 
     // Testimonials  All Route 
-Route::controller(TestimonialController::class)->group(function(){
+    Route::controller(TestimonialController::class)->group(function () {
+        Route::get('/all/testimonials', 'AllTestimonials')->name('all.testimonials');
+        Route::get('/add/testimonials', 'AddTestimonials')->name('add.testimonials');
+        Route::post('/store/testimonials', 'StoreTestimonials')->name('store.testimonials');
+        Route::get('/edit/testimonials/{id}', 'EditTestimonials')->name('edit.testimonials');
+        Route::post('/update/testimonials', 'UpdateTestimonials')->name('update.testimonials');
+        Route::get('/delete/testimonials/{id}', 'DeleteTestimonials')->name('delete.testimonials');
+    }); // END Testimonial Controller
 
-    Route::get('/all/testimonials', 'AllTestimonials')->name('all.testimonials'); 
-    Route::get('/add/testimonials', 'AddTestimonials')->name('add.testimonials');
-    Route::post('/store/testimonials', 'StoreTestimonials')->name('store.testimonials'); 
-    Route::get('/edit/testimonials/{id}', 'EditTestimonials')->name('edit.testimonials');
-    Route::post('/update/testimonials', 'UpdateTestimonials')->name('update.testimonials');
-    Route::get('/delete/testimonials/{id}', 'DeleteTestimonials')->name('delete.testimonials');   
+    // Blog Cateory All Route 
+    Route::controller(BlogController::class)->group(function () {
+        Route::get('/all/blog/category', 'AllBlogCategory')->name('all.blog.category');
+        Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+        Route::get('/blog/category/{id}', 'EditBlogCategory');
+        Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
+        Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+    }); // END Blog Controller
 
-});
+    // Testimonials  All Route 
+    Route::ontroller(BlogController::class)->group(function () {
 
-// Blog Cateory All Route 
-Route::controller(BlogController::class)->group(function(){
+        Route::get('/all/post', 'AllPost')->name('all.post');
+        Route::get('/add/post', 'AddPost')->name('add.post');
+        Route::post('/store/post', 'StorePost')->name('store.post');
+        Route::get('/edit/post/{id}', 'EditPost')->name('edit.post');
+        Route::post('/update/post', 'UpdatePost')->name('update.post');
+        Route::get('/delete/post/{id}', 'DeletePost')->name('delete.post');
+    });// END Blog (post) Controller
 
-    Route::get('/all/blog/category', 'AllBlogCategory')->name('all.blog.category');  
-    Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category'); 
-    Route::get('/blog/category/{id}', 'EditBlogCategory');
-    Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
-    Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');  
+    // SMTP Setting  All Route 
+    Route::controller(SettingController::class)->group(function () {
+        Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
+        Route::post('/update/smtp/setting', 'UpdateSmtpSetting')->name('update.smtp.setting');
+    }); // END SMTP Setting Controller
 
-});
-
- // Testimonials  All Route 
- Route::controller(BlogController::class)->group(function(){
-
-    Route::get('/all/post', 'AllPost')->name('all.post'); 
-    Route::get('/add/post', 'AddPost')->name('add.post');
-    Route::post('/store/post', 'StorePost')->name('store.post');  
-    Route::get('/edit/post/{id}', 'EditPost')->name('edit.post');
-    Route::post('/update/post', 'UpdatePost')->name('update.post');
-    Route::get('/delete/post/{id}', 'DeletePost')->name('delete.post');  
-
-});
-
- // SMTP Setting  All Route 
- Route::controller(SettingController::class)->group(function(){
-
-    Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
-    Route::post('/update/smtp/setting', 'UpdateSmtpSetting')->name('update.smtp.setting');  
-
-});
-
- // Site Setting  All Route 
-Route::controller(SettingController::class)->group(function(){
-
-     Route::get('/site/setting', 'SiteSetting')->name('site.setting');
-     Route::post('/update/site/setting', 'UpdateSiteSetting')->name('update.site.setting');  
-
-
-});
+    // Site Setting  All Route 
+    Route::controller(SettingController::class)->group(function () {
+        Route::get('/site/setting', 'SiteSetting')->name('site.setting');
+        Route::post('/update/site/setting', 'UpdateSiteSetting')->name('update.site.setting');
+    });// END Site Setting Controller
 
 
 
@@ -257,11 +247,11 @@ Route::controller(SettingController::class)->group(function(){
 
 
 
-Route::middleware(['auth', 'role:agent'])->group(function() {
-    
+Route::middleware(['auth', 'role:agent'])->group(function () {
+
     // START Agent Property
-    Route::controller(AgentPropertyController::class)->group(function(){
-        
+    Route::controller(AgentPropertyController::class)->group(function () {
+
         Route::get('/agent/all/property', 'AllAgentProperty')->name('agent.all.property');
         Route::get('/agent/add/property', 'AddAgentProperty')->name('agent.add.property');
         Route::post('/agent/store/property', 'StoreAgentProperty')->name('agent.store.property');
@@ -275,20 +265,20 @@ Route::middleware(['auth', 'role:agent'])->group(function() {
         Route::get('/agent/details/property/{id}', 'AgentDetailsProperty')->name('agent.details.property');
         Route::get('/agent/delete/property/{id}', 'AgentDeleteProperty')->name('agent.delete.property');
         Route::get('/agent/property/message', 'AgentPropertyMessage')->name('agent.property.message');
-        Route::get('/agent/message/details/{id}', 'AgentMessageDetails')->name('agent.message.details');  
+        Route::get('/agent/message/details/{id}', 'AgentMessageDetails')->name('agent.message.details');
 
-   // Schedule Request Route 
-    Route::get('/agent/schedule/request/', 'AgentScheduleRequest')->name('agent.schedule.request'); 
-    Route::get('/agent/details/schedule/{id}', 'AgentDetailsSchedule')->name('agent.details.schedule'); 
-    Route::post('/agent/update/schedule/', 'AgentUpdateSchedule')->name('agent.update.schedule'); 
+        // Schedule Request Route 
+        Route::get('/agent/schedule/request/', 'AgentScheduleRequest')->name('agent.schedule.request');
+        Route::get('/agent/details/schedule/{id}', 'AgentDetailsSchedule')->name('agent.details.schedule');
+        Route::post('/agent/update/schedule/', 'AgentUpdateSchedule')->name('agent.update.schedule');
 
     }); // END Agent Property
 
 
 
     // START Agent Package
-    Route::controller(AgentPropertyController::class)->group(function(){
-        
+    Route::controller(AgentPropertyController::class)->group(function () {
+
         Route::get('/buy/package', 'BuyPackage')->name('buy.package');
         Route::get('/buy/business/plan', 'BuyBusinessPlan')->name('buy.business.plan');
         Route::post('/store/business/plan', 'StoreBusinessPlan')->name('store.business.plan');
@@ -353,7 +343,7 @@ Route::post('/buy/property/search', [IndexController::class, 'BuyPropertySeach']
 // Home Page Rent Seach Option
 Route::post('/rent/property/search', [IndexController::class, 'RentPropertySeach'])->name('rent.property.search');
 
- // All Property Seach Option
+// All Property Seach Option
 Route::post('/all/property/search', [IndexController::class, 'AllPropertySeach'])->name('all.property.search');
 
 // Blog Details Route 
@@ -365,9 +355,9 @@ Route::get('/admin/blog/comment', [BlogController::class, 'AdminBlogComment'])->
 Route::get('/admin/comment/reply/{id}', [BlogController::class, 'AdminCommentReply'])->name('admin.comment.reply');
 Route::post('/reply/message', [BlogController::class, 'ReplyMessage'])->name('reply.message');
 
- // Schedule Message Request Route 
- Route::post('/store/schedule', [IndexController::class, 'StoreSchedule'])->name('store.schedule');
+// Schedule Message Request Route 
+Route::post('/store/schedule', [IndexController::class, 'StoreSchedule'])->name('store.schedule');
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

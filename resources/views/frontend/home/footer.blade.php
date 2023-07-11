@@ -1,7 +1,9 @@
 @php
-//    $setting = App\Models\SiteSetting::find(1);
-   $blog = App\Models\BlogPost::latest()->limit(2)->get();
-   @endphp
+    $setting = App\Models\SiteSetting::find(1);
+    $blog = App\Models\BlogPost::latest()
+        ->limit(2)
+        ->get();
+@endphp
 
 <footer class="main-footer">
     <div class="footer-top bg-color-2">
@@ -13,7 +15,8 @@
                             <h3>About</h3>
                         </div>
                         <div class="text">
-                            <p>Lorem ipsum dolor amet consetetur adi pisicing elit sed eiusm tempor in cididunt ut labore dolore magna aliqua enim ad minim venitam</p>
+                            <p>Lorem ipsum dolor amet consetetur adi pisicing elit sed eiusm tempor in cididunt ut
+                                labore dolore magna aliqua enim ad minim venitam</p>
                             <p>Quis nostrud exercita laboris nisi ut aliquip commodo.</p>
                         </div>
                     </div>
@@ -41,12 +44,16 @@
                             <h3>Top News</h3>
                         </div>
                         <div class="post-inner">
-                            @foreach($blog as $item)                               
-                            <div class="post">
-                                <figure class="post-thumb"><a href="{{ url('blog/details/'.$item->post_slug) }}"><img src="{{ asset($item->post_image) }}" alt=""></a></figure>
-                                <h5><a href="{{ url('blog/details/'.$item->post_slug) }}">{{ $item->post_title }}</a></h5>
-                                <p>{{ $item->created_at->format('M d Y') }}</p>
-                            </div>
+                            @foreach ($blog as $item)
+                                <div class="post">
+                                    <figure class="post-thumb"><a
+                                            href="{{ url('blog/details/' . $item->post_slug) }}"><img
+                                                src="{{ asset($item->post_image) }}" alt=""></a></figure>
+                                    <h5><a
+                                            href="{{ url('blog/details/' . $item->post_slug) }}">{{ $item->post_title }}</a>
+                                    </h5>
+                                    <p>{{ $item->created_at->format('M d Y') }}</p>
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -56,13 +63,15 @@
                         <div class="widget-title">
                             <h3>Contacts</h3>
                         </div>
-                        {{-- <div class="widget-content">
+                        <div class="widget-content">
                             <ul class="info-list clearfix">
                                 <li><i class="fas fa-map-marker-alt"></i>{{ $setting->company_address }}</li>
-                                <li><i class="fas fa-microphone"></i><a href="tel:23055873407">+{{ $setting->support_phone }}</a></li>
-                                <li><i class="fas fa-envelope"></i><a href="mailto:info@example.com">{{ $setting->email }}</a></li>
+                                <li><i class="fas fa-microphone"></i><a
+                                        href="tel:23055873407">+{{ $setting->support_phone }}</a></li>
+                                <li><i class="fas fa-envelope"></i><a
+                                        href="mailto:info@example.com">{{ $setting->email }}</a></li>
                             </ul>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,10 +80,11 @@
     <div class="footer-bottom">
         <div class="auto-container">
             <div class="inner-box clearfix">
-                <figure class="footer-logo"><a href="index.html"><img src="{{ asset('frontend/assets/images/footer-logo.png')}}" alt=""></a></figure>
-                {{-- <div class="copyright pull-left">
+                <figure class="footer-logo"><a href="index.html"><img
+                            src="{{ asset('frontend/assets/images/footer-logo.png') }}" alt=""></a></figure>
+                <div class="copyright pull-left">
                     <p><a href="index.html">{{ $setting->copyright }}</p>
-                </div> --}}
+                </div>
                 <ul class="footer-nav pull-right clearfix">
                     <li><a href="index.html">Terms of Service</a></li>
                     <li><a href="index.html">Privacy Policy</a></li>
