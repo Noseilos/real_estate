@@ -61,6 +61,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
     Route::post('/user/password/update', [UserController::class, 'UserPasswordUpdate'])->name('user.password.update');
 
+    Route::get('/user/schedule/request', [UserController::class, 'UserScheduleRequest'])->name('user.schedule.request'); 
+
     
     // START WishlistController
     Route::controller(WishlistController::class)->group(function(){
@@ -233,7 +235,16 @@ Route::controller(BlogController::class)->group(function(){
  // SMTP Setting  All Route 
  Route::controller(SettingController::class)->group(function(){
 
-    Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting'); 
+    Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
+    Route::post('/update/smtp/setting', 'UpdateSmtpSetting')->name('update.smtp.setting');  
+
+});
+
+ // Site Setting  All Route 
+Route::controller(SettingController::class)->group(function(){
+
+     Route::get('/site/setting', 'SiteSetting')->name('site.setting');
+     Route::post('/update/site/setting', 'UpdateSiteSetting')->name('update.site.setting');  
 
 
 });

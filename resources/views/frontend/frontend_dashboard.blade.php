@@ -7,7 +7,7 @@
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>Nosea Real Estate Listing</title>
+<title>@yield('title') </title>
 
 <!-- Fav Icon -->
 <link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico')}}" type="image/x-icon">
