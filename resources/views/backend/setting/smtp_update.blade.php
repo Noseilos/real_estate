@@ -22,25 +22,25 @@
   <input type="hidden" name="id" value="{{ $setting->id }}">
 
 				<div class="form-group mb-3">
- <label for="exampleInputEmail1" class="form-label">Mailer   </label>
+ <label for="exampleInputEmail1" class="form-label">Mailer</label>
 	  <input type="text" name="mailer" class="form-control" value="{{ $setting->mailer }}" > 
 				</div>
 
                         <div class="form-group mb-3">
- <label for="exampleInputEmail1" class="form-label">Host   </label>
+ <label for="exampleInputEmail1" class="form-label">Host</label>
       <input type="text" name="host" class="form-control" value="{{ $setting->host }}" > 
                 </div>
 
 
                         <div class="form-group mb-3">
- <label for="exampleInputEmail1" class="form-label">Post   </label>
+ <label for="exampleInputEmail1" class="form-label">Post</label>
       <input type="text" name="post" class="form-control" value="{{ $setting->post }}" > 
                 </div>
 
 
 
                         <div class="form-group mb-3">
- <label for="exampleInputEmail1" class="form-label">Username   </label>
+ <label for="exampleInputEmail1" class="form-label">Username</label>
       <input type="text" name="username" class="form-control" value="{{ $setting->username }}" > 
                 </div>
 
