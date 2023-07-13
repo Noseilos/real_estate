@@ -4,6 +4,7 @@
 
 <div class="page-content">
 
+      @if (Auth::user()->can('category.edit'))
 				<nav class="page-breadcrumb">
 					<ol class="breadcrumb">
             <button type="button" class="btn btn-inverse-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -11,6 +12,7 @@
             </button>
 					</ol>
 				</nav>
+      @endif
 
 				<div class="row">
 					<div class="col-md-12 grid-margin stretch-card">
@@ -35,10 +37,16 @@
                         <td>{{ $item->category_name }}</td>
                         <td>{{ $item->category_slug }}</td>
                         <td>
-                          <button type="button" class="btn btn-inverse-warning" data-bs-toggle="modal" data-bs-target="#catedit" id="{{ $item->id }}" onclick="categoryEdit(this.id)" > 
-                            Edit
-                          </button>
-        <a href="{{ route('delete.blog.category',$item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete  </a>
+
+                          @if (Auth::user()->can('category.edit'))
+                            <button type="button" class="btn btn-inverse-warning" data-bs-toggle="modal" data-bs-target="#catedit" id="{{ $item->id }}" onclick="categoryEdit(this.id)" > 
+                              Edit
+                            </button>
+                          @endif
+
+                          @if (Auth::user()->can('category.delete'))
+                            <a href="{{ route('delete.blog.category',$item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete  </a>
+                          @endif
                         </td> 
                       </tr>
                       @endforeach
@@ -52,6 +60,8 @@
 			</div>
 
         <!-- Modal -->
+
+@if (Auth::user()->can('category.add'))
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -81,6 +91,7 @@
       </div>
     </div>
   </div>
+@endif
 
   <!-- Edit Category Modal -->
 <div class="modal fade" id="catedit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

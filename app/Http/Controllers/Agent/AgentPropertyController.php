@@ -190,7 +190,7 @@ class AgentPropertyController extends Controller
         $amen = $property->amenities_id;
         $property_amenities = explode(',', $amen);
 
-        return view('agent.property.edit_property', compact('property', 'propertyType', 'amenities', 'property_ami', 'multiImage', 'facilities', 'pstate'));
+        return view('agent.property.edit_property', compact('property', 'propertyType', 'amenities', 'property_amenities', 'multiImage', 'facilities', 'pstate'));
 
     } // End EditProperty
 

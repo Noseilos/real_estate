@@ -5,12 +5,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 <div class="page-content">
-
+  
+  @if (Auth::user()->can('agent.add'))
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <a href="{{ route('add.agent')}}" class="btn btn-inverse-info">Add Agent</a>
         </ol>
     </nav>
+  @endif
 
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">

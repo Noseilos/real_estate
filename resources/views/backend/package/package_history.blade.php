@@ -2,11 +2,6 @@
 @section('admin')
 
 <div class="page-content">
-	<nav class="page-breadcrumb">
-		<ol class="breadcrumb">
-	        <a href="{{ route('add.property') }}" class="btn btn-inverse-info"> Add Property</a>
-		</ol>
-	</nav>
 
 	<div class="row">
 		<div class="col-md-12 grid-margin stretch-card">
@@ -39,7 +34,9 @@
                                         <td>{{ $item->package_amount}}</td> 
                                         <td>{{ $item->created_at->format('l d M Y') }}</td> 
                                         <td> 
-                                            <a href="{{ route('package.invoice',$item->id) }}" class="btn btn-inverse-warning" title="Download"> <i data-feather="download"></i></a> 
+                                            @if (Auth::user()->can('history.download'))
+                                                <a href="{{ route('package.invoice',$item->id) }}" class="btn btn-inverse-warning" title="Download"> <i data-feather="download"></i></a> 
+                                            @endif
                                         </td> 
                                     </tr>
                                 @endforeach

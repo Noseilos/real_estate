@@ -4,11 +4,13 @@
 
 <div class="page-content">
 
-				<nav class="page-breadcrumb">
-					<ol class="breadcrumb">
-            <a href="{{ route('add.testimonials') }}" class="btn btn-inverse-info"> Add Testimonials    </a>
-					</ol>
-				</nav>
+        @if (Auth::user()->can('testimonials.add'))
+          <nav class="page-breadcrumb">
+            <ol class="breadcrumb">
+              <a href="{{ route('add.testimonials') }}" class="btn btn-inverse-info"> Add Testimonials    </a>
+            </ol>
+          </nav>
+        @endif
 
 				<div class="row">
 					<div class="col-md-12 grid-margin stretch-card">
@@ -35,8 +37,13 @@
                         <td>{{ $item->position }}</td>
                         <td><img src="{{ asset($item->image) }}" style="width:70px;height: 40px;"> </td>
                         <td>
-                          <a href="{{ route('edit.testimonials',$item->id) }}" class="btn btn-inverse-warning"> Edit </a>
-                          <a href="{{ route('delete.testimonials',$item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete  </a>
+                          @if (Auth::user()->can('testimonials.edit'))
+                            <a href="{{ route('edit.testimonials',$item->id) }}" class="btn btn-inverse-warning"> Edit </a>
+                          @endif
+
+                          @if (Auth::user()->can('testimonials.delete'))
+                            <a href="{{ route('delete.testimonials',$item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete  </a>
+                          @endif
                       </tr>
                       @endforeach
                     </tbody>

@@ -5,7 +5,9 @@
 
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
+          @if (Auth::user()->can('property.add'))
             <a href="{{ route('add.property')}}" class="btn btn-inverse-info">Add Property</a>
+          @endif
         </ol>
     </nav>
 
@@ -50,8 +52,14 @@
                 </td>
                 <td>
                     <a href="{{ route('details.property', $item->id)}}" class="btn btn-outline-info" title="Details"><i data-feather="eye"></i></a>
-                    <a href="{{ route('edit.property', $item->id)}}" class="btn btn-outline-warning" title="Edit"><i data-feather="edit"></i></a>
-                    <a href="{{ route('delete.property', $item->id)}}" id="delete" class="btn btn-outline-danger" title="Delete"><i data-feather="trash"></i></a>
+                    
+                    @if (Auth::user()->can('property.edit'))
+                      <a href="{{ route('edit.property', $item->id)}}" class="btn btn-outline-warning" title="Edit"><i data-feather="edit"></i></a>
+                    @endif
+
+                    @if (Auth::user()->can('property.delete'))
+                      <a href="{{ route('delete.property', $item->id)}}" id="delete" class="btn btn-outline-danger" title="Delete"><i data-feather="trash"></i></a>
+                    @endif
                 </td>
             </tr>
 
