@@ -102,7 +102,30 @@
   
   <script>
   export default {
-     
+    
+    data(){
+        return{
+            users: {},
+        }
+    },
+
+    created(){
+
+    },
+
+    methods:{
+
+        getAllUser(){
+            axios.get('/user-all')
+            .then((res) => {
+                this.users = res.data;
+            }).catch((err) => {
+
+            })
+        }
+
+    },
+
   };
   </script>
   <style> 
@@ -207,9 +230,6 @@
     float: right;
   }
   
-  .clearfix {
-    clear: both;
-  }
   </style>
   
   

@@ -412,8 +412,9 @@ Route::post('/reply/message', [BlogController::class, 'ReplyMessage'])->name('re
 // Schedule Message Request Route 
 Route::post('/store/schedule', [IndexController::class, 'StoreSchedule'])->name('store.schedule');
 
-// Chat Post Route 
+// Chat Route 
 Route::post('/send-message', [ChatController::class, 'SendMsg'])->name('send.msg');
+Route::get('/user-all', [ChatController::class, 'GetAllUsers']);
 
 
 
