@@ -265,13 +265,20 @@
                                                 <li><i class="fas fa-phone"></i><a href="tel:03030571965">{{ $property->user->phone }}</a></li>
                                             </ul>
                                             
+                                            @auth
+                                                
+                                                <div id="app">
 
-                                            <div id="app">
+                                                    <send-message :receiverid="{{ $property->agent_id }} " receivername="{{ $property->user->name }}">
+                                                    </send-message>
+                                                
+                                                </div>
 
-                                                <send-message></send-message>
+                                            @else
+
+                                                <span class="text-danger">Login To Chat</span>
                                             
-                                            </div>
-
+                                            @endauth
                                             
                                         </div>
 
