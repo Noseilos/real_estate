@@ -10,6 +10,7 @@
 	<meta name="keywords" content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 	<title>Agent Panel</title>
+	@vite(['resources/js/app.js'])
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

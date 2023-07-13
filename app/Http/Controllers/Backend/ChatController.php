@@ -84,4 +84,14 @@ class ChatController extends Controller
         }
 
     }// END UserMessageById
+
+
+
+
+
+    public function AgentLiveChat(){
+
+        return view('agent.message.live_chat');
+
+    }// END AgentLiveChat
 }

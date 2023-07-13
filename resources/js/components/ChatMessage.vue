@@ -1,5 +1,5 @@
 <template>
-    <div class="row"  style=" width: 873px; ">
+    <div class="row"  style="width: 873px; ">
       <div class="col-md-3 myUser">
           <ul class="user">
              <strong>Chat List</strong>
@@ -18,7 +18,7 @@
   
         </ul>
       </div>
-      <div class="col-md-15" v-if="allMessages.user">
+      <div class="col-md-8" v-if="allMessages.user">
         <div class="card">
           <div class="card-header text-center myrow">
             <strong> Selected {{ allMessages.user.name }} </strong>
@@ -107,6 +107,10 @@
 
     created(){
         this.getAllUser();
+        
+        setInterval(() =>{
+            this.userMessage(this.selectedUser);
+        },1000);
     },
 
     methods:{
