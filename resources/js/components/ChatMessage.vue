@@ -5,7 +5,7 @@
              <strong>Chat List</strong>
              <hr>
           <li v-for="(user, index) in users" :key="index"> 
-            <a href="">
+            <a href="" @click.prevent="userMessage(user.id)">
               <img v-if="user.role === 'user' " :src="'/upload/user_images/'+user.photo"
                 alt="UserImage"
                 class="userImg"/>
@@ -108,6 +108,8 @@
     data(){
         return{
             users: {},
+            allMessages: {},
+            selectedUser: '',
         }
     },
 
@@ -124,6 +126,16 @@
             }).catch((err) => {
 
             })
+        },
+
+        userMessage(userId){
+            axios.get('/user-message/'+userId)
+            .then((res) => {
+                this.allMessages = res.data;
+                this.selectedUser = userId;
+            }).catch((err) => {
+
+            });
         }
 
     },

@@ -415,6 +415,7 @@ Route::post('/store/schedule', [IndexController::class, 'StoreSchedule'])->name(
 // Chat Route 
 Route::post('/send-message', [ChatController::class, 'SendMsg'])->name('send.msg');
 Route::get('/user-all', [ChatController::class, 'GetAllUsers']);
+Route::get('/user-message/{id}', [ChatController::class, 'UserMessageById']);
 
 
 
