@@ -1,6 +1,6 @@
 <template>
     <div class="row"  style=" width: 873px; ">
-      <div class="col-md-2 myUser">
+      <div class="col-md-3 myUser">
           <ul class="user">
              <strong>Chat List</strong>
              <hr>
@@ -12,51 +12,44 @@
               <img v-else :src="'/upload/agent_images/'+user.photo"
                 alt="UserImage"
                 class="userImg"/>
-              <span class="username text-center">{{ user.username }}</span>
+              <span class="username text-center">{{ user.name }}</span>
             </a>
           </li>
   
         </ul>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-15" v-if="allMessages.user">
         <div class="card">
           <div class="card-header text-center myrow">
-            <strong> Selected Users </strong>
+            <strong> Selected {{ allMessages.user.name }} </strong>
           </div>
           <div class="card-body chat-msg">
-            <ul class="chat">
+            <ul class="chat" v-for="(msg, index) in allMessages.messages" :key="index">
   
-             <li class="sender clearfix">
+             <li class="sender clearfix" v-if="allMessages.user.id === msg.sender_id">
                 <span class="chat-img left clearfix mx-2">
-                <img src="/frontend/avatar-2.png"
+                <img :src="'/upload/agent_images/'+msg.user.photo"
                     class="userImg"
                     alt="userImg"
                   />
                 </span>
                 <div class="chat-body2 clearfix">
                   <div class="header clearfix">
-                    <strong class="primary-font">Username1</strong>
+                    <strong class="primary-font">{{ msg.user.name }}</strong>
                     <small class="right text-muted">
-                      11:30am 
+                      {{ msg.created_at }} 
                     </small>
-                    <!-- //if send with product id  -->
-                    <div class="text-center">
-                        product name
-                    <img src="/frontend/avatar-3.png"
-                        alt="productImg"
-                        width="60px;"
-                      />
-                    </div>
+
                   </div>
   
-                  <p>Hi..</p>
+                  <p>{{ msg.msg }}</p>
                 </div>
               </li>
   
           <!-- my part  -->
-              <li class="buyer clearfix">
+              <li class="buyer clearfix" v-else>
                 <span class="chat-img right clearfix mx-2">
-                  <img src="/frontend/avatar-4.png"
+                  <img :src="'/upload/user_images/'+msg.user.photo"
                     class="userImg"
                     alt="userImg"
                   />
@@ -64,17 +57,10 @@
                 <div class="chat-body clearfix">
                   <div class="header clearfix">
                     <small class="left text-muted"
-                      >12:10pm</small>
-                    <!-- <strong class="right primary-font">Myusername </strong> //my name   -->
-                     <div class="text-center">
-                        Product name
-                     <img src="/frontend/avatar-5.png"
-                        alt="prouductImage"
-                        width="60px;"
-                      />
-                    </div>
+                      >{{ msg.created_at }}</small>
+                    <strong class="right primary-font">{{ msg.user.name }}</strong> 
                   </div>
-                  <p>Hello...</p>
+                  <p>{{ msg.msg }}</p>
                 </div>
               </li>
           
@@ -89,11 +75,12 @@
               <input
                 id="btn-input"
                 type="text"
+                v-model="msg"
                 class="form-control input-sm"
                 placeholder="Type your message here..."
               />
               <span class="input-group-btn">
-                <button class="btn btn-primary">Send</button>
+                <button class="btn btn-primary" @click.prevent="sendMsg()">Send</button>
               </span>
             </div>
           </div>
@@ -110,6 +97,7 @@
             users: {},
             allMessages: {},
             selectedUser: '',
+            msg:'',
         }
     },
 
@@ -136,6 +124,17 @@
             }).catch((err) => {
 
             });
+        },
+
+        sendMsg() {
+            axios.post('/send-message', { receiver_id:this.selectedUser,msg:this.msg })
+                .then((res) => {
+                    this.msg = "";
+                    this.userMessage(this.selectedUser);
+                    console.log(res.data);
+                }).catch((err) => {
+                    this.errors = err.response.data.errors;
+                })
         }
 
     },
