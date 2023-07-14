@@ -3,23 +3,23 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Amenities;
+use App\Models\Facility;
+use App\Models\MultiImage;
+use App\Models\Property;
+use App\Models\PropertyMessage;
+use App\Models\PropertyType;
+use App\Models\Schedule;
+use App\Models\State;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\Property;
-use App\Models\MultiImage;
-use App\Models\Facility;
-use App\Models\Amenities;
-use App\Models\PropertyType;
-use App\Models\User;
-use App\Models\PackagePlan;
 use Illuminate\Support\Facades\Auth;
-use App\Models\PropertyMessage;
-use App\Models\State; 
-use App\Models\Schedule; 
 
 class IndexController extends Controller
 {
-    public function PropertyDetails($id, $slug){
+    public function PropertyDetails($id, $slug)
+    {
 
         $property = Property::findOrFail($id);
 
@@ -34,19 +34,16 @@ class IndexController extends Controller
         $multiImage = MultiImage::where('property_id', $id)->get();
         return view('frontend.property.property_details', compact('property', 'multiImage', 'property_amenities', 'facility', 'relatedProperty'));
 
-    }// END PropertyDetails
+    } // END PropertyDetails
 
-
-
-
-
-    public function PropertyMessage(Request $request){
+    public function PropertyMessage(Request $request)
+    {
 
         $property_id = $request->property_id;
         $agent_id = $request->agent_id;
 
         if (Auth::check()) {
-            
+
             PropertyMessage::insert([
 
                 'user_id' => Auth::user()->id,
@@ -68,7 +65,7 @@ class IndexController extends Controller
             return redirect()->back()->with($notif);
 
         } else {
-            
+
             $notif = array(
                 'message' => 'Login To Your Account First',
                 'alert-type' => 'error',
@@ -77,13 +74,10 @@ class IndexController extends Controller
             return redirect()->back()->with($notif);
         }
 
-    }// END PropertyMessage
+    } // END PropertyMessage
 
-
-
-
-
-    public function AgentDetails($id){
+    public function AgentDetails($id)
+    {
 
         $agent = User::findOrFail($id);
         $property = Property::where('agent_id', $id)->get();
@@ -93,18 +87,15 @@ class IndexController extends Controller
 
         return view('frontend.agent.agent_details', compact('agent', 'property', 'featured', 'rentProperty', 'buyProperty'));
 
-    }// END AgentDetails
+    } // END AgentDetails
 
-
-
-
-
-    public function AgentDetailsMessage(Request $request){
+    public function AgentDetailsMessage(Request $request)
+    {
 
         $agent_id = $request->agent_id;
 
         if (Auth::check()) {
-            
+
             PropertyMessage::insert([
 
                 'user_id' => Auth::user()->id,
@@ -125,7 +116,7 @@ class IndexController extends Controller
             return redirect()->back()->with($notif);
 
         } else {
-            
+
             $notif = array(
                 'message' => 'Login To Your Account First',
                 'alert-type' => 'error',
@@ -134,13 +125,10 @@ class IndexController extends Controller
             return redirect()->back()->with($notif);
         }
 
-    }// END AgentDetailsMessage
+    } // END AgentDetailsMessage
 
-
-
-
-
-    public function RentProperty(){
+    public function RentProperty()
+    {
 
         $property = Property::where('status', '1')->where('property_status', 'rent')->paginate(3);
         $rentProperty = Property::where('status', '1')->where('property_status', 'rent')->get();
@@ -148,13 +136,10 @@ class IndexController extends Controller
 
         return view('frontend.property.rent_property', compact('property', 'rentProperty', 'buyProperty'));
 
-    }// END RentProperty
+    } // END RentProperty
 
-
-
-
-
-    public function BuyProperty(){
+    public function BuyProperty()
+    {
 
         $property = Property::where('status', '1')->where('property_status', 'buy')->paginate(3);
         $rentProperty = Property::where('status', '1')->where('property_status', 'rent')->get();
@@ -162,94 +147,96 @@ class IndexController extends Controller
 
         return view('frontend.property.buy_property', compact('property', 'rentProperty', 'buyProperty'));
 
-    }// END RentProperty
+    } // END BuyProperty
 
+    public function PropertyType($id)
+    {
 
-
-
-
-    public function PropertyType($id){
-
-        $property = Property::where('status', '1')->where('ptype_id', $id)->get();
-        $rentProperty = Property::where('property_status', 'rent')->get();
-        $buyProperty = Property::where('property_status', 'buy')->get();
+        $property = Property::where('status', '1')->where('ptype_id', $id)->paginate(2);
+        $rentProperty = Property::where('status', '1')->where('property_status', 'rent')->get();
+        $buyProperty = Property::where('status', '1')->where('property_status', 'buy')->get();
 
         $property_read = PropertyType::where('id', $id)->first();
 
         return view('frontend.property.property_type', compact('property', 'rentProperty', 'buyProperty', 'property_read'));
 
-    }// END PropertyType
+    } // END PropertyType
 
-    public function StateDetails($id){
+    public function StateDetails($id)
+    {
 
-        $property = Property::where('status','1')->where('state',$id)->get();
+        $property = Property::where('status', '1')->where('state', $id)->get();
+        $bstate = State::where('id', $id)->first();
 
-        $bstate = State::where('id',$id)->first();
-        return view('frontend.property.state_property',compact('property','bstate'));
+        return view('frontend.property.state_property', compact('property', 'bstate'));
 
-    }// End Method 
+    } // End StateDetails
 
-    public function BuyPropertySeach(Request $request){
+    public function BuyPropertySeach(Request $request)
+    {
         $request->validate(['search' => 'required']);
         $item = $request->search;
         $sstate = $request->state;
         $stype = $request->ptype_id;
 
-   $property = Property::where('property_name', 'like' , '%' .$item. '%')->where('property_status','buy')->with('type','pstate')
-        ->whereHas('pstate', function($q) use ($sstate){
-            $q->where('state_name','like' , '%' .$sstate. '%');
-        })
-        ->whereHas('type', function($q) use ($stype){
-            $q->where('type_name','like' , '%' .$stype. '%');
-         })
-        ->get();
+        $property = Property::where('property_name', 'like', '%' . $item . '%')->where('property_status', 'buy')->with('type', 'pstate')
+            ->whereHas('pstate', function ($q) use ($sstate) {
+                $q->where('state_name', 'like', '%' . $sstate . '%');
+            })
+            ->whereHas('type', function ($q) use ($stype) {
+                $q->where('type_name', 'like', '%' . $stype . '%');
+            })
+            ->get();
 
-        return view('frontend.property.property_search',compact('property'));
-    }// End Method 
+        return view('frontend.property.property_search', compact('property'));
+    } // End BuyPropertySeach
 
-    public function RentPropertySeach(Request $request){
+    public function RentPropertySeach(Request $request)
+    {
 
         $request->validate(['search' => 'required']);
         $item = $request->search;
         $sstate = $request->state;
         $stype = $request->ptype_id;
 
-   $property = Property::where('property_name', 'like' , '%' .$item. '%')->where('property_status','rent')->with('type','pstate')
-        ->whereHas('pstate', function($q) use ($sstate){
-            $q->where('state_name','like' , '%' .$sstate. '%');
-        })
-        ->whereHas('type', function($q) use ($stype){
-            $q->where('type_name','like' , '%' .$stype. '%');
-         })
-        ->get();
+        $property = Property::where('property_name', 'like', '%' . $item . '%')->where('property_status', 'rent')->with('type', 'pstate')
+            ->whereHas('pstate', function ($q) use ($sstate) {
+                $q->where('state_name', 'like', '%' . $sstate . '%');
+            })
+            ->whereHas('type', function ($q) use ($stype) {
+                $q->where('type_name', 'like', '%' . $stype . '%');
+            })
+            ->get();
 
-        return view('frontend.property.property_search',compact('property'));
+        return view('frontend.property.property_search', compact('property'));
 
-    }// End Method 
+    } // End RentPropertySeach
 
-    public function AllPropertySeach(Request $request){
+    public function AllPropertySeach(Request $request)
+    {
 
         $property_status = $request->property_status;
-        $stype = $request->ptype_id; 
+        $stype = $request->ptype_id;
         $sstate = $request->state;
         $bedrooms = $request->bedrooms;
         $bathrooms = $request->bathrooms;
 
-   $property = Property::where('status','1')->where('bedrooms',$bedrooms)->where('bathrooms', 'like' , '%' .$bathrooms. '%')->where('property_status',$property_status) 
-        ->with('type','pstate')
-        ->whereHas('pstate', function($q) use ($sstate){
-            $q->where('state_name','like' , '%' .$sstate. '%');
-        })
-        ->whereHas('type', function($q) use ($stype){
-            $q->where('type_name','like' , '%' .$stype. '%');
-         })
-        ->get();
+        $property = Property::where('status', '1')->where('bedrooms', $bedrooms)->where('bathrooms', 'like', '%' . $bathrooms . '%')->where('property_status', $property_status)
+            ->with('type', 'pstate')
+            ->whereHas('pstate', function ($q) use ($sstate) {
+                $q->where('state_name', 'like', '%' . $sstate . '%');
+            })
+            ->whereHas('type', function ($q) use ($stype) {
+                $q->where('type_name', 'like', '%' . $stype . '%');
+            })
+            ->get();
 
-        return view('frontend.property.property_search',compact('property'));
+        return view('frontend.property.property_search', compact('property'));
 
-    }// End Method 
+    } // End AllPropertySeach
 
-    public function StoreSchedule(Request $request){
+    public function StoreSchedule(Request $request)
+    {
         $aid = $request->agent_id;
         $pid = $request->property_id;
 
@@ -263,26 +250,25 @@ class IndexController extends Controller
                 'tour_date' => $request->tour_date,
                 'tour_time' => $request->tour_time,
                 'message' => $request->message,
-                'created_at' => Carbon::now(), 
+                'created_at' => Carbon::now(),
             ]);
 
-                $notification = array(
-            'message' => 'Send Request Successfully',
-            'alert-type' => 'success'
-        );
+            $notification = array(
+                'message' => 'Send Request Successfully',
+                'alert-type' => 'success',
+            );
 
-        return redirect()->back()->with($notification);
+            return redirect()->back()->with($notification);
 
+        } else {
 
-        }else{
+            $notification = array(
+                'message' => 'Plz Login Your Account First',
+                'alert-type' => 'error',
+            );
 
-         $notification = array(
-            'message' => 'Plz Login Your Account First',
-            'alert-type' => 'error'
-        );
-
-        return redirect()->back()->with($notification);
+            return redirect()->back()->with($notification);
 
         }
-    }// End Method 
+    } // End StoreSchedule
 }

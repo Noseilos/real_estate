@@ -120,6 +120,9 @@ class UserController extends Controller
         return back()->with($notif);
     }// END UserPasswordUpdate
 
+
+    
+
     public function UserScheduleRequest(){
 
         $id = Auth::user()->id;

@@ -11,7 +11,7 @@
                 @foreach ($property_type as $category)
 
                 @php
-                    $property = App\Models\Property::where('ptype_id', $category->id)->get();
+                    $property = App\Models\Property::where('ptype_id', $category->id)->where('status', '1')->get();
                 @endphp
                     
                 <li>

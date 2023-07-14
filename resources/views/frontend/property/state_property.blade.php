@@ -133,7 +133,7 @@
             <div class="deals-block-one">
                 <div class="inner-box">
                     <div class="image-box">
-                        <figure class="image"><img src="{{ asset($item->property_thambnail  ) }}" alt=""  style="width:300px; height:350px;"></figure>
+                        <figure class="image"><img src="{{ asset($item->property_thumbnail  ) }}" alt=""  style="width:300px; height:350px;"></figure>
                         <div class="batch"><i class="icon-11"></i></div>
                        @if($item->featured == 1)
                         <span class="category">Featured</span>

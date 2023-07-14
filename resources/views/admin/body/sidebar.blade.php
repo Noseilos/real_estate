@@ -189,15 +189,17 @@
 
             @if (Auth::user()->can('agent.menu'))
 
+            
+
                 <li class="nav-item nav-category">User All Functions</li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#agent" role="button"
-                        aria-expanded="false" aria-controls="agent">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#manageAgent" role="button" aria-expanded="false"
+                      aria-controls="manageAgent">
                         <i class="link-icon" data-feather="feather"></i>
                         <span class="link-title">Manage Agent</span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>
-                    <div class="collapse" id="uiComponents">
+                    <div class="collapse" id="manageAgent">
                         <ul class="nav sub-menu">
                             @if (Auth::user()->can('agent.all'))
                                 <li class="nav-item">
