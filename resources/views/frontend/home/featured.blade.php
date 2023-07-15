@@ -7,7 +7,7 @@
         <div class="sec-title centred">
             <h5>Features</h5>
             <h2>Featured Property</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt <br />labore dolore magna aliqua enim.</p>
+            <p>Explore our carefully curated selection of featured properties, showcasing the finest homes and investment opportunities in the market.</p>
         </div>
         <div class="row clearfix">
 
@@ -66,6 +66,6 @@
             
             @endforeach
         </div>
-        <div class="more-btn centred"><a href="property-list.html" class="theme-btn btn-one">View All Listing</a></div>
+        {{-- <div class="more-btn centred"><a href="property-list.html" class="theme-btn btn-one">View All Listing</a></div> --}}
     </div>
 </section>

@@ -15,9 +15,8 @@
                             <h3>About</h3>
                         </div>
                         <div class="text">
-                            <p>Lorem ipsum dolor amet consetetur adi pisicing elit sed eiusm tempor in cididunt ut
-                                labore dolore magna aliqua enim ad minim venitam</p>
-                            <p>Quis nostrud exercita laboris nisi ut aliquip commodo.</p>
+                            <p>Welcome to Real Estate! We are your premier destination for all things real estate.</p>
+                            <p>Whether you're buying, selling, or investing in properties, we are here to guide you every step of the way.</p>
                         </div>
                     </div>
                 </div>
@@ -28,12 +27,12 @@
                         </div>
                         <div class="widget-content">
                             <ul class="links-list class">
-                                <li><a href="index.html">About Us</a></li>
+                                {{-- <li><a href="index.html">About Us</a></li> --}}
                                 <li><a href="index.html">Listing</a></li>
-                                <li><a href="index.html">How It Works</a></li>
-                                <li><a href="index.html">Our Services</a></li>
+                                {{-- <li><a href="index.html">How It Works</a></li> --}}
+                                {{-- <li><a href="index.html">Our Services</a></li> --}}
                                 <li><a href="index.html">Our Blog</a></li>
-                                <li><a href="index.html">Contact Us</a></li>
+                                {{-- <li><a href="index.html">Contact Us</a></li> --}}
                             </ul>
                         </div>
                     </div>

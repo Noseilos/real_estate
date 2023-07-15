@@ -1,7 +1,7 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
 @section('title')
-  Easy Real Estate Complete Project  
+  Real Estate Complete Project  
 @endsection
 
     <!-- banner-section -->
@@ -35,7 +35,7 @@
 
 
     <!-- chooseus-section -->
-    @include('frontend.home.chooseus')
+    {{-- @include('frontend.home.chooseus') --}}
     <!-- chooseus-section end -->
 
 
@@ -60,7 +60,7 @@
 
 
     <!-- download-section -->
-    @include('frontend.home.download')
+    {{-- @include('frontend.home.download') --}}
     <!-- download-section end -->
 
 @endsection

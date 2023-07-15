@@ -17,9 +17,9 @@
                 <ul class="social-links clearfix">
                     <li><a href="{{ $setting->facebook }}"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="{{ $setting->twitter }}"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="index.html"><i class="fab fa-pinterest-p"></i></a></li>
-                    <li><a href="index.html"><i class="fab fa-google-plus-g"></i></a></li>
-                    <li><a href="index.html"><i class="fab fa-vimeo-v"></i></a></li>
+                    {{-- <li><a href="index.html"><i class="fab fa-pinterest-p"></i></a></li> --}}
+                    {{-- <li><a href="index.html"><i class="fab fa-google-plus-g"></i></a></li> --}}
+                    {{-- <li><a href="index.html"><i class="fab fa-vimeo-v"></i></a></li> --}}
                 </ul>
 
                 @auth
@@ -57,27 +57,26 @@
                             <ul class="navigation clearfix">
 
                                 <li><a href="{{ url('/') }}"><span>Home</span></a></li>
-                                <li><a href="{{ url('/') }}"><span>About Us</span></a></li>
+                                {{-- <li><a href="{{ url('/') }}"><span>About Us</span></a></li> --}}
 
-                                <li class="dropdown"><a href="index.html"><span>Property</span></a>
+                                <li class="dropdown"><a href="{{ url('/') }}"><span>Property</span></a>
                                     <ul>
                                         <li><a href="{{ route('rent.property') }}">Rent Property</a></li>
                                         <li><a href="{{ route('buy.property') }}">Buy Property</a></li>
                                     </ul>
                                 </li>
 
-                                <li><a href="{{ url('/') }}"><span>Agent List</span></a></li>
+                                {{-- <li><a href="{{ url('/') }}"><span>Agent List</span></a></li> --}}
                                 <li><a href="{{ route('blog.list') }}"><span>Blog </span></a> </li>
 
-                                <li><a href="contact.html"><span>Contact</span></a></li>
-                                <li><a href="{{ route('agent.login') }}" class="theme-btn btn-one"><span>+</span>Add
-                                        Listing</a></li>
+                                {{-- <li><a href="contact.html"><span>Contact</span></a></li> --}}
+                                <li><a href="{{ route('agent.login') }}" class="theme-btn btn-one"><span>+</span>Add Listing</a></li>
                             </ul>
                         </div>
                     </nav>
                 </div>
                 <div class="btn-box">
-                    <a href="index.html" class="theme-btn btn-one"><span>+</span>Add Listing</a>
+                    <a href="{{ route('agent.login') }}" class="theme-btn btn-one"><span>+</span>Add Listing</a>
                 </div>
             </div>
         </div>
@@ -97,7 +96,7 @@
                     </nav>
                 </div>
                 <div class="btn-box">
-                    <a href="index.html" class="theme-btn btn-one"><span>+</span>Add Listing</a>
+                    <a href="{{ route('agent.login') }}" class="theme-btn btn-one"><span>+</span>Add Listing</a>
                 </div>
             </div>
         </div>

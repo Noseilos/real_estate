@@ -6,8 +6,8 @@
                 <h2>Looking to Buy a New Property or <br />Sell an Existing One?</h2>
             </div>
             <div class="btn-box pull-right">
-                <a href="property-details.html" class="theme-btn btn-three">Rent Properties</a>
-                <a href="index.html" class="theme-btn btn-one">Buy Properties</a>
+                <a href="{{ route('rent.property') }}" class="theme-btn btn-three">Rent Properties</a>
+                <a href="{{ route('buy.property') }}" class="theme-btn btn-one">Buy Properties</a>
             </div>
         </div>
     </div>
