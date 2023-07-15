@@ -252,7 +252,7 @@
                                                 St Johns Wood</li>
                                                 <li><i class="fas fa-phone"></i><a href="tel:03030571965">030 3057 1965</a></li>
                                             </ul>
-                                            <div class="btn-box"><a href="agents-details.html">View Listing</a></div>
+                                            {{-- <div class="btn-box"><a href="agents-details.html">View Listing</a></div> --}}
                                         </div>
 
                                     @else
@@ -362,7 +362,7 @@
 
 
                             </div>
-                            <div class="calculator-widget sidebar-widget">
+                            {{-- <div class="calculator-widget sidebar-widget">
                                 <div class="calculate-inner">
                                     <div class="widget-title">
                                         <h4>Mortgage Calculator</h4>
@@ -397,7 +397,7 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

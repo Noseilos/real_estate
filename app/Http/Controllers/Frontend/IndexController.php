@@ -178,6 +178,8 @@ class IndexController extends Controller
         $item = $request->search;
         $sstate = $request->state;
         $stype = $request->ptype_id;
+        $rentProperty = Property::where('status', '1')->where('property_status', 'rent')->get();
+        $buyProperty = Property::where('status', '1')->where('property_status', 'buy')->get();
 
         $property = Property::where('property_name', 'like', '%' . $item . '%')->where('property_status', 'buy')->with('type', 'pstate')
             ->whereHas('pstate', function ($q) use ($sstate) {
@@ -186,9 +188,9 @@ class IndexController extends Controller
             ->whereHas('type', function ($q) use ($stype) {
                 $q->where('type_name', 'like', '%' . $stype . '%');
             })
-            ->get();
+            ->paginate(2);
 
-        return view('frontend.property.property_search', compact('property'));
+        return view('frontend.property.property_search', compact('property', 'rentProperty', 'buyProperty'));
     } // End BuyPropertySeach
 
     public function RentPropertySeach(Request $request)
@@ -198,6 +200,8 @@ class IndexController extends Controller
         $item = $request->search;
         $sstate = $request->state;
         $stype = $request->ptype_id;
+        $rentProperty = Property::where('status', '1')->where('property_status', 'rent')->get();
+        $buyProperty = Property::where('status', '1')->where('property_status', 'buy')->get();
 
         $property = Property::where('property_name', 'like', '%' . $item . '%')->where('property_status', 'rent')->with('type', 'pstate')
             ->whereHas('pstate', function ($q) use ($sstate) {
@@ -206,7 +210,7 @@ class IndexController extends Controller
             ->whereHas('type', function ($q) use ($stype) {
                 $q->where('type_name', 'like', '%' . $stype . '%');
             })
-            ->get();
+            ->paginate(2);
 
         return view('frontend.property.property_search', compact('property'));
 
@@ -220,6 +224,8 @@ class IndexController extends Controller
         $sstate = $request->state;
         $bedrooms = $request->bedrooms;
         $bathrooms = $request->bathrooms;
+        $rentProperty = Property::where('status', '1')->where('property_status', 'rent')->get();
+        $buyProperty = Property::where('status', '1')->where('property_status', 'buy')->get();
 
         $property = Property::where('status', '1')->where('bedrooms', $bedrooms)->where('bathrooms', 'like', '%' . $bathrooms . '%')->where('property_status', $property_status)
             ->with('type', 'pstate')
@@ -229,9 +235,9 @@ class IndexController extends Controller
             ->whereHas('type', function ($q) use ($stype) {
                 $q->where('type_name', 'like', '%' . $stype . '%');
             })
-            ->get();
+            ->paginate(2);
 
-        return view('frontend.property.property_search', compact('property'));
+        return view('frontend.property.property_search', compact('property', 'rentProperty', 'buyProperty'));
 
     } // End AllPropertySeach
 

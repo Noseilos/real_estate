@@ -99,7 +99,7 @@
 
 
                     </div>
-                    <div class="price-filter sidebar-widget">
+                    {{-- <div class="price-filter sidebar-widget">
                         <div class="widget-title">
                             <h5>Select Price Range</h5>
                         </div>
@@ -111,7 +111,7 @@
                             </div>
                             <div class="price-range-slider"></div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="category-widget sidebar-widget">
                         <div class="widget-title">
                             <h5>Status Of Property</h5>
@@ -227,7 +227,7 @@
 
 
 <!-- subscribe-section -->
-<section class="subscribe-section bg-color-3">
+{{-- <section class="subscribe-section bg-color-3">
     <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-2.png);"></div>
     <div class="auto-container">
         <div class="row clearfix">
@@ -249,7 +249,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!-- subscribe-section end -->
 
 @endsection
