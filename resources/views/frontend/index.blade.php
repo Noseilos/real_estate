@@ -20,7 +20,7 @@
 
 
     <!-- video-section -->
-    @include('frontend.home.video')
+    {{-- @include('frontend.home.video') --}}
     <!-- video-section end -->
 
 

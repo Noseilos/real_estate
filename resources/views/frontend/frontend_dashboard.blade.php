@@ -1,42 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>@yield('title') </title>
-@vite(['resources/js/app.js'])
+    <title>@yield('title') </title>
+    @vite(['resources/js/app.js'])
 
-<!-- Fav Icon -->
-<link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico')}}" type="image/x-icon">
+    <!-- Fav Icon -->
+    <link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico') }}" type="image/x-icon">
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
-<!-- Stylesheets -->
-<link href="{{ asset('frontend/assets/css/font-awesome-all.css') }}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/flaticon.css') }}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/owl.css') }}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/bootstrap.css') }}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/jquery.fancybox.min.css') }}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/animate.css') }}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/jquery-ui.css') }}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/nice-select.css') }}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/color/theme-color.css') }}" id="jssDefault" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/switcher-style.css') }}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
-<link href="{{ asset('frontend/assets/css/responsive.css') }}" rel="stylesheet">
+    <!-- Stylesheets -->
+    <link href="{{ asset('frontend/assets/css/font-awesome-all.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/flaticon.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/owl.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/jquery.fancybox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/jquery-ui.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/nice-select.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/color/theme-color.css') }}" id="jssDefault" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/switcher-style.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/assets/css/responsive.css') }}" rel="stylesheet">
 
-{{-- Toaster css--}}
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    {{-- Toaster css --}}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
 </head>
 
 
 <!-- page wrapper -->
+
 <body>
 
     <div class="boxed_wrapper">
@@ -48,7 +52,7 @@
 
 
         <!-- switcher menu -->
-   
+
         <!-- end switcher menu -->
 
 
@@ -76,77 +80,76 @@
 
 
     <!-- jequery plugins -->
-    <script src="{{ asset('frontend/assets/js/jquery.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/popper.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/owl.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/wow.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/validation.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/jquery.fancybox.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/appear.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/scrollbar.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/isotope.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/jquery.nice-select.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/jQuery.style.switcher.min.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/jquery-ui.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/nav-tool.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/jquery.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/owl.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/wow.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/validation.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/jquery.fancybox.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/appear.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/scrollbar.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/isotope.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/jQuery.style.switcher.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/nav-tool.js') }}"></script>
 
     <!-- map script -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
-    <script src="{{ asset('frontend/assets/js/gmaps.js')}}"></script>
-    <script src="{{ asset('frontend/assets/js/map-helper.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/gmaps.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/map-helper.js') }}"></script>
 
     <!-- main-js -->
-    <script src="{{ asset('frontend/assets/js/script.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
 
     {{-- Toaster --}}
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-        <script>
-            @if(Session::has('message'))
-            var type = "{{ Session::get('alert-type','info') }}"
-            switch(type){
-            case 'info':
-            toastr.info(" {{ Session::get('message') }} ");
-            break;
-        
-            case 'success':
-            toastr.success(" {{ Session::get('message') }} ");
-            break;
-        
-            case 'warning':
-            toastr.warning(" {{ Session::get('message') }} ");
-            break;
-        
-            case 'error':
-            toastr.error(" {{ Session::get('message') }} ");
-            break; 
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch (type) {
+                case 'info':
+                    toastr.info(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ");
+                    break;
+
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ");
+                    break;
             }
-            @endif 
-        </script>
+        @endif
+    </script>
     {{-- End Toaster --}}
 
     {{-- Add to Wishlist --}}
-    
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script>
-
         $.ajaxSetup({
-            headers:{
-                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         })
 
-        function addToWishlist(property_id){
+        function addToWishlist(property_id) {
 
             $.ajax({
                 type: "POST",
                 dataType: 'json',
-                url: "/add-to-wishlist/"+property_id,
+                url: "/add-to-wishlist/" + property_id,
 
-                success:function(data){
-                    
+                success: function(data) {
+
                     wishlist();
 
                     // Start Message 
@@ -154,26 +157,26 @@
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
-                        
+
                         showConfirmButton: false,
-                        timer: 3000 
+                        timer: 3000
                     })
 
                     if ($.isEmptyObject(data.error)) {
-                            
-                            Toast.fire({
-                                type: 'success',
-                                icon: 'success', 
-                                title: data.success, 
-                            })
 
-                    }else{
-                    
-                            Toast.fire({
-                                type: 'error',
-                                icon: 'error', 
-                                title: data.error, 
-                            })
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
                     }
 
                     // End Message  
@@ -181,25 +184,23 @@
                 }
             })
         }
-
     </script>
     {{-- End Add to Wishlist --}}
 
     {{-- Load wishlist data --}}
     <script>
-
-        function wishlist(){
+        function wishlist() {
             $.ajax({
                 type: "GET",
                 dataType: "json",
                 url: "/get-wishlist-property",
 
-                success:function(response){
+                success: function(response) {
 
                     $('#wishQuantity').text(response.wishQuantity);
 
                     var rows = ""
-                    $.each(response.wishlist, function(key,value){
+                    $.each(response.wishlist, function(key, value) {
 
                         rows += `<div class="deals-block-one">
                             <div class="inner-box">
@@ -248,14 +249,14 @@
 
         // Wishlist Remove
 
-        function wishlistRemove(id){
+        function wishlistRemove(id) {
 
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "/wishlist-remove/"+id,
+                url: "/wishlist-remove/" + id,
 
-                success:function(data){
+                success: function(data) {
 
                     wishlist();
 
@@ -264,26 +265,26 @@
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
-                        
+
                         showConfirmButton: false,
-                        timer: 3000 
+                        timer: 3000
                     })
 
                     if ($.isEmptyObject(data.error)) {
-                            
-                            Toast.fire({
-                                type: 'success',
-                                icon: 'success', 
-                                title: data.success, 
-                            })
 
-                    }else{
-                    
-                            Toast.fire({
-                                type: 'error',
-                                icon: 'error', 
-                                title: data.error, 
-                            })
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
                     }
 
                     // End Message  
@@ -294,22 +295,20 @@
         }
 
         // End Wishlist Remove
-
     </script>
     {{-- End Load wishlist data --}}
 
     {{-- Add to Compare --}}
     <script>
+        function addToCompare(property_id) {
 
-        function addToCompare(property_id){
-
-                $.ajax({
+            $.ajax({
                 type: "POST",
                 dataType: 'json',
-                url: "/add-to-compare/"+property_id,
+                url: "/add-to-compare/" + property_id,
 
-                success:function(data){
-                    
+                success: function(data) {
+
                     wishlist();
 
                     // Start Message 
@@ -317,26 +316,26 @@
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
-                        
+
                         showConfirmButton: false,
-                        timer: 3000 
+                        timer: 3000
                     })
 
                     if ($.isEmptyObject(data.error)) {
-                            
-                            Toast.fire({
-                                type: 'success',
-                                icon: 'success', 
-                                title: data.success, 
-                            })
 
-                    }else{
-                    
-                            Toast.fire({
-                                type: 'error',
-                                icon: 'error', 
-                                title: data.error, 
-                            })
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
                     }
 
                     // End Message  
@@ -344,23 +343,21 @@
                 }
             })
         }
-
     </script>
     {{-- End Add to Compare --}}
 
     {{-- Load compare data --}}
     <script>
-
-        function compare(){
+        function compare() {
             $.ajax({
                 type: "GET",
                 dataType: "json",
                 url: "/get-compare-property",
 
-                success:function(response){
+                success: function(response) {
 
                     var rows = ""
-                    $.each(response, function(key,value){
+                    $.each(response, function(key, value) {
 
                         rows += `<tr>
                             <th>Property Info</th>
@@ -428,60 +425,64 @@
 
         // Compare Remove
 
-        function compareRemove(id){
+        function compareRemove(id) {
 
             $.ajax({
                 type: "GET",
                 dataType: "json",
-                url: "/compare-remove/"+id,
+                url: "/compare-remove/" + id,
 
-                success:function(data){
+                success: function(data) {
 
-                        compare();
+                    compare();
 
-                        // Start Message 
+                    // Start Message 
 
-                        const Toast = Swal.mixin({
-                            toast: true,
-                            position: 'top-end',
-                            
-                            showConfirmButton: false,
-                            timer: 3000 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
                         })
 
-                        if ($.isEmptyObject(data.error)) {
-                                
-                                Toast.fire({
-                                    type: 'success',
-                                    icon: 'success', 
-                                    title: data.success, 
-                                })
+                    } else {
 
-                        }else{
-                        
-                                Toast.fire({
-                                    type: 'error',
-                                    icon: 'error', 
-                                    title: data.error, 
-                                })
-                        }
-
-                        // End Message  
-
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
                     }
-                })
 
-            }
+                    // End Message  
+
+                }
+            })
+
+        }
 
         // End Compare Remove
-
     </script>
     {{-- End Load compare data --}}
 
     {{-- bootstrap --}}
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous">
+    </script>
     {{-- End bootstrap --}}
 
 </body><!-- End of .page_wrapper -->
+
 </html>
