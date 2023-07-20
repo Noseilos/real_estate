@@ -41,7 +41,7 @@
                                 @else
 
                                     <figure class="author-thumb"><img src="{{ (!empty($property->user->photo)) ? url('upload/agent_images/'.$property->user->photo) : url('upload/no_image.jpg') }}" alt=""></figure>
-                                    <h6>{{ $property->user->name }}</h6>
+                                    <h6>{{ $property->user->username }}</h6>
 
                                 @endif
                             </div>
@@ -259,7 +259,7 @@
 
                                         <figure class="author-thumb"><img src="{{ (!empty($property->user->photo)) ? url('upload/agent_images/'.$property->user->photo) : url('upload/no_image.jpg') }}" alt=""></figure>
                                         <div class="inner">
-                                            <h4>{{ $property->user->name }}</h4>
+                                            <h4>{{ $property->user->username }}</h4>
                                             <ul class="info clearfix">
                                                 <li><i class="fas fa-map-marker-alt"></i>{{ $property->user->address }}</li>
                                                 <li><i class="fas fa-phone"></i><a href="tel:03030571965">{{ $property->user->phone }}</a></li>
@@ -269,7 +269,7 @@
                                                 
                                                 <div id="app">
 
-                                                    <send-message :receiverid="{{ $property->agent_id }} " receivername="{{ $property->user->name }}">
+                                                    <send-message :receiverid="{{ $property->agent_id }} " receivername="{{ $property->user->username }}">
                                                     </send-message>
                                                 
                                                 </div>
@@ -310,7 +310,7 @@
                                             @endif
 
                                             <div class="form-group">
-                                                <input type="text" name="msg_name" placeholder="Your name" value="{{ $userData->name }}">
+                                                <input type="text" name="msg_name" placeholder="Your name" value="{{ $userData->username }}">
                                             </div>
                                             <div class="form-group">
                                                 <input type="email" name="msg_email" placeholder="Your Email" value="{{ $userData->email }}">

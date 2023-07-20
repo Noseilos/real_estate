@@ -38,7 +38,7 @@
                 
             <tr>
                 <td>{{ $key+1 }}</td>
-                <td><img src="{{ (!empty($item->photo)) ? url('upload/agent_images/'.$item->photo) : url('upload/no_image.jpg') }}" alt="Agent Picture" style="width:70px; height:40px;"></td>
+                <td><img src="{{ (!empty($item->photo)) ? url('upload/agent_images/'.$item->photo) : url('upload/no_image.jpg') }}" alt="Agent Picture" style="width:60px; height:60px;"></td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->role }}</td>
                 <td>

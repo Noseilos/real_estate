@@ -27,8 +27,8 @@
                                 @foreach($packageHistory as $key => $item)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td><img src="{{ (!empty($item->user->photo)) ? url('upload/agent_images/'.$item->user->photo) : url('upload/no_image.jpg') }}" style="width:70px; height:40px;"> </td> 
-                                        <td>{{ $item['user']['name'] }}</td> 
+                                        <td><img src="{{ (!empty($item->user->photo)) ? url('upload/agent_images/'.$item->user->photo) : url('upload/no_image.jpg') }}" style="width:60px; height:60px;"> </td> 
+                                        <td>{{ $item['user']['username'] }}</td> 
                                         <td>{{ $item->package_name }}</td> 
                                         <td>{{ $item->invoice}}</td> 
                                         <td>{{ $item->package_amount}}</td> 

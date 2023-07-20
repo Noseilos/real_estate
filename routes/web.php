@@ -44,15 +44,10 @@ Route::get('/', [UserController::class, 'Index']);
 
 
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 // END DASHBOARD
-
-
-
 
 
 Route::middleware('auth')->group(function () {
@@ -66,31 +61,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/schedule/request', [UserController::class, 'UserScheduleRequest'])->name('user.schedule.request');
     Route::get('/live/chat', [UserController::class, 'LiveChat'])->name('live.chat');
 
-
     // START WishlistController
     Route::controller(WishlistController::class)->group(function () {
-
         Route::get('/user/wishlist', 'UserWishlist')->name('user.wishlist');
         Route::get('/get-wishlist-property', 'GetWishlistProperty');
         Route::get('/wishlist-remove/{id}', 'WishlistRemove');
-
     }); // END WishlistController
-
 
     // START CompareController
     Route::controller(CompareController::class)->group(function () {
-
         Route::get('/user/compare', 'UserCompare')->name('user.compare');
         Route::get('/get-compare-property', 'GetCompareProperty');
         Route::get('/compare-remove/{id}', 'CompareRemove');
-
     }); // END CompareController
 
 }); // END USER
-
-
-
-
 
 
 Route::middleware(['auth', 'roles:admin'])->group(function () {
@@ -105,11 +90,6 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
 }); // END ADMIN MIDDLEWARE
 
-
-
-
-
-
 Route::middleware(['auth', 'roles:agent'])->group(function () {
     Route::get('/agent/dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
     Route::get('/agent/logout', [AgentController::class, 'AgentLogout'])->name('agent.logout');
@@ -119,44 +99,30 @@ Route::middleware(['auth', 'roles:agent'])->group(function () {
     Route::post('/agent/update/password', [AgentController::class, 'AgentUpdatePassword'])->name('agent.update.password');
 }); // END AGENT MIDDLEWARE
 
-
-
-
-
-
 Route::middleware(['auth', 'roles:admin'])->group(function () {
 
     // START PropertyTypeController
     Route::controller(PropertyTypeController::class)->group(function () {
-
         Route::get('/all/type', 'AllPropertyType')->name('all.type')->middleware('permission:all.type');
         Route::get('/add/type', 'AddPropertyType')->name('add.type')->middleware('permission:add.type');
         Route::post('/store/type', 'StorePropertyType')->name('store.type');
         Route::get('/edit/type/{id}', 'EditPropertyType')->name('edit.type')->middleware('permission:edit.type');
         Route::post('/update/type', 'UpdatePropertyType')->name('update.type');
         Route::get('/delete/type/{id}', 'DeletePropertyType')->name('delete.type')->middleware('permission:delete.type');
-
     }); // END PropertyTypeController
-
-
 
     // START Amenities
     Route::controller(PropertyTypeController::class)->group(function () {
-
         Route::get('/all/amenities', 'AllAmenities')->name('all.amenities')->middleware('permission:amenities.all');
         Route::get('/add/amenities', 'AddAmenities')->name('add.amenities')->middleware('permission:amenities.add');
         Route::post('/store/amenities', 'StoreAmenities')->name('store.amenities');
         Route::get('/edit/amenities/{id}', 'EditAmenities')->name('edit.amenities')->middleware('permission:amenities.edit');
         Route::post('/update/amenities', 'UpdateAmenities')->name('update.amenities');
         Route::get('/delete/amenities/{id}', 'DeleteAmenities')->name('delete.amenities')->middleware('permission:amenities.delete');
-
     }); // END Amenities
-
-
 
     // START PropertyController
     Route::controller(PropertyController::class)->group(function () {
-
         Route::get('/all/property', 'AllProperty')->name('all.property')->middleware('permission:property.all');
         Route::get('/add/property', 'AddProperty')->name('add.property')->middleware('permission:property.add');
         Route::post('/store/property', 'StoreProperty')->name('store.property');
@@ -174,14 +140,12 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/admin/package/history', 'AdminPackageHistory')->name('admin.package.history');
         Route::get('/package/invoice/{id}', 'PackageInvoice')->name('package.invoice');
         Route::get('/admin/property/message/', 'AdminPropertyMessage')->name('admin.property.message');
-
     }); // END PropertyController
 
 
 
     // START Agent Management
     Route::controller(AdminController::class)->group(function () {
-
         Route::get('/all/agent', 'AllAgent')->name('all.agent')->middleware('permission:agent.all');
         Route::get('/add/agent', 'AddAgent')->name('add.agent')->middleware('permission:agent.add');
         Route::post('/store/agent', 'StoreAgent')->name('store.agent');
@@ -189,7 +153,6 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::post('/update/agent', 'UpdateAgent')->name('update.agent');
         Route::get('/delete/agent/{id}', 'DeleteAgent')->name('delete.agent')->middleware('permission:agent.delete');
         Route::get('/changeStatus', 'changeStatus');
-
     }); // END Agent Management
 
     // ALL STATE ROUTES
@@ -246,7 +209,6 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
      // Permission All Route 
     Route::controller(RoleController::class)->group(function(){
-
         Route::get('/all/permission', 'AllPermission')->name('all.permission')->middleware('permission:role.menu'); 
         Route::get('/add/permission', 'AddPermission')->name('add.permission')->middleware('permission:role.menu');
         Route::post('/store/permission', 'StorePermission')->name('store.permission'); 
@@ -255,14 +217,11 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission')->middleware('permission:role.menu'); 
         Route::get('/export', 'Export')->name('export');
         Route::post('/import', 'Import')->name('import');
-
         Route::get('/import/permission', 'ImportPermission')->name('import.permission')->middleware('permission:role.menu');
-
     });
 
     // Roles All Route 
     Route::controller(RoleController::class)->group(function(){
-
         Route::get('/all/roles', 'AllRoles')->name('all.roles')->middleware('permission:role.menu'); 
         Route::get('/add/roles', 'AddRoles')->name('add.roles')->middleware('permission:role.menu');
         Route::post('/store/roles', 'StoreRoles')->name('store.roles'); 
@@ -276,36 +235,24 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/admin/edit/roles/{id}', 'AdminEditRoles')->name('admin.edit.roles')->middleware('permission:role.menu'); 
         Route::post('/admin/roles/update/{id}', 'AdminRolesUpdate')->name('admin.roles.update'); 
         Route::get('/admin/delete/roles/{id}', 'AdminDeleteRoles')->name('admin.delete.roles')->middleware('permission:role.menu');
-
     });
-
-
-
 
     // Admin User All Route
     Route::controller(AdminController::class)->group(function () {
-
         Route::get('/all/admin', 'AllAdmin')->name('all.admin');
         Route::get('/add/admin', 'AddAdmin')->name('add.admin');
         Route::post('/add/admin', 'StoreAdmin')->name('store.admin');
         Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin');
         Route::post('/update/admin/{id}', 'UpdateAdmin')->name('update.admin');
         Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin');
-
     });// END Site Setting Controller
-
-
 }); // END ADMIN MIDDLEWARE
 
 
-
-
-
+// START AGENT MIDDLEWARE
 Route::middleware(['auth', 'roles:agent'])->group(function () {
-
     // START Agent Property
     Route::controller(AgentPropertyController::class)->group(function () {
-
         Route::get('/agent/all/property', 'AllAgentProperty')->name('agent.all.property');
         Route::get('/agent/add/property', 'AddAgentProperty')->name('agent.add.property');
         Route::post('/agent/store/property', 'StoreAgentProperty')->name('agent.store.property');
@@ -325,14 +272,10 @@ Route::middleware(['auth', 'roles:agent'])->group(function () {
         Route::get('/agent/schedule/request/', 'AgentScheduleRequest')->name('agent.schedule.request');
         Route::get('/agent/details/schedule/{id}', 'AgentDetailsSchedule')->name('agent.details.schedule');
         Route::post('/agent/update/schedule/', 'AgentUpdateSchedule')->name('agent.update.schedule');
-
     }); // END Agent Property
-
-
 
     // START Agent Package
     Route::controller(AgentPropertyController::class)->group(function () {
-
         Route::get('/buy/package', 'BuyPackage')->name('buy.package');
         Route::get('/buy/business/plan', 'BuyBusinessPlan')->name('buy.business.plan');
         Route::post('/store/business/plan', 'StoreBusinessPlan')->name('store.business.plan');
@@ -340,7 +283,6 @@ Route::middleware(['auth', 'roles:agent'])->group(function () {
         Route::post('/store/professional/plan', 'StoreProfessionalPlan')->name('store.professional.plan');
         Route::get('/package/history', 'PackageHistory')->name('package.history');
         Route::get('/agent/package/invocie/{id}', 'AgentPackageInvoice')->name('agent.package.invoice');
-
     }); // END Agent Package
 
 }); // END AGENT MIDDLEWARE
@@ -351,16 +293,7 @@ Route::get('/agent/login', [AgentController::class, 'AgentLogin'])->name('agent.
 Route::post('/agent/register', [AgentController::class, 'AgentRegister'])->name('agent.register');
 
 
-
-
-
-
 // ------------ FRONTEND PROPERTY DETAILS ROUTE ------------ //
-
-
-
-
-
 
 Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDetails']);
 

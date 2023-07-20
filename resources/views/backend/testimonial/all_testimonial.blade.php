@@ -35,7 +35,7 @@
                         <td>{{ $key+1 }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->position }}</td>
-                        <td><img src="{{ asset($item->image) }}" style="width:70px;height: 40px;"> </td>
+                        <td><img src="{{ asset($item->image) }}" style="width:60px;height: 60px;"> </td>
                         <td>
                           @if (Auth::user()->can('testimonials.edit'))
                             <a href="{{ route('edit.testimonials',$item->id) }}" class="btn btn-inverse-warning"> Edit </a>
