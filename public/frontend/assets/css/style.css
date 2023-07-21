@@ -421,7 +421,7 @@ img {
 
 .theme-btn.btn-three{
   color: #2d2929;
-  border: 2px solid #fff;
+  border: 2px solid #C3203C;
   background-color: #ffffff;
 }
 
@@ -648,7 +648,7 @@ img {
   display: inline-block;
   float: left;
   font-size: 15px;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.8);
   margin-right: 40px;
   padding-left: 22px;
 }
@@ -660,7 +660,7 @@ img {
 
 .header-top .info li a{
   display: inline-block;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.8);
 }
 
 .header-top .info li a:hover{
@@ -702,7 +702,7 @@ img {
   position: relative;
   display: inline-block;
   font-size: 14px;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.8);
 }
 
 .header-top .social-links li a:hover{
@@ -733,7 +733,7 @@ img {
   position: relative;
   display: inline-block;
   font-size: 15px;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.8);
 }
 
 .header-top .sign-box a:hover{
@@ -744,9 +744,9 @@ img {
   margin-right: 8px;
 }
 
-/** header-lower **/
+/** theme-btn **/
 
-.header-lower{
+.theme-btn{
   position: relative;
 }
 
@@ -1741,7 +1741,7 @@ div#mCSB_1_container{
 }
 
 .search-field .top-search .search-btn button:hover{
-  background-color: #1b1d21 !important;
+  background-color: #8B061D !important;
 }
 
 .search-field .top-search .search-btn button span{

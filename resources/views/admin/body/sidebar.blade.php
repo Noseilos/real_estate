@@ -25,7 +25,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#emails" role="button" aria-expanded="false"
                         aria-controls="emails">
-                        <i class="link-icon" data-feather="mail"></i>
+                        <i class="link-icon" data-feather="home"></i>
                         <span class="link-title">Property Type</span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>
@@ -55,7 +55,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#state" role="button" aria-expanded="false"
                         aria-controls="state">
-                        <i class="link-icon" data-feather="mail"></i>
+                        <i class="link-icon" data-feather="home"></i>
                         <span class="link-title">Property State </span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>
@@ -85,7 +85,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#amenities" role="button" aria-expanded="false"
                         aria-controls="amenities">
-                        <i class="link-icon" data-feather="calendar"></i>
+                        <i class="link-icon" data-feather="package"></i>
                         <span class="link-title">Amenitites</span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>
@@ -114,7 +114,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#property" role="button" aria-expanded="false"
                         aria-controls="property">
-                        <i class="link-icon" data-feather="calendar"></i>
+                        <i class="link-icon" data-feather="home"></i>
                         <span class="link-title">Property</span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>
@@ -150,7 +150,7 @@
             @if (Auth::user()->can('message.menu'))
                 <li class="nav-item">
                     <a href="{{ route('admin.property.message') }}" class="nav-link">
-                        <i class="link-icon" data-feather="clipboard"></i>
+                        <i class="link-icon" data-feather="message-square"></i>
                         <span class="link-title">Property Message</span>
                     </a>
                 </li>
@@ -161,7 +161,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#testimonials" role="button"
                         aria-expanded="false" aria-controls="testimonials">
-                        <i class="link-icon" data-feather="mail"></i>
+                        <i class="link-icon" data-feather="file-text"></i>
                         <span class="link-title">Testimonials Manage </span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>
@@ -189,13 +189,13 @@
 
             @if (Auth::user()->can('agent.menu'))
 
-            
+
 
                 <li class="nav-item nav-category">User All Functions</li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#manageAgent" role="button" aria-expanded="false"
-                      aria-controls="manageAgent">
-                        <i class="link-icon" data-feather="feather"></i>
+                    <a class="nav-link" data-bs-toggle="collapse" href="#manageAgent" role="button"
+                        aria-expanded="false" aria-controls="manageAgent">
+                        <i class="link-icon" data-feather="users"></i>
                         <span class="link-title">Manage Agent</span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>
@@ -225,7 +225,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#blogcategory" role="button"
                         aria-expanded="false" aria-controls="uiComponents">
-                        <i class="link-icon" data-feather="feather"></i>
+                        <i class="link-icon" data-feather="file"></i>
                         <span class="link-title">Blog Category </span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>
@@ -249,7 +249,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#Post" role="button"
                         aria-expanded="false" aria-controls="Post">
-                        <i class="link-icon" data-feather="feather"></i>
+                        <i class="link-icon" data-feather="file-text"></i>
                         <span class="link-title">Blog Post </span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>
@@ -277,7 +277,7 @@
             @if (Auth::user()->can('comment.menu'))
                 <li class="nav-item">
                     <a href="{{ route('admin.blog.comment') }}" class="nav-link">
-                        <i class="link-icon" data-feather="calendar"></i>
+                        <i class="link-icon" data-feather="message-square"></i>
                         <span class="link-title">Blog Comment </span>
                     </a>
                 </li>
@@ -286,7 +286,7 @@
             @if (Auth::user()->can('smtp.menu'))
                 <li class="nav-item">
                     <a href="{{ route('smtp.setting') }}" class="nav-link">
-                        <i class="link-icon" data-feather="calendar"></i>
+                        <i class="link-icon" data-feather="mail"></i>
                         <span class="link-title">SMTP Setting </span>
                     </a>
                 </li>
@@ -295,7 +295,7 @@
             @if (Auth::user()->can('site.menu'))
                 <li class="nav-item">
                     <a href="{{ route('site.setting') }}" class="nav-link">
-                        <i class="link-icon" data-feather="calendar"></i>
+                        <i class="link-icon" data-feather="monitor"></i>
                         <span class="link-title">Site Setting </span>
                     </a>
                 </li>
@@ -306,7 +306,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#role" role="button"
                         aria-expanded="false" aria-controls="role">
-                        <i class="link-icon" data-feather="anchor"></i>
+                        <i class="link-icon" data-feather="user-check"></i>
                         <span class="link-title">Role & Permission</span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>
@@ -337,7 +337,7 @@
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#admin" role="button" aria-expanded="false"
                     aria-controls="admin">
-                    <i class="link-icon" data-feather="anchor"></i>
+                    <i class="link-icon" data-feather="users"></i>
                     <span class="link-title">Manage Admin User</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>

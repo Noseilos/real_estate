@@ -31,7 +31,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#property" role="button" aria-expanded="false"
                         aria-controls="property">
-                        <i class="link-icon" data-feather="calendar"></i>
+                        <i class="link-icon" data-feather="home"></i>
                         <span class="link-title">Property</span>
                         <i class="link-arrow" data-feather="chevron-down"></i>
                     </a>
@@ -53,34 +53,33 @@
 
                 <li class="nav-item">
                     <a href="{{ route('package.history') }}" class="nav-link">
-                        <i class="link-icon" data-feather="clipboard"></i>
+                        <i class="link-icon" data-feather="file-text"></i>
                         <span class="link-title">Package History </span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="{{ route('agent.property.message') }}" class="nav-link">
-                        <i class="link-icon" data-feather="clipboard"></i>
+                        <i class="link-icon" data-feather="message-circle"></i>
                         <span class="link-title">Property Message</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="{{ route('agent.schedule.request') }}" class="nav-link">
-                      <i class="link-icon" data-feather="calendar"></i>
-                      <span class="link-title">Schedule Request </span>
-                    </a>
-                  </li>
-
-                <li class="nav-item nav-category">Components</li>
-                
-                <li class="nav-item">
-                    <a href="{{ route('agent.live.chat') }}" class="nav-link">
-                      <i class="link-icon" data-feather="calendar"></i>
-                      <span class="link-title">Live Chat</span>
+                        <i class="link-icon" data-feather="calendar"></i>
+                        <span class="link-title">Schedule Request </span>
                     </a>
                 </li>
 
+                <li class="nav-item nav-category">Components</li>
+
+                <li class="nav-item">
+                    <a href="{{ route('agent.live.chat') }}" class="nav-link">
+                        <i class="link-icon" data-feather="message-square"></i>
+                        <span class="link-title">Live Chat</span>
+                    </a>
+                </li>
             @else
             @endif
 

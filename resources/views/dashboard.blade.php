@@ -25,15 +25,6 @@
     <section class="sidebar-page-container blog-details sec-pad-2">
         <div class="auto-container">
             <div class="row clearfix">
-
-
-
-
-
-
-
-
-
                 <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
                     <div class="blog-sidebar">
                         <div class="sidebar-widget post-widget">
@@ -50,15 +41,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="sidebar-widget category-widget">
                             <div class="widget-title">
-
                             </div>
-
                             @include('frontend.dashboard.dashboard_sidebar')
                         </div>
-
                     </div>
                 </div>
 
@@ -144,5 +131,4 @@
         </div>
     </section>
     <!-- sidebar-page-container -->
-
 @endsection

@@ -76,7 +76,7 @@
 
                     <div class="comments-area">
                         <div class="group-title">
-                            <h4>3 Comments</h4>
+                            <h4>Comments</h4>
                         </div>
                         <div class="comment-box">
                             @foreach ($comment as $com)
@@ -104,7 +104,7 @@
                                 @foreach ($reply as $rep)
                                     <div class="comment replay-comment">
                                         <figure class="thumb-box">
-                                            <img src="{{ url('upload/ariyan.jpg') }}" alt="">
+                                            <img src="{{ url('upload/steve.jpg') }}" alt="">
                                         </figure>
                                         <div class="comment-inner">
                                             <div class="comment-info clearfix">

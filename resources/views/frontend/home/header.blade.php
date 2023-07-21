@@ -70,13 +70,10 @@
                                 <li><a href="{{ route('blog.list') }}"><span>Blog </span></a> </li>
 
                                 {{-- <li><a href="contact.html"><span>Contact</span></a></li> --}}
-                                <li><a href="{{ route('agent.login') }}" class="theme-btn btn-one"><span>+</span>Add Listing</a></li>
+                                <li><a href="{{ route('agent.login') }}" class="theme-btn btn-one" ><span>+</span>Add Listing</a></li>
                             </ul>
                         </div>
                     </nav>
-                </div>
-                <div class="btn-box">
-                    <a href="{{ route('agent.login') }}" class="theme-btn btn-one"><span>+</span>Add Listing</a>
                 </div>
             </div>
         </div>
