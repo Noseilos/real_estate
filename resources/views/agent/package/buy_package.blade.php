@@ -24,7 +24,7 @@
             <div class="card-body">
               <h4 class="text-center mt-3 mb-4">Basic</h4>
               <i data-feather="award" class="text-primary icon-xxl d-block mx-auto my-3"></i>
-              <h1 class="text-center">$0</h1>
+              <h1 class="text-center">₱0</h1>
               <p class="text-muted text-center mb-4 fw-light">per month</p>
               <h5 class="text-primary text-center mb-4">Up to 1 Property</h5>
               <table class="mx-auto">
@@ -48,7 +48,7 @@
             <div class="card-body">
               <h4 class="text-center mt-3 mb-4">Business</h4>
               <i data-feather="gift" class="text-success icon-xxl d-block mx-auto my-3"></i>
-              <h1 class="text-center">$70</h1>
+              <h1 class="text-center">₱3,000</h1>
               <p class="text-muted text-center mb-4 fw-light">per month</p>
               <h5 class="text-success text-center mb-4">Up to 3 Properties</h5>
               <table class="mx-auto">
@@ -72,7 +72,7 @@
             <div class="card-body">
               <h4 class="text-center mt-3 mb-4">Professional</h4>
               <i data-feather="briefcase" class="text-primary icon-xxl d-block mx-auto my-3"></i>
-              <h1 class="text-center">$250</h1>
+              <h1 class="text-center">₱8,500</h1>
               <p class="text-muted text-center mb-4 fw-light">per month</p>
               <h5 class="text-primary text-center mb-4">Up to 10 Property</h5>
               <table class="mx-auto">
