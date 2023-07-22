@@ -18,7 +18,7 @@
 
 .main-menu .navigation>li.current>a,
 .main-menu .navigation>li:hover>a {
-  color: #C3203C !important;
+  color: #FF8A9E !important;
 }
 
 .main-menu .navigation>li>ul {
@@ -26,12 +26,12 @@
 }
 
 .main-menu .navigation>li>ul>li>a:hover {
-  color: #C3203C;
+  color: #FF8A9E;
 }
 
 .main-menu .navigation li.current.dropdown .dropdown-btn,
 .main-menu .navigation li:hover .dropdown-btn {
-  color: #C3203C;
+  color: #FF8A9E;
 }
 
 .main-menu .navigation>li>ul>li>ul {

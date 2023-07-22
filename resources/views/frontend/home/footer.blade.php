@@ -80,7 +80,7 @@
         <div class="auto-container">
             <div class="inner-box clearfix">
                 <figure class="footer-logo"><a href="index.html"><img
-                            src="{{ asset('frontend/assets/images/footer-logo.png') }}" alt=""></a></figure>
+                            src="{{ asset('frontend/assets/images/tahanan-logo.png') }}" alt=""></a></figure>
                 <div class="copyright pull-left">
                     <p><a href="index.html">{{ $setting->copyright }}</p>
                 </div>

@@ -60,7 +60,7 @@ class SettingController extends Controller
         if ($request->file('logo')) {
             $image = $request->file('logo');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(1500, 386)->save('upload/logo/' . $name_gen);
+            Image::make($image)->save('upload/logo/' . $name_gen);
             $save_url = 'upload/logo/' . $name_gen;
 
             SiteSetting::findOrFail($site_id)->update([

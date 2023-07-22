@@ -1,7 +1,7 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
 @section('title')
-  Real Estate Complete Project  
+  Tahanan Real Estate
 @endsection
 
     <!-- banner-section -->

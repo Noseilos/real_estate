@@ -173,7 +173,7 @@ textarea:focus{
 p{
   position: relative;
   font-family: 'Rubik', sans-serif;
-  color: #93959e;
+  color: #4F4C4C;
   font-weight: 400;
   margin: 0px;
   transition: all 500ms ease;
@@ -765,7 +765,7 @@ img {
 
 .main-header .logo-box{
   position: relative;
-  padding: 27.5px 0px;
+  padding: 24x 0px;
 }
 
 .main-header .logo-box .logo{
@@ -796,7 +796,7 @@ img {
   position:inherit;
   float:left;
   z-index:2;
-  padding:40px 0px;
+  padding:30px 0px;
   -webkit-transition:all 300ms ease;
   -moz-transition:all 300ms ease;
   -ms-transition:all 300ms ease;
@@ -820,9 +820,9 @@ img {
   line-height:30px;
   font-weight:500;
   opacity:1;
-  color: #2d2929;
+  color: #fff;
   padding: 0px 30px;
-  border-right: 1px solid #e5e7ec;
+  /* border-right: 1px solid #e5e7ec; */
   z-index:1;
   -webkit-transition:all 500ms ease;
   -moz-transition:all 500ms ease;
@@ -836,7 +836,7 @@ img {
 }
 
 .main-menu .navigation > li:first-child > a{
-  border-left: 1px solid #e5e7ec;
+  /* border-left: 1px solid #e5e7ec; */
 }
 
 .main-menu .navigation > li.current > a,
@@ -1191,7 +1191,7 @@ img {
   width: 30px;
   display: block;
   margin-bottom: 5px;
-  background-color: #111111;
+  background-color: #fff;
   -webkit-transition: all 300ms ease;
   -moz-transition: all 300ms ease;
   -ms-transition: all 300ms ease;
@@ -1989,7 +1989,7 @@ div#mCSB_1_container{
 }
 
 .bg-color-1{
-  background-color: #e5f8ed;
+  background-color: #DFBFBF;
 }
 
 

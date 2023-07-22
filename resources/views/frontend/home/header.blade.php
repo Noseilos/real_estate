@@ -39,7 +39,7 @@
     </div>
     <!-- header-lower -->
     <div class="header-lower">
-        <div class="outer-box">
+        <div class="outer-box" style="background-color: #390000">
             <div class="main-box">
                 <div class="logo-box">
                     <figure class="logo"><a href="{{ url('/') }}"><img src="{{ asset($setting->logo) }}"
@@ -70,7 +70,7 @@
                                 <li><a href="{{ route('blog.list') }}"><span>Blog </span></a> </li>
 
                                 {{-- <li><a href="contact.html"><span>Contact</span></a></li> --}}
-                                <li><a href="{{ route('agent.login') }}" class="theme-btn btn-one" ><span>+</span>Add Listing</a></li>
+                                <li><a href="{{ route('agent.login') }}" class="theme-btn btn-two"><span>+</span>Add Listing</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -81,7 +81,7 @@
 
     <!--sticky Header-->
     <div class="sticky-header">
-        <div class="outer-box">
+        <div class="outer-box" style="background-color: #390000">
             <div class="main-box">
                 <div class="logo-box">
                     <figure class="logo"><a href="{{ url('/') }}"><img src="{{ asset($setting->logo) }}"

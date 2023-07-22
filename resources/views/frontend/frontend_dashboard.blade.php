@@ -12,7 +12,7 @@
     @vite(['resources/js/app.js'])
 
     <!-- Fav Icon -->
-    <link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('frontend/assets/images/tahanan-logo.ico') }}" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link
