@@ -154,6 +154,18 @@
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     {{-- End Toggle --}}
 
+    {{-- Chart --}}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="{{ asset('backend/assets/js/custom/chart.js') }}"></script>
+    <script> 
+        var ptypeData = @json($propertyTypeData);
+        var pschedData = @json($propertySchedData);
+    </script>
+    {{-- End Chart --}}
+
     <!-- End custom js for this page -->
 
 

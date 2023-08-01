@@ -295,6 +295,10 @@ Route::post('/agent/register', [AgentController::class, 'AgentRegister'])->name(
 
 // ------------ FRONTEND PROPERTY DETAILS ROUTE ------------ //
 
+// PROPERTY CATEGORIES
+Route::get('/category/property', [IndexController::class, 'PropertyCategory'])->name('category.property');
+
+// PROPERTY DETAILS
 Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDetails']);
 
 // ADD TO WISHLIST

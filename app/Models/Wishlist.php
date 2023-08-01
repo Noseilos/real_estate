@@ -13,4 +13,8 @@ class Wishlist extends Model
     public function property(){
         return $this->belongsTo(Property::class, 'property_id', 'id');
     }
+
+    public function propertyWish(){
+        return $this->hasMany(Property::class, 'ptype_id', 'id');
+    }
 }
