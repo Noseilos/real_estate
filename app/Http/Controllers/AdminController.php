@@ -25,9 +25,14 @@ class AdminController extends Controller
         $propertySchedData = $getSched->mapWithKeys(function($item, $key){
             return [$item->Property => $item->Schedule];
         });
+
+        $getWish = User::select('name as User')->withCount('wishes as Wish')->get();
+        $propertyWishData = $getWish->mapWithKeys(function($item, $key){
+            return [$item->User => $item->Wish];
+        });
         
 
-        return view('admin.index', compact('propertyTypeData', 'propertySchedData'));
+        return view('admin.index', compact('propertyTypeData', 'propertySchedData', 'propertyWishData'));
 
     } // END AdminDashboard
 
