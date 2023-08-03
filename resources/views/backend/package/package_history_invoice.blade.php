@@ -28,12 +28,12 @@
     }
     .authority h5 {
         margin-top: -10px;
-        color: green;
+        color: #c1203b;
         /*text-align: center;*/
         margin-left: 35px;
     }
     .thanks p {
-        color: green;;
+        color: #c1203b;;
         font-size: 16px;
         font-weight: normal;
         font-family: serif;
@@ -47,14 +47,14 @@
         <tr>
             <td valign="top">
             <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-            <h2 style="color: green; font-size: 26px;"><strong>EasyShop</strong></h2>
+            <h2 style="color: #c1203b; font-size: 26px;"><strong>Tahanan</strong></h2>
             </td>
             <td align="right">
                 <pre class="font" >
-                EasyShop Head Office
-                Email:support@easylearningbd.com <br>
+                Tahanan Head Office
+                Email:support@tahananrealestate.com <br>
                 Mob: 1245454545 <br>
-                Dhaka 1207,Dhanmondi:#4 <br>
+                Taguig 1630,Dhanmondi:#4 <br>
 
                 </pre>
             </td>
@@ -78,7 +78,7 @@
             </td>
             <td>
             <p class="font">
-                <h3><span style="color: green;">Invoice:</span> #{{ $packageHistory->invoice }}</h3>
+                <h3><span style="color: #c1203b;">Invoice:</span> #{{ $packageHistory->invoice }}</h3>
                 Order Date: {{ $packageHistory->created_at }} <br> 
                 Payment Type : COD </span>
             </p>
@@ -90,7 +90,7 @@
     <h3>Property Package </h3>
 
     <table width="100%">
-        <thead style="background-color: green; color:#FFFFFF;">
+        <thead style="background-color: #c1203b; color:#FFFFFF;">
         <tr class="font">
 
         <th>Package Name </th>
