@@ -49,9 +49,11 @@ var SampleChartClass;
           layout: {
             padding: 20
           },
-          scales: {
-            y: {
-              beginAtZero: true
+          plugins: {
+            legend: {
+                labels: {
+                    color: 'white'
+                }
             }
           }
         }
@@ -77,9 +79,11 @@ var SampleChartClass;
           layout: {
             padding: 20
           },
-          scales: {
-            y: {
-              beginAtZero: true
+          plugins: {
+            legend: {
+                labels: {
+                    color: 'white'
+                }
             }
           }
         }
@@ -115,7 +119,33 @@ var SampleChartClass;
           layout: {
             padding: 20
           },
+          scales: {
+            y: {
+              ticks: {
+                color: 'white'
+              },
+              beginAtZero: true,
+              grid: {
+                color: 'rgba(129, 177, 199, 0.5)'
+              },
+            },
+            x: {
+              ticks: {
+                color: 'white'
+              },
+              grid: {
+                color: 'rgba(129, 177, 199, 0.5)'
+              },
+            }
+          },
           indexAxis: 'y',
+          plugins: {
+            legend: {
+                labels: {
+                    color: 'white'
+                }
+            }
+          }
         }
       });
     }
