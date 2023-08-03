@@ -1,7 +1,7 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
 @section('title')
-    Blog | Easy RealEstate
+    Blog | Tahanan RealEstate
 @endsection
 
 <!--Page Title-->
@@ -41,14 +41,14 @@
                                     <div class="inner-box">
                                         <div class="image-box">
                                             <figure class="image"><a
-                                                    href="{{ url('blog/details/' . $item->post_slug) }}"><img
+                                                    href="{{ url('blog/details/'.$item->id.'/'.$item->post_slug) }}"><img
                                                         src="{{ asset($item->post_image) }}" alt=""></a>
                                             </figure>
                                             <span class="category">Featured</span>
                                         </div>
                                         <div class="lower-content">
                                             <h4><a
-                                                    href="{{ url('blog/details/' . $item->post_slug) }}">{{ $item->post_title }}</a>
+                                                    href="{{ url('blog/details/'.$item->id.'/'.$item->post_slug) }}">{{ $item->post_title }}</a>
                                             </h4>
                                             <ul class="post-info clearfix">
                                                 <li class="author-box">
@@ -63,7 +63,7 @@
                                                 <p>{{ $item->short_descp }}</p>
                                             </div>
                                             <div class="btn-box">
-                                                <a href="{{ url('blog/details/' . $item->post_slug) }}"
+                                                <a href="{{ url('blog/details/'.$item->id.'/'.$item->post_slug) }}"
                                                     class="theme-btn btn-two">See Details</a>
                                             </div>
                                         </div>

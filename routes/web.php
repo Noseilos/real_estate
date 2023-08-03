@@ -341,7 +341,7 @@ Route::post('/rent/property/search', [IndexController::class, 'RentPropertySeach
 Route::post('/all/property/search', [IndexController::class, 'AllPropertySeach'])->name('all.property.search');
 
 // Blog Details Route 
-Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
+Route::get('/blog/details/{id}/{slug}', [BlogController::class, 'BlogDetails']);
 Route::get('/blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
 Route::get('/blog', [BlogController::class, 'BlogList'])->name('blog.list');
 Route::post('/store/comment', [BlogController::class, 'StoreComment'])->name('store.comment');

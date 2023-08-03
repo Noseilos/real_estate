@@ -298,7 +298,7 @@ public function AllPost(){
     
 }// End StoreNewMultiImage
 
-    public function BlogDetails($slug){
+    public function BlogDetails($id, $slug){
 
       $blog = BlogPost::where('post_slug',$slug)->first();
 
@@ -307,8 +307,9 @@ public function AllPost(){
 
         $bcategory = BlogCategory::latest()->get();
         $dpost = BlogPost::latest()->limit(3)->get();
+        $multiImage = MultiImagePost::where('post_id', $id)->get();
 
-        return view('frontend.blog.blog_details',compact('blog','tags_all','bcategory','dpost'));
+        return view('frontend.blog.blog_details',compact('blog','tags_all','bcategory','dpost', 'multiImage'));
 
   }// End Method
 
