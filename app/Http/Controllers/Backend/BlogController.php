@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\MultiImagePost;
 use Illuminate\Http\Request; 
 use App\Models\BlogCategory; 
 use Carbon\Carbon;
@@ -98,7 +99,7 @@ public function AllPost(){
       Image::make($image)->resize(370,250)->save('upload/post/'.$name_gen);
       $save_url = 'upload/post/'.$name_gen;
   
-      BlogPost::insert([
+      $post_id = BlogPost::insertGetId([
           'blogcat_id' => $request->blogcat_id,
           'user_id' => Auth::user()->id,
           'post_title' => $request->post_title,
@@ -109,6 +110,24 @@ public function AllPost(){
           'post_image' => $save_url, 
           'created_at' => Carbon::now(),
       ]);
+
+      /// Multiple Image Upload From Here ////
+
+      $images = $request->file('multi_images');
+      foreach($images as $img){
+
+          $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+          Image::make($img)->resize(770,520)->save('upload/post/multi-image-post/'.$make_name);
+          $uploadPath = 'upload/post/multi-image-post/'.$make_name;
+
+          MultiImagePost::insert([
+
+              'post_id' => $post_id,
+              'photo_name' => $uploadPath,
+              'created_at' => Carbon::now(), 
+
+          ]); 
+      } // End Foreach
   
         $notification = array(
               'message' => 'BlogPost Inserted Successfully',
@@ -117,13 +136,14 @@ public function AllPost(){
   
           return redirect()->route('all.post')->with($notification);
   
-      }// End Method 
+    }// End Method 
 
       public function EditPost($id){
 
         $blogcat = BlogCategory::latest()->get();
         $post = BlogPost::findOrFail($id);
-        return view('backend.post.edit_post',compact('post','blogcat'));
+        $multiImage = MultiImagePost::where('post_id',$id)->get();
+        return view('backend.post.edit_post',compact('post','blogcat','multiImage'));
 
     }// End Method
 
@@ -182,6 +202,22 @@ public function AllPost(){
 
     }// End Method 
 
+    public function DeletePostMulti($id){
+
+      $old_image = MultiImagePost::findOrFail($id);
+      unlink($old_image->photo_name);
+
+      MultiImagePost::findOrFail($id)->delete();
+
+      $notif = array(
+          'message' => 'Post Multiple Image Deleted Successfully',
+          'alert-type' => 'success'
+      );
+
+      return redirect()->back()->with($notif); 
+
+  }// End Method 
+
       public function DeletePost($id){
 
         $post = BlogPost::findOrFail($id);
@@ -190,14 +226,77 @@ public function AllPost(){
 
         BlogPost::findOrFail($id)->delete();
 
-          $notification = array(
-            'message' => 'BlogPost Deleted Successfully',
-            'alert-type' => 'success'
+        $multi_image = MultiImagePost::where('post_id', $id)->get();
+
+        foreach ($multi_image as $image) {
+            
+            unlink($image->photo_name);
+            MultiImagePost::where('post_id', $id)->delete();
+        }
+
+        $notification = array(
+          'message' => 'BlogPost Deleted Successfully',
+          'alert-type' => 'success'
         );
 
         return redirect()->back()->with($notification); 
 
     }// End Method
+
+    public function UpdatePostMultiImage(Request $request){
+
+      $images = $request->multi_image;
+
+      foreach($images as $id => $img){
+          $imgDelete = MultiImagePost::findOrFail($id);
+          unlink($imgDelete->photo_name);
+
+      $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+      Image::make($img)->resize(770,520)->save('upload/post/multi-image-post/'.$make_name);
+      $uploadPath = 'upload/post/multi-image-post/'.$make_name;
+
+      MultiImagePost::where('id',$id)->update([
+
+          'photo_name' => $uploadPath,
+          'updated_at' => Carbon::now(),
+
+      ]);
+
+      } // End Foreach 
+
+      $notif = array(
+          'message' => 'Property Multiple Image Updated Successfully',
+          'alert-type' => 'success'
+      );
+
+      return redirect()->back()->with($notif); 
+  }// End Method 
+
+  public function StoreNewMultiImagePost(Request $request){
+
+    $new_multi = $request->imageId;
+    $image = $request->file('multi_image');
+
+    $make_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+    Image::make($image)->resize(770,520)->save('upload/post/multi-image-post/'.$make_name);
+    $uploadPath = 'upload/post/multi-image-post/'.$make_name;
+
+    MultiImagePost::insert([
+
+        'post_id' => $new_multi,
+        'photo_name' => $uploadPath,
+        'created_at' => Carbon::now(),
+
+    ]);
+
+    $notif = array(
+        'message' => 'Post Multiple Image Added Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->back()->with($notif); 
+    
+}// End StoreNewMultiImage
 
     public function BlogDetails($slug){
 

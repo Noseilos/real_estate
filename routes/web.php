@@ -192,6 +192,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::post('/store/post', 'StorePost')->name('store.post');
         Route::get('/edit/post/{id}', 'EditPost')->name('edit.post')->middleware('permission:post.edit');
         Route::post('/update/post', 'UpdatePost')->name('update.post');
+        Route::post('/update/post/multi-image', 'UpdatePostMultiImage')->name('update.post.multiImage');
+        Route::post('/store/new/post/multi-image', 'StoreNewMultiImagePost')->name('store.new.multiImagePost');
+        Route::get('/delete/post/multi-image/{id}', 'DeletePostMulti')->name('delete.post.multiImage');
         Route::get('/delete/post/{id}', 'DeletePost')->name('delete.post')->middleware('permission:post.delete');
     });// END Blog (post) Controller
 
