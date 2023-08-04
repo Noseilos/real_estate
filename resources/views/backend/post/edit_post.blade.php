@@ -51,9 +51,7 @@
                                 <div class="col-sm-12">
                                     <div class="mb-3">
                                         <label class="form-label">Short Description</label>
-                                        <textarea name="short_descp" class="form-control" id="exampleFormControlTextarea1" rows="3">
- {{ $post->short_descp }} 
-          </textarea>
+                                        <textarea name="short_descp" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $post->short_descp }}</textarea>
 
                                     </div>
                                 </div><!-- Col -->
@@ -64,10 +62,7 @@
                                     <div class="mb-3">
                                         <label class="form-label">Long Description</label>
 
-                                        <textarea name="long_descp" class="form-control" name="tinymce" id="tinymceExample" rows="10">
- {!! $post->long_descp !!} 
-
-                </textarea>
+                                        <textarea name="long_descp" class="form-control" name="tinymce" id="tinymceExample" rows="10">{!! $post->long_descp !!}</textarea>
 
                                     </div>
                                 </div><!-- Col -->
@@ -105,9 +100,6 @@
                 </div>
             </div>
             <!-- middle wrapper end -->
-            <!-- right wrapper start -->
-
-            <!-- right wrapper end -->
         </div>
 
     </div>

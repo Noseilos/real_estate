@@ -162,6 +162,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::post('/store/state', 'StoreState')->name('store.state');
         Route::get('/edit/state/{id}', 'EditState')->name('edit.state')->middleware('permission:state.edit');
         Route::post('/update/state', 'UpdateState')->name('update.state');
+        Route::post('/update/state/multi-image', 'UpdateStateMultiImage')->name('update.state.multiImage');
+        Route::post('/store/new/state/multi-image', 'StoreNewMultiImageState')->name('store.new.multiImageState');
+        Route::get('/delete/state/multi-image/{id}', 'DeleteStateMulti')->name('delete.state.multiImage');
         Route::get('/delete/state/{id}', 'DeleteState')->name('delete.state')->middleware('permission:state.delete');
     }); // END State Controller
 
