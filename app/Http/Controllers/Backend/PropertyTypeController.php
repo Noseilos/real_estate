@@ -3,31 +3,30 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\PropertyType;
 use App\Models\Amenities;
+use App\Models\PropertyType;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Carbon\Carbon;
 
 class PropertyTypeController extends Controller
 {
-    public function AllPropertyType(){
+    public function AllPropertyType()
+    {
 
         $types = PropertyType::latest()->get();
         return view('backend.type.all_type', compact('types'));
-        
-    }// End AllPropertyType
 
+    } // End AllPropertyType
 
-
-
-    public function AddPropertyType(){
+    public function AddPropertyType()
+    {
 
         return view('backend.type.add_type');
-    }// End AddPropertyType
+    } // End AddPropertyType
 
-
-
-
-    public function StorePropertyType(Request $request){
+    public function StorePropertyType(Request $request)
+    {
 
         $request->validate([
 
@@ -38,54 +37,47 @@ class PropertyTypeController extends Controller
         PropertyType::insert([
 
             'type_name' => $request->type_name,
-            'type_icon' => $request->type_icon
+            'type_icon' => $request->type_icon,
         ]);
 
         $notif = array(
             'message' => 'Property Type Created Successfully',
             'alert-type' => 'success',
         );
-        
+
         return redirect()->route('all.type')->with($notif);
 
-    }// End StorePropertyType
+    } // End StorePropertyType
 
-
-
-
-    public function EditPropertyType($id){
+    public function EditPropertyType($id)
+    {
 
         $types = PropertyType::findOrFail($id);
 
         return view('backend.type.edit_type', compact('types'));
-    }// End EditPropertyType
+    } // End EditPropertyType
 
-
-
-
-    public function UpdatePropertyType(Request $request){
+    public function UpdatePropertyType(Request $request)
+    {
 
         $ptype_id = $request->id;
-
 
         PropertyType::findOrFail($ptype_id)->update([
 
             'type_name' => $request->type_name,
-            'type_icon' => $request->type_icon
+            'type_icon' => $request->type_icon,
         ]);
 
         $notif = array(
             'message' => 'Property Type Updated Successfully',
             'alert-type' => 'success',
         );
-        
+
         return redirect()->route('all.type')->with($notif);
-    }// End UpdatePropertyType
+    } // End UpdatePropertyType
 
-
-
-
-    public function DeletePropertyType($id){
+    public function DeletePropertyType($id)
+    {
 
         PropertyType::findOrFail($id)->delete();
 
@@ -93,87 +85,104 @@ class PropertyTypeController extends Controller
             'message' => 'Property Type Deleted Successfully',
             'alert-type' => 'success',
         );
-        
+
         return redirect()->back()->with($notif);
-    }// End DeletePropertyType
-
-
+    } // End DeletePropertyType
 
     // **************************** All Amenities ****************************
 
-    
-
-
-
-
-    public function AllAmenities(){
+    public function AllAmenities()
+    {
 
         $amenities = Amenities::latest()->get();
         return view('backend.amenities.all_amenities', compact('amenities'));
 
-    }// End AllAmenities
+    } // End AllAmenities
 
+    public function AddAmenities()
+    {
 
-
-
-    public function AddAmenities(){
-        
         return view('backend.amenities.add_amenities');
-    }// End AddAmenities
+    } // End AddAmenities
 
+    public function StoreAmenities(Request $request)
+    {
 
+        $image = $request->file('amenities_image');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(370, 250)->save('upload/amenities/' . $name_gen);
+        $save_url = 'upload/amenities/' . $name_gen;
 
-
-    public function StoreAmenities(Request $request){
-
-        Amenities::insert([
+        $amenities_id = Amenities::insertGetId([
 
             'amenities_name' => $request->amenities_name,
+            'amenities_image' => $save_url,
+            'created_at' => Carbon::now(),
         ]);
 
         $notif = array(
             'message' => 'Amenity Created Successfully',
             'alert-type' => 'success',
         );
-        
+
         return redirect()->route('all.amenities')->with($notif);
 
-    }// End StoreAmenities
+    } // End StoreAmenities
 
-
-
-
-    public function EditAmenities($id){
+    public function EditAmenities($id)
+    {
 
         $amenities = Amenities::findOrFail($id);
         return view('backend.amenities.edit_amenities', compact('amenities'));
-    }// End EditAmenities
+    } // End EditAmenities
 
+    public function UpdateAmenities(Request $request)
+    {
 
-
-
-    public function UpdateAmenities(Request $request){
-        
         $amenity_id = $request->id;
+        $oldImage = $request->old_image;
 
+        if ($request->file('amenities_image')) {
 
-        Amenities::findOrFail($amenity_id)->update([
+            if (file_exists($oldImage)) {
+                unlink($oldImage);
+            }
+            
+            $image = $request->file('amenities_image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(370, 275)->save('upload/amenities/' . $name_gen);
+            $save_url = 'upload/amenities/' . $name_gen;
 
-            'amenities_name' => $request->amenities_name,
-        ]);
+            Amenities::findOrFail($amenity_id)->update([
+                'amenities_name' => $request->amenities_name,
+                'amenities_image' => $save_url,
+            ]);
 
-        $notif = array(
-            'message' => 'Amenity Updated Successfully',
-            'alert-type' => 'success',
-        );
-        
-        return redirect()->route('all.amenities')->with($notif);
-    }// End UpdateAmenities
+            $notification = array(
+                'message' => 'Amenities Updated with Image Successfully',
+                'alert-type' => 'success',
+            );
 
+            return redirect()->route('all.amenities')->with($notification);
 
+        } else {
 
+            Amenities::findOrFail($amenity_id)->update([
+                'amenities_name' => $request->amenities_name,
+            ]);
 
-    public function DeleteAmenities($id){
+            $notification = array(
+                'message' => 'Amenities Updated without Image Successfully',
+                'alert-type' => 'success',
+            );
+
+            return redirect()->route('all.amenities')->with($notification);
+
+        }
+    } // End UpdateAmenities
+
+    public function DeleteAmenities($id)
+    {
 
         Amenities::findOrFail($id)->delete();
 
@@ -181,8 +190,8 @@ class PropertyTypeController extends Controller
             'message' => 'Amenity Deleted Successfully',
             'alert-type' => 'success',
         );
-        
+
         return redirect()->route('all.amenities')->with($notif);
-    }// End DeleteAmenities
+    } // End DeleteAmenities
 
 }

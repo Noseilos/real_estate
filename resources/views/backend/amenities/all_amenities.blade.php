@@ -22,6 +22,7 @@
           <tr>
             <th>Serial#</th>
             <th>Amenity name</th>
+            <th>Amenity Image</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -32,6 +33,7 @@
             <tr>
                 <td>{{ $key+1 }}</td>
                 <td>{{ $item->amenities_name }}</td>
+                <td><img src="{{ asset($item->amenities_image) }}" style="width:60px;height: 60px;"> </td>
                 <td>
                   @if (Auth::user()->can('amenities.edit'))
                     <a href="{{ route('edit.amenities', $item->id)}}" class="btn btn-outline-warning">Edit</a>
