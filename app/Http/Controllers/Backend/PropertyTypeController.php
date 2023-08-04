@@ -205,4 +205,12 @@ class PropertyTypeController extends Controller
         return redirect()->route('all.amenities')->with($notif);
     } // End DeleteAmenities
 
+    public function AmenityList()
+    {
+
+        $amenities = Amenities::latest()->get();
+        return view('frontend.amenities.amenities_list', compact('amenities'));
+
+    } // End Method
+
 }

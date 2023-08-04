@@ -343,6 +343,9 @@ Route::post('/rent/property/search', [IndexController::class, 'RentPropertySeach
 // All Property Seach Option
 Route::post('/all/property/search', [IndexController::class, 'AllPropertySeach'])->name('all.property.search');
 
+// AMENITIES ROUTE
+Route::get('/amenities', [PropertyTypeController::class, 'AmenityList'])->name('amenity.list');
+
 // Blog Details Route 
 Route::get('/blog/details/{id}/{slug}', [BlogController::class, 'BlogDetails']);
 Route::get('/blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
