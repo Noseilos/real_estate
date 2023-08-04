@@ -15,6 +15,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\MultiImageState;
 
 class IndexController extends Controller
 {
@@ -175,8 +176,9 @@ class IndexController extends Controller
 
         $property = Property::where('status', '1')->where('state', $id)->get();
         $bstate = State::where('id', $id)->first();
+        $multiImage = MultiImageState::where('state_id', $id)->get();
 
-        return view('frontend.property.state_property', compact('property', 'bstate'));
+        return view('frontend.property.state_property', compact('property', 'bstate', 'multiImage'));
 
     } // End StateDetails
 
