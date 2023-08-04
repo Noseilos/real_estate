@@ -217,6 +217,14 @@ class PropertyTypeController extends Controller
 
         Amenities::findOrFail($id)->delete();
 
+        $multi_image = MultiImageAmenities::where('amenity_id', $id)->get();
+
+        foreach ($multi_image as $image) {
+            
+            unlink($image->photo_name);
+            MultiImageAmenities::where('amenity_id', $id)->delete();
+        }
+
         $notif = array(
             'message' => 'Amenity Deleted Successfully',
             'alert-type' => 'success',
@@ -304,6 +312,23 @@ class PropertyTypeController extends Controller
 
         $amenities = Amenities::latest()->get();
         return view('frontend.amenities.amenities_list', compact('amenities'));
+
+    } // End Method
+
+    public function AmenityDetails($id)
+    {
+
+        // $blog = BlogPost::where('post_slug', $slug)->first();
+
+        // $tags = $blog->post_tags;
+        // $tags_all = explode(',', $tags);
+
+        // $bcategory = BlogCategory::latest()->get();
+        // $dpost = BlogPost::latest()->limit(3)->get();
+        $amenities = Amenities::where('id', $id)->first();
+        $multiImage = MultiImageAmenities::where('amenity_id', $id)->get();
+
+        return view('frontend.amenities.amenities_details', compact('amenities', 'multiImage'));
 
     } // End Method
 

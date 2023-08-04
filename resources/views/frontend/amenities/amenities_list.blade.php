@@ -35,13 +35,13 @@
                     <div class="news-block-two wow fadeInLeft animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="inner-box align-items-center">
                             <div class="image-box">
-                                <figure class="image"><a href="blog-details.html"><img src="{{ asset($item->amenities_image) }}" alt=""></a></figure>
+                                <figure class="image"><a href="{{ url('amenity/details/'.$item->id) }}"><img src="{{ asset($item->amenities_image) }}" alt=""></a></figure>
                             </div>
                             <div class="content-box">
-                                <h4><a href="blog-details.html">{{ $item->amenities_name }}</a></h4>
+                                <h4><a href="{{ url('amenity/details/'.$item->id) }}">{{ $item->amenities_name }}</a></h4>
                                 <p>{{ $item->short_desc }}</p>
                                 <div class="btn-box">
-                                    <a href="blog-details.html" class="theme-btn btn-two">See Details</a>
+                                    <a href="{{ url('amenity/details/'.$item->id) }}" class="theme-btn btn-two">See Details</a>
                                 </div>
                             </div>
                         </div>

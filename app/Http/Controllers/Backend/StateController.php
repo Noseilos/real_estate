@@ -198,6 +198,14 @@ class StateController extends Controller
 
         State::findOrFail($id)->delete();
 
+        $multi_image = MultiImageState::where('state_id', $id)->get();
+
+        foreach ($multi_image as $image) {
+            
+            unlink($image->photo_name);
+            MultiImageState::where('state_id', $id)->delete();
+        }
+
         $notification = array(
             'message' => 'State Deleted Successfully',
             'alert-type' => 'success',

@@ -1,7 +1,7 @@
 @extends('frontend.frontend_dashboard')
 @section('main')
 @section('title')
-    {{ $blog->post_title }} | Easy RealEstate
+    {{ $blog->post_title }} | Tahanan Real Estate
 @endsection
 
 
