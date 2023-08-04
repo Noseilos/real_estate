@@ -75,6 +75,95 @@
 
     </div>
 
+    <!--  /// Multi Image Update //// -->
+
+    <div class="page-content" style="margin-top: -35px;">
+
+        <div class="row profile-body">
+            <div class="col-md-12 col-xl-12 middle-wrapper">
+                <div class="row">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title"> Edit Multiple Images</h6>
+
+                            <form method="post" action="{{ route('update.amenity.multiImage') }}" id="myForm"
+                                enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Serial Number</th>
+                                                <th>Image</th>
+                                                <th>Change Image </th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($multiImage as $key => $img)
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td class="py-1">
+                                                        <img src="{{ asset($img->photo_name) }}" alt="image"
+                                                            style="width:60px; height:60px;">
+                                                    </td>
+
+                                                    <td>
+                                                        <input type="file" class="form-control"
+                                                            name="multi_image[{{ $img->id }}]">
+                                                    </td>
+
+                                                    <td>
+                                                        <input type="submit" class="btn btn-primary px-4"
+                                                            value="Update Image">
+                                                        <a href="{{ route('delete.amenity.multiImage', $img->id) }}"
+                                                            class="btn btn-danger" id="delete">Delete</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+
+
+
+
+                            <form method="POST" action="{{ route('store.new.multiImageAmenity') }}" id="myForm"
+                                enctype="multipart/form-data">
+                                @csrf
+
+                                <input type="hidden" name="imageId" value="{{ $amenities->id }}">
+
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="file" class="form-control" name="multi_image">
+                                            </td>
+
+                                            <td>
+                                                <input type="submit" class="btn btn-info px-4" value="Add Image">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  /// End Multi Image Update //// -->
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#myForm').validate({

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MultiImageState extends Model
+class MultiImageAmenities extends Model
 {
     use HasFactory;
     protected $guarded = [];

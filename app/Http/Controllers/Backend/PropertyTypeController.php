@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Amenities;
+use App\Models\MultiImageAmenities;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -113,7 +114,7 @@ class PropertyTypeController extends Controller
         Image::make($image)->resize(370, 250)->save('upload/amenities/' . $name_gen);
         $save_url = 'upload/amenities/' . $name_gen;
 
-        $amenities_id = Amenities::insertGetId([
+        $amenity_id = Amenities::insertGetId([
 
             'amenities_name' => $request->amenities_name,
             'short_desc' => $request->short_desc,
@@ -121,6 +122,24 @@ class PropertyTypeController extends Controller
             'amenities_image' => $save_url,
             'created_at' => Carbon::now(),
         ]);
+
+        /// Multiple Image Upload From Here ////
+
+        $images = $request->file('multi_images');
+        foreach ($images as $img) {
+
+            $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            Image::make($img)->resize(770, 520)->save('upload/amenities/multi-image-amenities/' . $make_name);
+            $uploadPath = 'upload/amenities/multi-image-amenities/' . $make_name;
+
+            MultiImageAmenities::insert([
+
+                'amenity_id' => $amenity_id,
+                'photo_name' => $uploadPath,
+                'created_at' => Carbon::now(),
+
+            ]);
+        } // End Foreach
 
         $notif = array(
             'message' => 'Amenity Created Successfully',
@@ -135,7 +154,8 @@ class PropertyTypeController extends Controller
     {
 
         $amenities = Amenities::findOrFail($id);
-        return view('backend.amenities.edit_amenities', compact('amenities'));
+        $multiImage = MultiImageAmenities::where('amenity_id', $id)->get();
+        return view('backend.amenities.edit_amenities', compact('amenities', 'multiImage'));
     } // End EditAmenities
 
     public function UpdateAmenities(Request $request)
@@ -204,6 +224,80 @@ class PropertyTypeController extends Controller
 
         return redirect()->route('all.amenities')->with($notif);
     } // End DeleteAmenities
+
+    public function StoreNewMultiImageAmenity(Request $request)
+    {
+
+        $new_multi = $request->imageId;
+        $image = $request->file('multi_image');
+
+        $make_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(770, 520)->save('upload/amenities/multi-image-amenities/' . $make_name);
+        $uploadPath = 'upload/amenities/multi-image-amenities/' . $make_name;
+
+        MultiImageAmenities::insert([
+
+            'amenity_id' => $new_multi,
+            'photo_name' => $uploadPath,
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        $notif = array(
+            'message' => 'Amenity Multiple Image Added Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notif);
+
+    } // End StoreNewMultiImage
+
+    public function UpdateAmenityMultiImage(Request $request)
+    {
+
+        $images = $request->multi_image;
+
+        foreach ($images as $id => $img) {
+            $imgDelete = MultiImageAmenities::findOrFail($id);
+            unlink($imgDelete->photo_name);
+
+            $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            Image::make($img)->resize(770, 520)->save('upload/amenities/multi-image-amenities/' . $make_name);
+            $uploadPath = 'upload/amenities/multi-image-amenities/' . $make_name;
+
+            MultiImageAmenities::where('id', $id)->update([
+
+                'photo_name' => $uploadPath,
+                'updated_at' => Carbon::now(),
+
+            ]);
+
+        } // End Foreach
+
+        $notif = array(
+            'message' => 'Amenity Multiple Image Updated Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notif);
+    } // End Method
+
+    public function DeleteAmenityMulti($id)
+    {
+
+        $old_image = MultiImageAmenities::findOrFail($id);
+        unlink($old_image->photo_name);
+
+        MultiImageAmenities::findOrFail($id)->delete();
+
+        $notif = array(
+            'message' => 'Amenity Multiple Image Deleted Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notif);
+
+    } // End Method
 
     public function AmenityList()
     {

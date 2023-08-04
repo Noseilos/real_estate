@@ -50,7 +50,7 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="col-sm-6">
+                                <div class="col-sm-6">
                                     <div class="form-group mb-3">
                                         <label class="form-label">Multiple Images</label>
                                         <input type="file" name="multi_images[]" id="multiImg" multiple=""
@@ -58,7 +58,7 @@
                                         <div class="row" id="preview_img">
                                         </div>
                                     </div>
-                                </div><!-- Col --> --}}
+                                </div><!-- Col -->
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label"> </label>

@@ -118,6 +118,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::post('/store/amenities', 'StoreAmenities')->name('store.amenities');
         Route::get('/edit/amenities/{id}', 'EditAmenities')->name('edit.amenities')->middleware('permission:amenities.edit');
         Route::post('/update/amenities', 'UpdateAmenities')->name('update.amenities');
+        Route::post('/store/new/amenities/multi-image', 'StoreNewMultiImageAmenity')->name('store.new.multiImageAmenity');
+        Route::post('/update/amenities/multi-image', 'UpdateAmenityMultiImage')->name('update.amenity.multiImage');
+        Route::get('/delete/amenities/multi-image/{id}', 'DeleteAmenityMulti')->name('delete.amenity.multiImage');
         Route::get('/delete/amenities/{id}', 'DeleteAmenities')->name('delete.amenities')->middleware('permission:amenities.delete');
     }); // END Amenities
 
