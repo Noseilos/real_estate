@@ -7,7 +7,7 @@ $ptypes = App\Models\PropertyType::latest()->get();
     <div class="auto-container">
         <div class="inner-container">
             <div class="content-box centred">
-                <h2>Create Lasting Wealth Through Tahanan</h2>
+                <h2>Bumili ng Tirahan, Bumuo ng Tahanan</h2>
                 <p>We're here to make your home buying or selling experience as smooth as possible.</p>
             </div>
             <div class="search-field">
