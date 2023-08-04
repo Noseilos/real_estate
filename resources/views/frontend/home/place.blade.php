@@ -18,7 +18,7 @@ $property_3 = App\Models\Property::where('state',$skip_state_3->id)->get();
         <div class="sec-title centred">
             <h5>Top Places</h5>
             <h2>Most Popular Places</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing sed do eiusmod tempor incididunt <br />labore dolore magna aliqua enim.</p>
+            <p>Explore a diverse array of iconic locations that capture the hearts of investors and homebuyers alike.</p>
         </div>
         <div class="sortable-masonry">
             <div class="items-container row clearfix">
