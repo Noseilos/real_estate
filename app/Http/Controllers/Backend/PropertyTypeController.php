@@ -116,6 +116,8 @@ class PropertyTypeController extends Controller
         $amenities_id = Amenities::insertGetId([
 
             'amenities_name' => $request->amenities_name,
+            'short_desc' => $request->short_desc,
+            'long_desc' => $request->long_desc,
             'amenities_image' => $save_url,
             'created_at' => Carbon::now(),
         ]);
@@ -155,7 +157,10 @@ class PropertyTypeController extends Controller
 
             Amenities::findOrFail($amenity_id)->update([
                 'amenities_name' => $request->amenities_name,
+                'short_desc' => $request->short_desc,
+                'long_desc' => $request->long_desc,
                 'amenities_image' => $save_url,
+                'updated_at' => Carbon::now(),
             ]);
 
             $notification = array(
@@ -169,6 +174,9 @@ class PropertyTypeController extends Controller
 
             Amenities::findOrFail($amenity_id)->update([
                 'amenities_name' => $request->amenities_name,
+                'short_desc' => $request->short_desc,
+                'long_desc' => $request->long_desc,
+                'updated_at' => Carbon::now(),
             ]);
 
             $notification = array(
@@ -183,6 +191,9 @@ class PropertyTypeController extends Controller
 
     public function DeleteAmenities($id)
     {
+
+        $amenities = Amenities::findOrFail($id);
+        unlink($amenities->amenities_image);
 
         Amenities::findOrFail($id)->delete();
 

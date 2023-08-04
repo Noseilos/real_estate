@@ -9,7 +9,7 @@
 
             <!-- left wrapper end -->
             <!-- middle wrapper start -->
-            <div class="col-md-8 col-xl-8 middle-wrapper">
+            <div class="col-md-12 col-xl-12 middle-wrapper">
                 <div class="row">
                     <div class="card">
                         <div class="card-body">
@@ -29,6 +29,27 @@
                                         value="{{ $amenities->amenities_name }}">
 
                                 </div>
+
+
+
+                                <div class="col-sm-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Short Description</label>
+                                        <textarea name="short_desc" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $amenities->short_desc }}</textarea>
+
+                                    </div>
+                                </div><!-- Col -->
+
+
+
+                                <div class="col-sm-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Long Description</label>
+
+                                        <textarea name="long_desc" class="form-control" name="tinymce" id="tinymceExample" rows="10">{!! $amenities->long_desc !!}</textarea>
+
+                                    </div>
+                                </div><!-- Col -->
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Amenity Photo </label>
