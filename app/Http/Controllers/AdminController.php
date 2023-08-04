@@ -8,12 +8,32 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Models\PropertyType;
+use App\Models\Property;
+use App\Models\Wishlist;
 
 class AdminController extends Controller
 {
     public function AdminDashboard(){
+
+        $getData = PropertyType::select('type_name')->withCount('property as Property')->get();
+        $propertyTypeData = $getData->mapWithKeys(function($item, $key){
+            return [$item->type_name => $item->Property];
+        });
+
+        $getSched = Property::select('property_name as Property')->withCount('schedule as Schedule')->get();
+        $propertySchedData = $getSched->mapWithKeys(function($item, $key){
+            return [$item->Property => $item->Schedule];
+        });
+
+        $getWish = User::select('name as User')->withCount('wishes as Wish')->get();
+        $propertyWishData = $getWish->mapWithKeys(function($item, $key){
+            return [$item->User => $item->Wish];
+        });
         
-        return view('admin.index');
+
+        return view('admin.index', compact('propertyTypeData', 'propertySchedData', 'propertyWishData'));
+
     } // END AdminDashboard
 
 

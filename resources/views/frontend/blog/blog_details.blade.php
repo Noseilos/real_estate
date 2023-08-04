@@ -27,8 +27,23 @@
 
 
 <!-- sidebar-page-container -->
-<section class="sidebar-page-container blog-details sec-pad-2">
+<section class="property-details property-details-one">
     <div class="auto-container">
+        <div class="top-details clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 content-side">
+                <div class="property-details-content">
+                    <div class="carousel-inner">
+                        <div class="single-item-carousel owl-carousel owl-theme owl-dots-none">
+
+                            @foreach ($multiImage as $image)
+                                <figure class="image-box"><img src="{{ asset($image->photo_name) }}" alt="">
+                                </figure>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row clearfix">
             <div class="col-lg-8 col-md-12 col-sm-12 content-side">
                 <div class="blog-details-content">

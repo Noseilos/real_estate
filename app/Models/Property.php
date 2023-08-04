@@ -20,4 +20,8 @@ class Property extends Model
     public function pstate(){
         return $this->belongsTo(State::class,'state','id');
     }
+
+    public function schedule(){
+        return $this->hasMany(Schedule::class, 'property_id', 'id');
+    }
 }

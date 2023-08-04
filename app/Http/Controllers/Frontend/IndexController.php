@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
+    public function PropertyCategory(){
+
+        $property_type = PropertyType::latest()->get();
+
+        return view('frontend.property.category_property', compact('property_type'));
+        
+    }// END PropertyCategory
+
     public function PropertyDetails($id, $slug)
     {
 

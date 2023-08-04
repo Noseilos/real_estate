@@ -192,6 +192,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::post('/store/post', 'StorePost')->name('store.post');
         Route::get('/edit/post/{id}', 'EditPost')->name('edit.post')->middleware('permission:post.edit');
         Route::post('/update/post', 'UpdatePost')->name('update.post');
+        Route::post('/update/post/multi-image', 'UpdatePostMultiImage')->name('update.post.multiImage');
+        Route::post('/store/new/post/multi-image', 'StoreNewMultiImagePost')->name('store.new.multiImagePost');
+        Route::get('/delete/post/multi-image/{id}', 'DeletePostMulti')->name('delete.post.multiImage');
         Route::get('/delete/post/{id}', 'DeletePost')->name('delete.post')->middleware('permission:post.delete');
     });// END Blog (post) Controller
 
@@ -295,6 +298,10 @@ Route::post('/agent/register', [AgentController::class, 'AgentRegister'])->name(
 
 // ------------ FRONTEND PROPERTY DETAILS ROUTE ------------ //
 
+// PROPERTY CATEGORIES
+Route::get('/category/property', [IndexController::class, 'PropertyCategory'])->name('category.property');
+
+// PROPERTY DETAILS
 Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDetails']);
 
 // ADD TO WISHLIST
@@ -334,7 +341,7 @@ Route::post('/rent/property/search', [IndexController::class, 'RentPropertySeach
 Route::post('/all/property/search', [IndexController::class, 'AllPropertySeach'])->name('all.property.search');
 
 // Blog Details Route 
-Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
+Route::get('/blog/details/{id}/{slug}', [BlogController::class, 'BlogDetails']);
 Route::get('/blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
 Route::get('/blog', [BlogController::class, 'BlogList'])->name('blog.list');
 Route::post('/store/comment', [BlogController::class, 'StoreComment'])->name('store.comment');
