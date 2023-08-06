@@ -105,6 +105,8 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::controller(PropertyTypeController::class)->group(function () {
         Route::get('/all/type', 'AllPropertyType')->name('all.type')->middleware('permission:all.type');
         Route::get('/add/type', 'AddPropertyType')->name('add.type')->middleware('permission:add.type');
+        Route::get('/import/type', 'ImportPropertyType')->name('import.type')->middleware('permission:add.type');
+        Route::post('/type/import', 'TypeImport')->name('type.import');
         Route::post('/store/type', 'StorePropertyType')->name('store.type');
         Route::get('/edit/type/{id}', 'EditPropertyType')->name('edit.type')->middleware('permission:edit.type');
         Route::post('/update/type', 'UpdatePropertyType')->name('update.type');
