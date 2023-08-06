@@ -108,19 +108,19 @@
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label class="form-label">Address</label>
-                                        <input type="text" class="form-control" name="address">
+                                        <input type="text" name="address" class="form-control" >
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-3">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label class="form-label">City</label>
-                                        <input type="text" class="form-control" name="city">
+                                        <input type="text" name="city" class="form-control" >
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-3">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label class="form-label">State</label>
                                         <select name="state" class="form-select" id="exampleFormControlSelect1">
                                             <option selected="" disabled="">Select State</option>
@@ -132,9 +132,9 @@
                                 </div><!-- Col -->
 
                                 <div class="col-sm-3">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label class="form-label">Postal Code</label>
-                                        <input type="text" class="form-control" name="postal_code">
+                                        <input type="text" name="postal_code" class="form-control" >
                                     </div>
                                 </div><!-- Col -->
                             </div><!-- Row -->
@@ -188,7 +188,7 @@
 
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label class="form-label">Property Type</label>
                                         <select name="ptype_id" class="form-select" id="exampleFormControlSelect1">
 											<option selected="" disabled="">Select Type</option>
@@ -200,7 +200,7 @@
                                     </div>
                                 </div><!-- Col -->
                                 <div class="col-sm-4">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label class="form-label">Property Amenities</label>
                                         <select name="amenities_id[]" class="js-example-basic-multiple form-select" multiple="multiple" data-width="100%">
 
@@ -213,14 +213,14 @@
                                 </div><!-- Col -->
 
                                 <div class="col-sm-12">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label class="form-label">Short Description</label>
                                         <textarea name="short_desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
                                 </div><!-- Col -->
 
                                 <div class="col-sm-12">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label class="form-label">Long Description</label>
                                         <textarea name="long_desc" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
                                     </div>
@@ -294,6 +294,7 @@
 
 </div>
 
+{{-- // Start Form Validation //  --}}
 <script type="text/javascript">
     $(document).ready(function (){
         $('#myForm').validate({
@@ -310,10 +311,24 @@
                 max_price: {
                     required : true,
                 }, 
+                property_thumbnail: {
+                    required : true,
+                }, 
                 ptype_id: {
                     required : true,
                 }, 
-                
+                address: {
+                    required : true,
+                },
+                city: {
+                    required : true,
+                },
+                state: {
+                    required : true,
+                },
+                postal_code: {
+                    required : true,
+                },
             },
             messages :{
                 property_name: {
@@ -328,11 +343,27 @@
                 max_price: {
                     required : 'Please Enter Maximum Price',
                 }, 
+                property_thumbnail: {
+                    required : 'Please Select Property Thumbnail',
+                }, 
                 ptype_id: {
                     required : 'Please Enter Property Type',
                 }, 
-                 
-
+                address: {
+                    required : 'Please Enter an Address',
+                },
+                city: {
+                    required : 'Please Enter a City',
+                },
+                state: {
+                    required : 'Please Select a State',
+                },
+                postal_code: {
+                    required : 'Please Enter a Postal Code',
+                },
+                amenities_id: {
+                    required : 'Please Select Amenities',
+                },
             },
             errorElement : 'span', 
             errorPlacement: function (error,element) {
@@ -350,8 +381,10 @@
     
 </script>
 
-<script type="text/javascript">
+{{-- // End Form Validation //  --}}
 
+{{-- // Start Main Thumbnail //  --}}
+<script type="text/javascript">
     function mainThumUrl(input){
 
         if (input.files && input.files[0]) {
@@ -364,17 +397,17 @@
 
         }
     }
-
 </script>
+{{-- // End Main Thumbnail //  --}}
 
+{{-- // Start Multiple Image //  --}}
 <script> 
- 
     $(document).ready(function(){
      $('#multiImg').on('change', function(){ //on file input change
         if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
         {
             var data = $(this)[0].files; //this file data
-             
+            
             $.each(data, function(index, file){ //loop though each file
                 if(/(\.|\/)(gif|jpe?g|png|webp)$/i.test(file.type)){ //check supported file type
                     var fRead = new FileReader(); //new filereader
@@ -388,14 +421,13 @@
                     fRead.readAsDataURL(file); //URL representing the file's data.
                 }
             });
-             
         }else{
             alert("Your browser doesn't support File API!"); //if File API is absent
         }
-     });
     });
-     
+    });
 </script>
+{{-- // End Multiple Image //  --}}
 
 {{-- Adding multiple facilities with Ajax --}}
 

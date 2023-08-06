@@ -46,16 +46,17 @@
     <table width="100%" style="background: #390000; padding:0 20px 0 20px;">
         <tr>
             <td valign="top">
-            <img src="{{ asset('frontend/assets/images/logo3.png') }}" alt=""/>
-            {{-- <h2 style="color: #390000; font-size: 26px;"><strong>Tahanan</strong></h2> --}}
+            <br>
+            <img src="frontend/assets/images/logo4.png" alt=""/>    
+            {{-- <h2 style="color: #ffff; font-size: 26px;">Tahanan Real Estate</h2> --}}
             </td>
             <td align="right">
-                <pre class="font" >
-                Tahanan Real Estate
-                Email: support@tahananrealestate.com <br>
-                Contact No.: +6390945723657 <br>
-                Address:Km 14 East Service Road, Western Bicutan, <br> 
-                Taguig City, 1630, Philippines
+                <pre class="font" style="color: #ffff; font-size: 12px;">
+                Email: support@tahananrealestate.com
+                Contact No.: +6390945723657
+                Address: Km 14 East Service Road,
+                Western Bicutan, Taguig City,
+                1630, Philippines
                 </pre>
             </td>
         </tr>
@@ -117,8 +118,8 @@
         <p>Thanks For Subscribing!</p>
     </div>
     <div class="authority float-right mt-5">
-        <p>___________________________________</p>
-        <h5>Authority Signature:</h5>
+        <p>_____________________________</p>
+        <h5>  Authority Signature:</h5>
     </div>
 </body>
 </html>
