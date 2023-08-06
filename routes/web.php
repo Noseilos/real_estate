@@ -153,6 +153,8 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('/all/agent', 'AllAgent')->name('all.agent')->middleware('permission:agent.all');
         Route::get('/add/agent', 'AddAgent')->name('add.agent')->middleware('permission:agent.add');
+        Route::get('/import/agent', 'ImportAgent')->name('import.agent')->middleware('permission:agent.add');
+        Route::post('/agent/import', 'AgentImport')->name('agent.import');
         Route::post('/store/agent', 'StoreAgent')->name('store.agent');
         Route::get('/edit/agent/{id}', 'EditAgent')->name('edit.agent')->middleware('permission:agent.edit');
         Route::post('/update/agent', 'UpdateAgent')->name('update.agent');
