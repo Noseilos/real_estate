@@ -307,9 +307,11 @@
                 }, 
                 lowest_price: {
                     required : true,
+                    number: true,
                 }, 
                 max_price: {
                     required : true,
+                    number: true,
                 }, 
                 property_thumbnail: {
                     required : true,
@@ -328,6 +330,7 @@
                 },
                 postal_code: {
                     required : true,
+                    number: true,
                 },
                 agent_id: {
                     required : true,
