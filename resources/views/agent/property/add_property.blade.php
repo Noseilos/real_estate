@@ -329,6 +329,9 @@
                 postal_code: {
                     required : true,
                 },
+                agent_id: {
+                    required : true,
+                },
             },
             messages :{
                 property_name: {
@@ -350,19 +353,19 @@
                     required : 'Please Enter Property Type',
                 }, 
                 address: {
-                    required : 'Please Enter an Address',
+                    required : 'Please Enter Address',
                 },
                 city: {
-                    required : 'Please Enter a City',
+                    required : 'Please Enter City',
                 },
                 state: {
-                    required : 'Please Select a State',
+                    required : 'Please Select State',
                 },
                 postal_code: {
-                    required : 'Please Enter a Postal Code',
+                    required : 'Please Enter Postal Code',
                 },
-                amenities_id: {
-                    required : 'Please Select Amenities',
+                agent_id: {
+                    required : 'Please Select Agent',
                 },
             },
             errorElement : 'span', 
@@ -380,7 +383,6 @@
     });
     
 </script>
-
 {{-- // End Form Validation //  --}}
 
 {{-- // Start Main Thumbnail //  --}}
