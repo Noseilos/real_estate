@@ -10,6 +10,8 @@
             <button type="button" class="btn btn-inverse-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Add Category
             </button>
+            &nbsp; &nbsp; &nbsp;
+            <a href="{{ route('import.category') }}" class="btn btn-inverse-warning"> Import</a>
 					</ol>
 				</nav>
       @endif

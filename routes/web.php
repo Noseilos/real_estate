@@ -189,6 +189,8 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::controller(BlogController::class)->group(function () {
         Route::get('/all/blog/category', 'AllBlogCategory')->name('all.blog.category')->middleware('permission:category.all');
         Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+        Route::get('/import/category', 'ImportCategory')->name('import.category')->middleware('permission:category.edit');
+        Route::post('/import/import', 'CategoryImport')->name('category.import');
         Route::get('/blog/category/{id}', 'EditBlogCategory')->middleware('permission:category.edit');
         Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
         Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category')->middleware('permission:category.delete');

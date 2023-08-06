@@ -12,6 +12,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\BlogCategoryImport;
 
 class BlogController extends Controller
 {
@@ -40,6 +42,25 @@ class BlogController extends Controller
         return redirect()->route('all.blog.category')->with($notification);
 
     } // End Method
+
+    public function ImportCategory(){
+  
+      return view('backend.category.import_category');
+  
+    }// End Method 
+  
+    public function CategoryImport(Request $request){
+  
+      Excel::import(new BlogCategoryImport, $request->file('import_file'));
+  
+        $notification = array(
+        'message' => 'Blog Category Imported Successfully',
+        'alert-type' => 'success'
+      );
+  
+    return redirect()->back()->with($notification);
+  
+    }// End Method 
 
     public function EditBlogCategory($id)
     {
