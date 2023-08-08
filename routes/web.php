@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\ChatController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\CompareController;
+use App\Http\Controllers\Frontend\AutoSearchController;
 
 
 
@@ -351,6 +352,9 @@ Route::post('/rent/property/search', [IndexController::class, 'RentPropertySeach
 
 // All Property Seach Option
 Route::post('/all/property/search', [IndexController::class, 'AllPropertySeach'])->name('all.property.search');
+
+// All Property Seach Option
+Route::get('/autocomplete-search', [IndexController::class, 'autocompleteSearch'])->name('autocomplete-search');
 
 // AMENITIES ROUTE
 Route::get('/amenities', [PropertyTypeController::class, 'AmenityList'])->name('amenity.list');

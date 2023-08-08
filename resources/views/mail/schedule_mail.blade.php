@@ -121,7 +121,7 @@
 												<td class="tbrr p30-15" style="padding: 60px 30px; border-radius:26px 26px 0px 0px;" bgcolor="#A25F5E">
 													<table width="100%" border="0" cellspacing="0" cellpadding="0">
 														<tr>
-															<td class="h1 pb25" style="color:#000000; font-family: 'Oleo Script', cursive; font-weight: 400;font-size:60px; line-height:46px; text-align:center; padding-bottom:25px;">Welcome!</td>
+															<td class="h1 pb25" style="color:#000000; font-family: 'Oleo Script', cursive; font-weight: 400;font-size:60px; line-height:46px; text-align:center; padding-bottom:25px;">Mabuhay!</td>
 														</tr>
 														<tr>
 															<td class="text-center pb25" style="color:#c1cddc; font-family: 'Montserrat', sans-serif; font-size:14px; line-height:30px; text-align:center; padding-bottom:25px;">Explore our carefully curated selection of featured properties, <span class="m-hide"><br /></span>showcasing the finest homes and investment opportunities in the market.</td>
