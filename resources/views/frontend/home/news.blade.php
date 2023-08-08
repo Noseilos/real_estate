@@ -38,8 +38,8 @@
                                     <p> {{ $item->short_descp }}</p>
                                 </div>
                                 <div class="btn-box">
-                                    <a href="{{ url('blog/details/' . $item->post_slug) }}" class="theme-btn btn-two">See
-                                        Details</a>
+                                    <a href="{{ url('blog/details/'.$item->id.'/'.$item->post_slug) }}"
+                                        class="theme-btn btn-two">See Details</a>
                                 </div>
                             </div>
                         </div>
