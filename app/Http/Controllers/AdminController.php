@@ -11,6 +11,8 @@ use Spatie\Permission\Models\Permission;
 use App\Models\PropertyType;
 use App\Models\Property;
 use App\Models\Wishlist;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\AgentImport;
 
 class AdminController extends Controller
 {
@@ -203,6 +205,25 @@ class AdminController extends Controller
         return redirect()->route('all.agent')->with($notif);
 
     }// END StoreAgent
+
+    public function ImportAgent(){
+
+        return view('backend.agents.import_agent');
+
+    }// End Method 
+
+    public function AgentImport(Request $request){
+
+        Excel::import(new AgentImport, $request->file('import_file'));
+
+        $notification = array(
+        'message' => 'Agent Details Imported Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->back()->with($notification);
+
+    }// End Method 
 
 
 

@@ -10,6 +10,8 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <a href="{{ route('add.agent')}}" class="btn btn-inverse-info">Add Agent</a>
+            &nbsp; &nbsp; &nbsp;
+            <a href="{{ route('import.agent') }}" class="btn btn-inverse-warning"> Import</a>
         </ol>
     </nav>
   @endif

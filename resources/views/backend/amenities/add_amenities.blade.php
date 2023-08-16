@@ -13,35 +13,30 @@
 
                             <h6 class="card-title">Add Amenity</h6>
 
-                            <form id="myForm" method="POST" action="{{ route('store.amenities') }}" class="forms-sample" enctype="multipart/form-data">
+                            <form id="amenitiesForm" method="POST" action="{{ route('store.amenities') }}" class="forms-sample" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group mb-3">
                                     <label for="amenities_name" class="form-label">Amenity Name</label>
                                     <input name="amenities_name" type="text" class="form-control" autocomplete="off">
-
                                 </div>
 
-
                                 <div class="col-sm-12">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label class="form-label">Short Description</label>
                                         <textarea name="short_desc" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 
                                     </div>
                                 </div><!-- Col -->
 
-
-
                                 <div class="col-sm-12">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label class="form-label">Long Description</label>
 
                                         <textarea name="long_desc" class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
 
                                     </div>
                                 </div><!-- Col -->
-
 
                                 <div class="col-sm-6">
                                     <div class="form-group mb-3">
@@ -79,21 +74,33 @@
 
     </div>
 
+    {{-- // Start Form Validation //  --}}
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#myForm').validate({
+            $('#amenitiesForm').validate({
                 rules: {
                     amenities_name: {
                         required: true,
+                        minlength: 5
                     },
-
+                    short_desc: {
+                        required: true,
+                    },
+                    amenities_image: {
+                        required: true,
+                    },
                 },
                 messages: {
                     amenities_name: {
                         required: 'Please Enter Amenity Name',
+                        minlength: 'Amenity name must consist of at least 5 characters.',
                     },
-
-
+                    short_desc: {
+                        required: 'Please Enter Short Description',
+                    },
+                    amenities_image: {
+                        required: 'Please Choose Amenity Image',
+                    },
                 },
                 errorElement: 'span',
                 errorPlacement: function(error, element) {
@@ -109,6 +116,7 @@
             });
         });
     </script>
+{{-- // End Form Validation //  --}}
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -122,6 +130,7 @@
         });
     </script>
 
+{{-- // Start Multiple Image //  --}}
     <script>
         $(document).ready(function() {
             $('#multiImg').on('change', function() { //on file input change
@@ -153,4 +162,5 @@
             });
         });
     </script>
+{{-- // End Multiple Image //  --}}
 @endsection

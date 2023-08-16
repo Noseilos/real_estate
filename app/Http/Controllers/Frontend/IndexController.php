@@ -170,6 +170,13 @@ class IndexController extends Controller
         return view('frontend.property.property_type', compact('property', 'rentProperty', 'buyProperty', 'property_read'));
 
     } // END PropertyType
+    
+    public function autocompleteSearch(Request $request)
+    {
+          $query = $request->get('query');
+          $filterResult = Property::where('property_name', 'LIKE', '%'. $query. '%')->get();
+          return response()->json($filterResult);
+    }
 
     public function StateDetails($id)
     {

@@ -2,11 +2,6 @@
 @section('agent')
 
 <div class="page-content">
-	<nav class="page-breadcrumb">
-		<ol class="breadcrumb">
-	        <a href="{{ route('agent.add.property') }}" class="btn btn-inverse-info"> Add Property</a>
-		</ol>
-	</nav>
 
 	<div class="row">
 		<div class="col-md-12 grid-margin stretch-card">

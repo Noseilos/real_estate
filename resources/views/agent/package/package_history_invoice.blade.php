@@ -28,12 +28,12 @@
     }
     .authority h5 {
         margin-top: -10px;
-        color: green;
+        color: #390000;
         /*text-align: center;*/
         margin-left: 35px;
     }
     .thanks p {
-        color: green;;
+        color: #390000;
         font-size: 16px;
         font-weight: normal;
         font-family: serif;
@@ -43,19 +43,20 @@
 </head>
 
 <body>
-    <table width="100%" style="background: #F7F7F7; padding:0 20px 0 20px;">
+    <table width="100%" style="background: #390000; padding:0 20px 0 20px;">
         <tr>
             <td valign="top">
-            <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-            <h2 style="color: green; font-size: 26px;"><strong>EasyShop</strong></h2>
+            <br>
+            <img src="frontend/assets/images/logo4.png" alt=""/>    
+            {{-- <h2 style="color: #ffff; font-size: 26px;">Tahanan Real Estate</h2> --}}
             </td>
             <td align="right">
-                <pre class="font" >
-                EasyShop Head Office
-                Email:support@easylearningbd.com <br>
-                Mob: 1245454545 <br>
-                Dhaka 1207,Dhanmondi:#4 <br>
-
+                <pre class="font" style="color: #ffff; font-size: 12px;">
+                Email: support@tahananrealestate.com
+                Contact No.: +6390945723657
+                Address: Km 14 East Service Road,
+                Western Bicutan, Taguig City,
+                1630, Philippines
                 </pre>
             </td>
         </tr>
@@ -78,7 +79,7 @@
             </td>
             <td>
             <p class="font">
-                <h3><span style="color: green;">Invoice:</span> #{{ $packageHistory->invoice }}</h3>
+                <h3><span style="color: #390000;">Invoice:</span> #{{ $packageHistory->invoice }}</h3>
                 Order Date: {{ $packageHistory->created_at }} <br> 
                 Payment Type : COD </span>
             </p>
@@ -90,7 +91,7 @@
     <h3>Property Package </h3>
 
     <table width="100%">
-        <thead style="background-color: green; color:#FFFFFF;">
+        <thead style="background-color: #390000; color:#FFFFFF;">
         <tr class="font">
 
         <th>Package Name </th>
@@ -117,8 +118,8 @@
         <p>Thanks For Subscribing!</p>
     </div>
     <div class="authority float-right mt-5">
-        <p>-----------------------------------</p>
-        <h5>Authority Signature:</h5>
+        <p>_____________________________</p>
+        <h5>  Authority Signature:</h5>
     </div>
 </body>
 </html>

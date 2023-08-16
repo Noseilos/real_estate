@@ -9,6 +9,8 @@ use App\Models\PropertyType;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
+use App\Imports\PropertyTypeImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PropertyTypeController extends Controller
 {
@@ -25,6 +27,25 @@ class PropertyTypeController extends Controller
 
         return view('backend.type.add_type');
     } // End AddPropertyType
+
+    public function ImportPropertyType(){
+
+        return view('backend.type.import_type');
+
+    }// End Method 
+
+    public function TypeImport(Request $request){
+
+        Excel::import(new PropertyTypeImport, $request->file('import_file'));
+
+        $notification = array(
+        'message' => 'Type Imported Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->back()->with($notification);
+
+    }// End Method 
 
     public function StorePropertyType(Request $request)
     {

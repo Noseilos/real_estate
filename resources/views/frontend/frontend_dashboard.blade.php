@@ -79,7 +79,7 @@
     </div>
 
 
-    <!-- jequery plugins -->
+    <!-- jquery plugins -->
     <script src="{{ asset('frontend/assets/js/jquery.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
