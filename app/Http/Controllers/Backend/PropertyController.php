@@ -21,12 +21,21 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class PropertyController extends Controller
 {
-    public function AllProperty(){
+    // public function AllProperty(){
 
-        $property = Property::latest()->get();
-        return view('backend.property.all_property', compact('property'));
+    //     $property = Property::latest()->get();
+    //     return view('backend.property.all_property', compact('property'));
 
-    }// End AllProperty
+    // }
+    
+    public function AllProperty()
+{
+    $property = Property::with(['type', 'user', 'pstate', 'schedule']) // Eager load multiple relationships
+                    ->latest()
+                    ->get();
+
+    return view('backend.property.all_property', compact('property'));
+}// End AllProperty
 
 
 
@@ -250,11 +259,6 @@ class PropertyController extends Controller
         return redirect()->back()->with($notif); 
 
     }// End Method 
-
-
-
-
-    
 
     public function UpdatePropertyMultiImage(Request $request){
 
