@@ -297,7 +297,7 @@ class BlogController extends Controller
         } // End Foreach
 
         $notif = array(
-            'message' => 'Property Multiple Image Updated Successfully',
+            'message' => 'Post Multiple Image Updated Successfully',
             'alert-type' => 'success',
         );
 

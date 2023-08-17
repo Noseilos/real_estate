@@ -184,6 +184,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/edit/testimonials/{id}', 'EditTestimonials')->name('edit.testimonials')->middleware('permission:testimonials.edit');
         Route::post('/update/testimonials', 'UpdateTestimonials')->name('update.testimonials');
         Route::get('/delete/testimonials/{id}', 'DeleteTestimonials')->name('delete.testimonials')->middleware('permission:testimonials.delete');
+        Route::post('/update/testimonial/multi-image', 'UpdateTestimonialMultiImage')->name('update.testimonial.multiImage');
+        Route::get('/delete/testimonial/multi-image/{id}', 'DeleteTestimonialMultiImage')->name('delete.testimonial.multiImage');
+        Route::post('/store/new/multi-image/testimonial', 'StoreNewMultiImageTestimonial')->name('store.new.multiImage.testimonial');
     }); // END Testimonial Controller
 
     // Blog Cateory All Route 
