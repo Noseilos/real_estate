@@ -21,6 +21,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\CompareController;
 use App\Http\Controllers\Frontend\AutoSearchController;
+use App\Http\Controllers\Frontend\TransactionController;
 
 
 
@@ -384,6 +385,8 @@ Route::post('/send-message', [ChatController::class, 'SendMsg'])->name('send.msg
 Route::get('/user-all', [ChatController::class, 'GetAllUsers']);
 Route::get('/user-message/{id}', [ChatController::class, 'UserMessageById']);
 Route::get('/agent/live/chat', [ChatController::class, 'AgentLiveChat'])->name('agent.live.chat');
+
+Route::post('/transaction/complete', [TransactionController::class, 'TransactComplete'])->name('transact.comp');
 
 
 
