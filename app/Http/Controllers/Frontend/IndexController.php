@@ -171,11 +171,12 @@ class IndexController extends Controller
 
     } // END PropertyType
     
+    //Laravel Scout Auto Complete Search
     public function autocompleteSearch(Request $request)
     {
-          $query = $request->get('query');
-          $filterResult = Property::where('property_name', 'LIKE', '%'. $query. '%')->get();
-          return response()->json($filterResult);
+        $query = $request->get('query');
+        $filterResult = Property::search($query)->get();
+        return response()->json($filterResult);
     }
 
     public function StateDetails($id)

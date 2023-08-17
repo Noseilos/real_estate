@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Property extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
     protected $guarded = [];
 
     public function type(){
@@ -24,4 +25,11 @@ class Property extends Model
     public function schedule(){
         return $this->hasMany(Schedule::class, 'property_id', 'id');
     }
+
+    public function toSearchableArray (){
+        return [
+            'property_name' => $this->property_name,
+        ];
+    }
+    
 }
