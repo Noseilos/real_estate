@@ -103,13 +103,22 @@ class BlogController extends Controller
         return redirect()->back()->with($notification);
     } // End Method
 
+    // public function AllPost()
+    // {
+
+    //     $post = BlogPost::latest()->get();
+    //     return view('backend.post.all_post', compact('post'));
+
+    // } // End Method
+
     public function AllPost()
-    {
+{
+    $post = BlogPost::with(['cat', 'user']) // Eager loading "cat" and "user" relationships
+                    ->latest()
+                    ->get();
 
-        $post = BlogPost::latest()->get();
-        return view('backend.post.all_post', compact('post'));
-
-    } // End Method
+    return view('backend.post.all_post', compact('post'));
+}
 
     public function AddPost()
     {
@@ -118,6 +127,8 @@ class BlogController extends Controller
         return view('backend.post.add_post', compact('blogcat'));
 
     } // End Method
+
+    
 
     public function StorePost(Request $request)
     {
