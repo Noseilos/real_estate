@@ -228,4 +228,22 @@ class TestimonialController extends Controller
 
     } // End Method
 
+    public function TestimonialList()
+    {
+
+        $testimonial = Testimonial::latest()->get();
+        return view('frontend.testimonials.testimonial_list', compact('testimonial'));
+
+    } // End Method
+
+    public function TestimonialDetails($id)
+    {
+
+        $testimonial = Testimonial::where('id', $id)->first();
+        $multiImage = MultiImageTestimonial::where('testimonial_id', $id)->get();
+
+        return view('frontend.testimonials.testimonial_details', compact('testimonial', 'multiImage'));
+
+    } // End Method
+
 }

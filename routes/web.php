@@ -363,6 +363,10 @@ Route::get('/autocomplete-search', [IndexController::class, 'autocompleteSearch'
 Route::get('/amenities', [PropertyTypeController::class, 'AmenityList'])->name('amenity.list');
 Route::get('/amenity/details/{id}', [PropertyTypeController::class, 'AmenityDetails']);
 
+// TESTIMONIALS ROUTE
+Route::get('/testimonials', [TestimonialController::class, 'TestimonialList'])->name('testimonial.list');
+Route::get('/testimonial/details/{id}', [TestimonialController::class, 'TestimonialDetails']);
+
 // Blog Details Route 
 Route::get('/blog/details/{id}/{slug}', [BlogController::class, 'BlogDetails']);
 Route::get('/blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
