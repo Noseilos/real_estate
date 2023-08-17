@@ -16,6 +16,8 @@ use App\Models\State;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ScheduleMail;
+use App\Events\ScheduleCreated;
+use Event;
 
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -641,23 +643,22 @@ class AgentPropertyController extends Controller
     public function AgentUpdateSchedule(Request $request)
     {
 
-        $sid = $request->id;
+        $schedules = $request->id;
+        $tour_date = $request->tour_date;
+        $tour_time = $request->tour_time;
 
-        Schedule::findOrFail($sid)->update([
-            'status' => '1',
+        $schedules = Schedule::findOrFail($schedules);
 
-        ]);
+        // //// Start Send Email 
 
-        //// Start Send Email 
+        // $sendmail = Schedule::findOrFail($sid);
 
-        $sendmail = Schedule::findOrFail($sid);
+        // $data = [
+        //     'tour_date' => $sendmail->tour_date,
+        //     'tour_time' => $sendmail->tour_time,
+        // ];
 
-        $data = [
-            'tour_date' => $sendmail->tour_date,
-            'tour_time' => $sendmail->tour_time,
-        ];
-
-        Mail::to($request->email)->send(new ScheduleMail($data));
+        // Mail::to($request->email)->send(new ScheduleMail($data));
 
 
         /// End Send Email 
@@ -666,6 +667,10 @@ class AgentPropertyController extends Controller
             'message' => 'You have Confirm Schedule Successfully',
             'alert-type' => 'success'
         );
+
+        Event::dispatch(new ScheduleCreated($schedules, Auth::user()->email, $tour_date, $tour_time));
+
+        // ScheduleCreated::dispatch($tour_date, $tour_time, $schedules, Auth::user()->email);
 
         return redirect()->route('agent.schedule.request')->with($notification);
 

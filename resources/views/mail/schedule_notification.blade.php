@@ -152,7 +152,7 @@
 									<td style="padding-bottom: 10px;">
 										<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#A25F5E">
 											<tr>
-												<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{ $message->embed(Storage::path('images/IAS.png')) }}" width="650" height="366" border="0" alt="" /></td>
+												<td class="fluid-img" style="font-size:0pt; line-height:0pt; text-align:left;"><img src="{{ $message->embed(Storage::path('images/landscape-bg.jpg')) }}" width="650" height="366" border="0" alt="" /></td>
 												{{-- {{ asset('frontend/assets/images/banner/landscape-bg.jpg')}} --}}
 											</tr>
 											<tr>
@@ -162,11 +162,11 @@
 															<td class="text-center pb25" style="color:#000000; font-family: 'Montserrat', sans-serif; font-size:16px; line-height:25px; text-align:left; padding-bottom:18px;"><strong>Good day, Ma'am/Sir!</strong><br/> Your request is confirm on this data.</td>
 														</tr>
 														<tr>
-															{{-- <td class="h3 pb20" style="color:#000000; font-family: 'Montserrat', sans-serif; font-size:25px; line-height:30px; text-align:left; padding-bottom:20px;">
-																Tour Date: {{ $schedule['tour_date'] }}
+                                                                {{-- <td class="h3 pb20" style="color:#000000; font-family: 'Montserrat', sans-serif; font-size:25px; line-height:30px; text-align:left; padding-bottom:20px;">
+                                                                    Tour Date: {{ $schedule['tour_date'] }}
 																<br />
 																Tour Time: {{ $schedule['tour_time'] }}
-															</td> --}}
+                                                                </td> --}}
 														</tr>
                                                         <tr>
 															<td class="text-center pb25" style="color:#000000; font-family: 'Montserrat', sans-serif; font-size:14px; line-height:25px; text-align:left; padding-bottom:20px;">Please ensure that you arrive on time, as each property visit will be carefully curated to make the most of your valuable time.</td>

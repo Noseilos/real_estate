@@ -41,7 +41,7 @@ License: For each use you must have a valid license purchased only from above li
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/demo2/style.css') }}">
   <!-- End layout styles -->
 
-  <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
+  <link rel="shortcut icon" href="{{ asset('backend/assets/images/tahanan-logo.ico') }}" />
 
   {{-- Toaster css--}}
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >

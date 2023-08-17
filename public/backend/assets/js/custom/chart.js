@@ -52,7 +52,7 @@ var SampleChartClass;
           plugins: {
             legend: {
                 labels: {
-                    color: 'white'
+                    color: 'black'
                 }
             }
           }
@@ -82,7 +82,7 @@ var SampleChartClass;
           plugins: {
             legend: {
                 labels: {
-                    color: 'white'
+                    color: 'black'
                 }
             }
           }
@@ -122,7 +122,7 @@ var SampleChartClass;
           scales: {
             y: {
               ticks: {
-                color: 'white'
+                color: 'black'
               },
               beginAtZero: true,
               grid: {
@@ -131,7 +131,7 @@ var SampleChartClass;
             },
             x: {
               ticks: {
-                color: 'white'
+                color: 'black'
               },
               grid: {
                 color: 'rgba(129, 177, 199, 0.5)'
@@ -142,7 +142,7 @@ var SampleChartClass;
           plugins: {
             legend: {
                 labels: {
-                    color: 'white'
+                    color: 'black'
                 }
             }
           }
