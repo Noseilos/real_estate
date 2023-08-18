@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Schedule;
+use App\Models\Transaction;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UserController extends Controller
 {
@@ -131,7 +133,32 @@ class UserController extends Controller
         $srequest = Schedule::where('user_id',$id)->get();
         return view('frontend.message.schedule_request',compact('userData','srequest'));
 
+    } // End UserScheduleRequest  
+
+
+    
+
+    public function UserTransaction(){
+
+        $id = Auth::user()->id;
+        $userData = User::find($id);
+
+        $srequest = Transaction::where('user_id',$id)->get();
+        return view('frontend.dashboard.transaction',compact('userData','srequest'));
+
     } // End UserScheduleRequest 
+
+    public function TransactionInvoice($id){
+
+        $transactionHistory = Transaction::where('id',$id)->first();
+
+        $pdf = Pdf::loadView('frontend.transaction.transaction_invoice', compact('transactionHistory'))->setPaper('a4')->setOption([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+        return $pdf->download('invoice.pdf');
+
+    }// End PackageInvoice
 
 
 

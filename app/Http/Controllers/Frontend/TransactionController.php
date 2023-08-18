@@ -31,6 +31,11 @@ class TransactionController extends Controller
                 'created_at' => Carbon::now(),
             ]);
 
+            Property::findOrFail($pid)->update([
+
+                'status' => 0,
+            ]);
+
             $transactionData = [
                 'user' => Auth::user(),
                 'aid' => $aid,

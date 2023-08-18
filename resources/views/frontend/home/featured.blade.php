@@ -1,5 +1,5 @@
 @php
-    $property = App\Models\Property::where('status', '1')->where('featured', '1')->limit(3)->get();
+    $property = App\Models\Property::where('status', '1')->where('featured', '1')->limit(6)->get();
 @endphp
 
 <section class="feature-section sec-pad bg-color-1">
