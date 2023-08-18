@@ -10,6 +10,8 @@ use App\Models\Testimonial;
 use App\Models\MultiImageTestimonial;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
+use App\Imports\TestimonialImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TestimonialController extends Controller
 {
@@ -246,4 +248,22 @@ class TestimonialController extends Controller
 
     } // End Method
 
+    public function ImportTestimonial(){
+
+        return view('backend.testimonial.import_testimonial');
+
+    }// End Method 
+
+    public function TestimonialImport(Request $request){
+
+        Excel::import(new TestimonialImport, $request->file('import_file'));
+
+        $notif = array(
+        'message' => 'Testimonial Imported Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->back()->with($notif);
+
+    }
 }

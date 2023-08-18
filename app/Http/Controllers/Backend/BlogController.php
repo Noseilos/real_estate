@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
+use App\Imports\BlogPostImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\BlogCategoryImport;
 
@@ -446,5 +447,24 @@ class BlogController extends Controller
         return redirect()->back()->with($notification);
 
     } // End Method
+
+    public function ImportPost(){
+
+        return view('backend.post.import_post');
+
+    }// End Method 
+
+    public function PostImport(Request $request){
+
+        Excel::import(new BlogPostImport, $request->file('import_file'));
+
+        $notif = array(
+        'message' => 'Blog Post Imported Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->back()->with($notif);
+
+    }
 
 }

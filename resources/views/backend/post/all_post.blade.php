@@ -7,6 +7,8 @@
 				<nav class="page-breadcrumb">
 					<ol class="breadcrumb">
             <a href="{{ route('add.post') }}" class="btn btn-inverse-info"> Add Post    </a>
+            &nbsp; &nbsp; &nbsp;
+            <a href="{{ route('import.post') }}" class="btn btn-inverse-warning"> Import</a>
 					</ol>
 				</nav>
 

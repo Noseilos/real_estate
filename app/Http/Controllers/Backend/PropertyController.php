@@ -18,6 +18,8 @@ use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PropertyImport;
 
 class PropertyController extends Controller
 {
@@ -500,4 +502,24 @@ class PropertyController extends Controller
         return view('backend.message.all_message',compact('user_message'));
 
     }// End AdminPropertyMessage
+
+    public function ImportProperty(){
+
+        return view('backend.property.import_property');
+
+    }// End Method 
+
+    public function PropertyImport(Request $request){
+
+        Excel::import(new PropertyImport, $request->file('import_file'));
+
+        $notif = array(
+        'message' => 'Property Imported Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->back()->with($notif);
+
+    }
+
 }

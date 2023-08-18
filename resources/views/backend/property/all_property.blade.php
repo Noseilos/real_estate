@@ -7,6 +7,8 @@
         <ol class="breadcrumb">
           @if (Auth::user()->can('property.add'))
             <a href="{{ route('add.property')}}" class="btn btn-inverse-info">Add Property</a>
+            &nbsp; &nbsp; &nbsp;
+            <a href="{{ route('import.property') }}" class="btn btn-inverse-warning"> Import</a>
           @endif
         </ol>
     </nav>

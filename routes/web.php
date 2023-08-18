@@ -126,6 +126,8 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::post('/update/amenities/multi-image', 'UpdateAmenityMultiImage')->name('update.amenity.multiImage');
         Route::get('/delete/amenities/multi-image/{id}', 'DeleteAmenityMulti')->name('delete.amenity.multiImage');
         Route::get('/delete/amenities/{id}', 'DeleteAmenities')->name('delete.amenities')->middleware('permission:amenities.delete');
+        Route::get('/import/amenities', 'ImportAmenities')->name('import.amenities')->middleware('permission:amenities.add');
+        Route::post('/amenities/import', 'AmenitiesImport')->name('amenities.import');
     }); // END Amenities
 
     // START PropertyController
@@ -147,6 +149,8 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/admin/package/history', 'AdminPackageHistory')->name('admin.package.history');
         Route::get('/package/invoice/{id}', 'PackageInvoice')->name('package.invoice');
         Route::get('/admin/property/message/', 'AdminPropertyMessage')->name('admin.property.message');
+        Route::get('/import/property', 'ImportProperty')->name('import.property')->middleware('permission:property.add');
+        Route::post('/property/import', 'PropertyImport')->name('property.import');
     }); // END PropertyController
 
 
@@ -188,6 +192,8 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::post('/update/testimonial/multi-image', 'UpdateTestimonialMultiImage')->name('update.testimonial.multiImage');
         Route::get('/delete/testimonial/multi-image/{id}', 'DeleteTestimonialMultiImage')->name('delete.testimonial.multiImage');
         Route::post('/store/new/multi-image/testimonial', 'StoreNewMultiImageTestimonial')->name('store.new.multiImage.testimonial');
+        Route::get('/import/testimonial', 'ImportTestimonial')->name('import.testimonial')->middleware('permission:testimonials.add');
+        Route::post('/testimonial/import', 'TestimonialImport')->name('testimonial.import');
     }); // END Testimonial Controller
 
     // Blog Cateory All Route 
@@ -213,6 +219,8 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::post('/store/new/post/multi-image', 'StoreNewMultiImagePost')->name('store.new.multiImagePost');
         Route::get('/delete/post/multi-image/{id}', 'DeletePostMulti')->name('delete.post.multiImage');
         Route::get('/delete/post/{id}', 'DeletePost')->name('delete.post')->middleware('permission:post.delete');
+        Route::get('/import/post', 'ImportPost')->name('import.post')->middleware('permission:post.add');
+        Route::post('/post/import', 'PostImport')->name('post.import');
     });// END Blog (post) Controller
 
     // SMTP Setting  All Route 

@@ -8,6 +8,8 @@
           <nav class="page-breadcrumb">
             <ol class="breadcrumb">
               <a href="{{ route('add.testimonials') }}" class="btn btn-inverse-info"> Add Testimonials    </a>
+              &nbsp; &nbsp; &nbsp;
+            <a href="{{ route('import.testimonial') }}" class="btn btn-inverse-warning"> Import</a>
             </ol>
           </nav>
         @endif

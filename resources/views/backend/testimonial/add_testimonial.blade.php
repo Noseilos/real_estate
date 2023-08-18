@@ -17,27 +17,27 @@
 
                             <h6 class="card-title">Add Testimonial </h6>
 
-                            <form method="POST" action="{{ route('store.testimonials') }}" class="forms-sample"
+                            <form id="testForm" method="POST" action="{{ route('store.testimonials') }}" class="forms-sample"
                                 enctype="multipart/form-data">
                                 @csrf
 
 
-                                <div class="mb-3">
+                                <div class="form-group mb-3">
                                     <label for="exampleInputEmail1" class="form-label"> Name </label>
                                     <input type="text" name="name" class="form-control ">
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="form-group mb-3">
                                     <label for="exampleInputEmail1" class="form-label"> Position </label>
                                     <input type="text" name="position" class="form-control ">
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="form-group mb-3">
                                     <label for="exampleInputEmail1" class="form-label"> Message </label>
                                     <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="form-group mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Testimonial Photo </label>
                                     <input class="form-control" name="image" type="file" id="image">
                                 </div>
@@ -75,6 +75,57 @@
         </div>
 
     </div>
+
+    {{-- // Start Form Validation //  --}}
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#testForm').validate({
+            rules: {
+                name: {
+                    required : true,
+                    minlength: 5
+                }, 
+                position: {
+                    required : true,
+                }, 
+                message: {
+                    required : true,
+                }, 
+                image: {
+                    required : true,
+                }, 
+            },
+            messages :{
+                name: {
+                    required : 'Please Enter Name',
+                    minlength: 'Name must consist of at least 5 characters.',
+                }, 
+                position: {
+                    required : 'Please Enter Position',
+                }, 
+                message: {
+                    required : 'Please Enter Short Description',
+                }, 
+                image: {
+                    required : 'Please Choose Image',
+                }, 
+            },
+            errorElement : 'span', 
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+    
+</script>
+{{-- // End Form Validation //  --}}
     
     {{-- // Start Multiple Image //  --}}
     <script>

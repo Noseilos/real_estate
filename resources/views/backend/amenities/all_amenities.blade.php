@@ -7,6 +7,8 @@
         <ol class="breadcrumb">
           @if (Auth::user()->can('amenities.add'))
             <a href="{{ route('add.amenities')}}" class="btn btn-inverse-info">Add Amenities</a>
+            &nbsp; &nbsp; &nbsp;
+            <a href="{{ route('import.amenities') }}" class="btn btn-inverse-warning"> Import</a>
           @endif
         </ol>
     </nav>

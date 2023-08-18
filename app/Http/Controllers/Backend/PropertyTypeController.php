@@ -11,6 +11,7 @@ use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
 use App\Imports\PropertyTypeImport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\AmenitiesImport;
 
 class PropertyTypeController extends Controller
 {
@@ -352,5 +353,24 @@ class PropertyTypeController extends Controller
         return view('frontend.amenities.amenities_details', compact('amenities', 'multiImage'));
 
     } // End Method
+
+    public function ImportAmenities(){
+
+        return view('backend.amenities.import_amenities');
+
+    }// End Method 
+
+    public function AmenitiesImport(Request $request){
+
+        Excel::import(new AmenitiesImport, $request->file('import_file'));
+
+        $notif = array(
+        'message' => 'Amenities Imported Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->back()->with($notif);
+
+    }
 
 }
